@@ -81,7 +81,7 @@ If you make any changes to your license other than including your names that are
 
 ## Implement your visualizations
 
-The first assignment using this template — and subsequent ones — will ask you to implement your visualizations. Please refer to the assignment instructions on Canvas for more details. However, for all your development follow these guidelines:
+The first assignment using this template — and subsequent ones — will ask you to implement your visualizations. Please refer to the assignment instructions on Canvas for more details. However, for all your development follow these guidelines:
 
 1. <a name='validated'></a> Ensure your code passes the 'Validate HTML, CSS, and Links' checks we run when you push to GitHub. I.e., you want to see a green check next to your commit
   (<svg width='16' height='16' role='img'><path stroke='#22863a' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>)
