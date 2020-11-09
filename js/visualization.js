@@ -2,8 +2,9 @@
 // variables and prevent 
 ((() => {
 
-  console.log('Hello, world!');
+//load the data from a csv file 
+d3.csv('data/violin_data.csv', function(d){
+
+});
 
 })());
-
-//Hello BAck 
