@@ -1,6 +1,7 @@
 # Put any data files in this folder
 Note: We have added expense as a % of total expenses 
 Note: Percentage of Research, Public Service and Other Expenses were removed --> The values were mostly zeros or insignificant
+- Note: named the columns (keys) same as how they are name on the graph
 
 
 
