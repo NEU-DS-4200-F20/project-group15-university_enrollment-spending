@@ -105,11 +105,14 @@ function violinplot() {
             (v) => {					
                 const input = v.map((se) => se[field]);
                 const bins = histogram(input);
+                //console.log(bins, "These are the bins")
+                
                 return bins;
     },
     (d) => d.SchoolName
     );
 
+    
     //get array from Map type --> we are turning it into key, value
     //console.log(sumstat, "Befor turning into key-value") //--> uncomment to see how it looks like
       sumstat = Array.from(sumstat.entries()).map(([key, value]) => ({
@@ -117,7 +120,7 @@ function violinplot() {
         value: value,
     
     }));
-            //console.log(sumstat,"second") --> after turning into key-value
+            //console.log(sumstat,"second") //--> after turning into key-value
 
 	//get max bandwidth of each violin plot.
       var maxNum = 0;
