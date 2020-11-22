@@ -15,26 +15,20 @@ function violinplotchart() {
     dispatcher;
 
   function chart(selector, data, legends) {
-    
-        
-          
     let svg = d3
       .select(selector)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
-  
-    
-  
+
     svg = svg
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    let maxY = 0;
-
     //get Max Y value from all xFields value.
     //This will help in setting the Y-axis Max Value
-   
+    let maxY = 0;
+
     data.forEach((record) => {
       xFields.forEach((field) => {
         //console.log(field, "This is a field") //--> uncomment to see what is meant by field
@@ -44,11 +38,12 @@ function violinplotchart() {
         if (maxY < fieldMax) {
           maxY = fieldMax;
         }
+        console.log(maxY, 'Final value of maxY')
       });
     });
 
     yScale
-      .domain([0, maxY + 10]) // Note that here the Y scale is set manually Otherwise plots look cut
+      .domain([0, maxY + 5]) // Note that here the Y scale is set manually Otherwise plots look cut
       .rangeRound([height, 0]);
 
     const yAxis = svg.append("g").call(d3.axisLeft(yScale));
