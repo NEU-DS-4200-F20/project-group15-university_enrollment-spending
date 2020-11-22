@@ -56,9 +56,9 @@
   <!-- Visualization goes here -->
   <div class='vis-holder'>
     <!--The Style is to centerlize the plot-->
-    <div class='violinplot-holder' id='violinplot'  style="display: flex;width:100%; justify-content: center;"></div>></div>
-    
-    <div class='linegraph-holder' id='linegraph'  style="display: flex;width:100%; justify-content: center;"></div>></div>
+    <!--We added the "holder" styling-->
+    <div class='violinplot-holder holder'></div>
+    <div class='linecharts-holder holder'></div>
     <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
 
@@ -110,11 +110,10 @@
 
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
   <script src='lib/d3.v6.1.1/d3.min.js'></script>
-
   <script src='js/visualization.js'></script>
 
-  <!-- This will be changed to visualization.js in the next submission-->
-
+  <!-- We have to have the global file first so that the colors are called-->
+  <script src='js/global.js'></script>
   <script src='js/violinplot.js'></script>
   <script src='js/linegraph.js'></script>
 </body>

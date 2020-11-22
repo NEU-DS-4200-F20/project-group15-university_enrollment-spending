@@ -1,94 +1,209 @@
-//Source: https://www.d3-graph-gallery.com/graph/line_several_group.html
-
-var parseDate = d3.timeParse('%Y')
-
-function linegraph() {
-    // set the dimensions and margins of the graph
-    var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-        width = 700 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
-    var colors = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33', '#a65628', '#f781bf', '#999999'];
-    // append the svg object to the body of the page
-    var svg = d3.select("#linegraph")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+// Initialize a line chart. Modeled after Mike Bostock's
+// Reusable Chart framework https://bost.ocks.org/mike/chart/
+function linechart() {
+  // Based on Mike Bostock's margin convention
+  // https://bl.ocks.org/mbostock/3019563
+  let margin = {
+      top: 40,
+      left: 80,
+      right: 20,
+      bottom: 40,
+    },
+    width = 500 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom,
+    xValue = (d) => d[0],
+    yValue = (d) => d[1],
+    xLabelText = "",
+    yLabelText = "",
+    yLabelOffsetPx = 0,
+    xScale = d3.scalePoint(),
+    yScale = d3.scaleLinear();
+  // selectableElements = d3.select(null),
+  // dispatcher;
+  
+  // Create the chart by adding an svg to the div with the id
+  // specified by the selector using the given data
+  function chart(selector, data, legends, hasLegends = false) {
+    //if legends exists, chart's width should be increased to show legends.
+    if (hasLegends) {
+      margin.right = 300;
+    }
+  
+    //clear all svg elements before start to draw new chart
+    d3.select(selector).selectAll("*").remove();    
+    let svg = d3
+      .select(selector)
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom);
+  
+    // add legends into chart
+    if (hasLegends) {
+      const legendsG = svg
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    //Reading Data File
-    d3.csv("data/mergedDataFinal2.csv").then(function (data) {
-
-        // Retrieving the unique names for the schools,
-        // from all the datapoints in the CSV
-        const schools = [];
-        for (const el of data) {
-            //If the school is not found then the result is -1 --> So it will push it to the list
-            if (schools.indexOf(el.SchoolName) === -1) {
-                schools.push(el.SchoolName);
-            }
-        }
-
-
-        // Iterates over schools and generates array of objects,
-        // with 3 properties, name, points and color.
-        const schoolsData = schools.map((e, i) => ({ name: e, points: [], color: colors[i] }));
-
-        // Iterates over CSV datapoints and fills the points
-        // array of each school object created earlier.
-        for (const school of schoolsData) {
-            for (const el of data) {
-                if (el.SchoolName === school.name) {
-                    school.points.push({ year: el.YearData, value: Number(el.Instruction_Current_year_total) });
-                }
-            }
-        }
-
-        // Add X axis with exten from 0 to the last year
-        // Choosing school [0] since they all have same years.
-        var x = d3.scaleTime()
-            .domain(d3.extent(schoolsData[0].points, function (d) { return d.year; }))
-            //To keep room for a legend
-            .range([0, width - 240]);
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            //Formatting the years, it was showing in a weird format before that
-            .call(
-                d3.axisBottom(x).tickFormat((d, i) => schoolsData[0].points[i].year)
-            );
-
-        // Add Y axis with extent from 0 to the maximum
-        // value in the whole CSV datapoints.
-        var y = d3.scaleLinear()
-            .domain([0, d3.max(data, function (d) { return +Number(d.Instruction_Current_year_total); })])
-            .range([height, 0]);
-        svg.append("g")
-            .call(d3.axisLeft(y));
-
-        // Iterating over all schools and using their
-        // points, we draw each line. Next to this,
-        // each legend item is drawn accordingly.
-        let i = 0;
-        for (const school of schoolsData) {
-            // Drawing legend
-            svg.append("circle").attr("cx", 400).attr("cy", 130 + (i * 20)).attr("r", 6).style("fill", school.color)
-            svg.append("text").attr("x", 420).attr("y", 130 + (i * 20)).text(school.name).style("font-size", "13px").attr("alignment-baseline", "middle")
-            // Add the line
-            svg.append("path")
-                .datum(school.points)
-                .attr("fill", "none")
-                .attr("stroke", school.color)
-                .attr("stroke-width", 1.5)
-                .attr("d", d3.line()
-                    .x(function (d) { return x(d.year) })
-                    .y(function (d) { return y(d.value) })
-                )
-            i++;
-        }
-
-
-    });
-
-
+        .attr("class", "legends-g")
+        .attr(
+          "transform",
+          `translate(${width + margin.left + 20}, ${margin.top + 20})`
+        );
+      const legendG = legendsG
+        .selectAll(".legend")
+        .data(legends)
+        .enter()
+        .append("g")
+        .attr("class", "legend-g")
+        .attr("transform", (_, i) => `translate(0, ${i * 30})`);
+  
+      legendG
+        .append("circle")
+        .style("fill", (d) => d.color)
+        .attr("r", 7);
+      legendG
+        .append("text")
+        .attr("class", "legend-text")
+        .attr("dx", "1em")
+        .attr("dy", ".4em")
+        .text((d) => d.name);
+    }
+  
+    svg = svg
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      
+    //Define scales
+    xScale.domain(d3.group(data, xValue).keys()).rangeRound([0, width]);
+  
+    yScale
+      .domain([
+        d3.min(data, (d) => parseFloat(yValue(d))),
+        d3.max(data, (d) => parseFloat(yValue(d))),
+      ])
+      .rangeRound([height, 0]);
+  
+    // X axis
+    let xAxis = svg
+      .append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(xScale));
+  
+    // Put X axis tick labels at an angle
+    xAxis
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", "rotate(-65)");
+  
+    // X axis label
+    xAxis
+      .append("text")
+      .attr("class", "axisLabel")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate(" + width + ",-10)")
+      .text(xLabelText);
+  
+    // Y axis and label
+    let yAxis = svg
+      .append("g")
+      .call(d3.axisLeft(yScale))
+      .append("text")
+      .attr("class", "axisLabel")
+      .attr("text-anchor", "start")
+      .attr(
+        "transform",
+        "translate(" + (yLabelOffsetPx - margin.left) + ", -10)"
+      )
+      .text(yLabelText);
+  
+    //grouped path data per each school
+    const sumstat = d3.group(data, (d) => d.SchoolName);
+    // Add the lines
+    const pathG = svg
+      .selectAll(".path-g")
+      .data(Array.from(sumstat.values()))
+      .enter()
+      .append("g");
+  
+    pathG
+      .append("path")
+      .attr("fill", "none")
+      .attr("stroke", (_, i) => colors[i])
+      .attr("stroke-width", 3)
+      .attr("d", (d) => d3.line().x(X).y(Y)(d));
+  
+    // Add the points
+    let points = pathG
+      .selectAll(".line-point")
+      .data((d) => d)
+      .enter()
+      .append("circle")
+      .attr("class", "point line-point")
+      .style("stroke-width", 2)
+      .attr("cx", X)
+      .attr("cy", Y)
+      .attr("r", 5);
+      
+      return chart;
+  }
+  
+  // The x-accessor from the datum
+  function X(d) {
+    return xScale(xValue(d));
+  }
+  
+    // The y-accessor from the datum
+  function Y(d) {
+    return yScale(yValue(d));
+  }
+  
+  chart.margin = function (_) {
+    if (!arguments.length) return margin;
+    margin = _;
+    return chart;
+  };
+  
+  chart.width = function (_) {
+    if (!arguments.length) return width;
+    width = _;
+    return chart;
+  };
+  
+  chart.height = function (_) {
+    if (!arguments.length) return height;
+    height = _;
+    return chart;
+  };
+  
+  chart.x = function (_) {
+    if (!arguments.length) return xValue;
+    xValue = _;
+    return chart;
+  };
+  
+  chart.y = function (_) {
+    if (!arguments.length) return yValue;
+    yValue = _;
+    return chart;
+  };
+  
+  chart.xLabel = function (_) {
+    if (!arguments.length) return xLabelText;
+    xLabelText = _;
+    return chart;
+  };
+  
+  chart.yLabel = function (_) {
+    if (!arguments.length) return yLabelText;
+    yLabelText = _;
+    return chart;
+  };
+  
+  chart.yLabelOffset = function (_) {
+    if (!arguments.length) return yLabelOffsetPx;
+    yLabelOffsetPx = _;
+    return chart;
+  };
+  
+  return chart;
 }
-linegraph();
+  

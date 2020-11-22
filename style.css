@@ -81,3 +81,38 @@ h1, h2, h3 {
 		box-shadow:4px 4px 10px rgba(0,0,0,0.8);
 	}
 }
+/* All added styling */
+
+circle.selected {
+	fill: pink;
+	stroke: red;
+	opacity: 0.5;
+  }
+  
+  .point {
+	fill: white;
+	stroke: #69b3a2;
+	stroke-width: 3;
+  }
+  
+  .axisLabel {
+	fill: #475d7c;
+  }
+  
+  .legend-text {
+	font-size: 10px;
+	color: #000;
+  }
+  
+  .holder {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: center;
+  }
+  
+  .line-chart-container {
+	display: flex;
+	justify-content: center;
+  }
+  
