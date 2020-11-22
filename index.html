@@ -2,15 +2,13 @@
 <html lang='en'>
 
 <!-- Metadata -->
+
 <head>
   <meta charset='utf-8'>
-
   <!-- Title -->
   <title>Project Team 15: Comparative Analysis of University Spending and Enrollment</title>
-
   <!-- CSS Styling -->
   <link rel='stylesheet' href='style.css'>
-
   <!-- Favicons -->
   <link rel='apple-touch-icon' sizes='180x180' href='favicons/apple-touch-icon.png'>
   <link rel='icon' type='image/png' sizes='32x32' href='favicons/favicon-32x32.png'>
@@ -24,33 +22,36 @@
 
 <!-- Main page content -->
 <body>
-
   <!-- Update this with your GitHub repo URL -->
-  <span id='forkongithub'><a href='https://github.com/NEU-DS-4200-F20/project-group15-university_enrollment-spending'>Fork me on GitHub</a></span>
+  <span id='forkongithub'><a
+      href='https://github.com/NEU-DS-4200-F20/project-group15-university_enrollment-spending'>Fork me on
+      GitHub</a>
+  </span>
 
   <!-- Writeup -->
   <div class='content-column'>
-   <h1>Project Team 15: Comparative Analysis of University Spending and Enrollment</h1>
-
+    <h1>Project Team 15: Comparative Analysis of University Spending and Enrollment</h1>
     <p><strong>Marc Leonti</strong>, <strong>Raed Binsaeed</strong>, <strong>Nick Hu</strong></p>
-
     <p>Service-Learning Course Project as part of
-	<a href='https://canvas.instructure.com/courses/1781732'>DS 4200 F20: Information Visualization</a>,
-	taught by <a href='https://cody.khoury.northeastern.edu/'>Prof. Cody Dunne</a>,
-	<a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>,
-	<a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.</p>
-
+      <a href='https://canvas.instructure.com/courses/1781732'>DS 4200 F20: Information Visualization</a>, taught by <a
+        href='https://cody.khoury.northeastern.edu/'>Prof. Cody Dunne</a>,
+      <a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>,
+      <a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.</p>
 
     <h1>Abstract</h1>
-
-    <p>These visualizations explore the spending patterns of post-secondary institutions and their impacts on enrollment. This work provides the visualizations necessary to compare spending patterns that lead to higher enrollments across comparable institutions. These visualizations could be used to compare different spending patterns of multiple universities and visually deduce statistically significant spending variations. Proper guidance can then be given to the universities that are not following spending patterns that lead to higher enrollment.</p>
-
+    <p>These visualizations explore the spending patterns of post-secondary institutions and their impacts on
+      enrollment. This work provides the visualizations necessary to compare spending patterns that lead to higher
+      enrollments across comparable institutions. These visualizations could be used to compare different spending
+      patterns of multiple universities and visually deduce statistically significant spending variations. Proper
+      guidance can then be given to the universities that are not following spending patterns that lead to higher
+      enrollment.</p>
 
     <h1>Visualization</h1>
-
-    <p>Below are our visualizations. Static examples follow.</p>
-
-
+    <p>The violin plots show the distribution of the data cor each of the key five spending categories, as a percentage
+      of each school's total spending. The colored dots represent the actual data values, with each color representing a
+      different school (see the legend below the line charts). Below are line graphs which show the each school's
+      spending trends over time. Brushing on any of the points on the right side of a violin will filter the
+      corresponding line graph to only show the data related to those data points.</p>
   </div>
 
   <!-- Visualization goes here -->
@@ -61,52 +62,56 @@
     <div class='linecharts-holder holder'></div>
     <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->
     <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
+    <!-- <svg id='vis-svg'> Don't delete the closing tag! </svg> -->
 
-    <!--
-    <svg id='vis-svg-1'>
+    <!-- Further writeup -->
+    <div class='content-column'>
+      <h1>Demo Video</h1>
+      <p>In this section we will embed a demo video</p>
+      <!-- <video controls width='100%'> <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'> <p>Your browser doesn't support HTML5 video. Here is a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p> </video> -->
 
-    <Don't delete the closing tag!
-    </svg>
-    -->
+      <h1>Visualization explanation</h1>
+      <p>The first visualization, a violin plot, addresses the end-user's most important goals by allowing the user to
+        explore the data from the comparison schools in several spending categories by generating violin plots that show
+        the distribution of the values. This helps the user visualize areas of spending that are different to assess for
+        statistical significance and possibly provide insight into where spending should be redirected. The height of
+        each violin represents the range of the values, measured in standard deviations away from the mean. The width of
+        the violin represents the frequency of the different values found in the data for this financial category.
+        Hovering over any individual violin will provides details on demand to the user about the institution, year, and
+        actual value of the datapoint.</p>
+      <p>The next visualizations, line graphs, are interactive based on the user's interactions with any violin plot.
+        The line graphs show time-series data for any institution's data that contributed to the generation of the
+        violin. The institutions displayed will correlate with the datapoints represented in that portion of the violin.
+        The data displayed shows the dollar amounts spent annually per Total Full-Time Enrollment hour. This is a
+        powerful metric giving the user the ability to make direct comparisons regardless of total budget size. The
+        datapoints highlighted in the violin plots will also be highlighted in the line graphs to identify trends over
+        time.</p>
+      <p>These capabilities will allow the end user to explore the dataset, discovering useful insights, and directing
+        their research and in-depth statistical analysis. Depending on those findings it can possible to identify
+        potential cost savings, and convince decision-makers in affecting financial policy changes.</p>
 
-  <!-- Further writeup -->
-  <div class = 'content-column'>
+      <h1>Acknowledgments</h1>
+      <p>We would like to thank everyone who helped make this possible.</p>
+      <ul>
+        <li><a href='https://d3js.org/'>D3: Data-Driven Documents</a> by Mike Bostock is used for manipulating the DOM
+          to create visualizations.</li>
+        <li><a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>Pure CSS responsive 'Fork me on GitHub'
+            ribbon</a> by Chris Heilmann is used to create the banner that links back to the source code repository.
+        </li>
+      </ul>
+    </div>
 
-    <h1>Demo Video</h1>
+    <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
+    <script src='lib/d3.v6.1.1/d3.min.js'></script>
+    <script src='js/visualization.js'></script>
 
-    <p>In the section below we will embed a demo video</p>
+    <!-- Must list the global file first to define the colors -->
+    <script src='js/global.js'></script> <!-- color chart -->
 
-<!--
-    <video controls width='100%'>
-      <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'>
-      <p>Your browser doesn't support HTML5 video. Here is
-       a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
-    </video>
- -->
+    <!-- Now we can build the violin and line graphs -->
+    <script src='js/violinplot.js'></script>
+    <script src='js/linegraph.js'></script>
 
-    <h1>Visualization explanation</h1>
-
-    <p>The first visualization, a violin plot, addresses the end-user's most important goals by allowing the user to explore the data from the comparison schools in several spending categories by generating violin plots that show the distribution of the values. This helps the user visualize areas of spending that are different to assess for statistical significance and possibly provide insight into where spending should be redirected. The height of each violin represents the range of the values, measured in standard deviations away from the mean. The width of the violin represents the frequency of the different values found in the data for this financial category. Hovering over any individual violin will provides details on demand to the user about the institution, year, and actual value of the datapoint.</p>
-    <p>The next visualizations, line graphs, are interactive based on the user's interactions with any violin plot. The line graphs show time-series data for any institution's data that contributed to the generation of the violin. The institutions displayed will correlate with the datapoints represented in that portion of the violin. The data displayed shows the dollar amounts spent annually per Total Full-Time Enrollment hour. This is a powerful metric giving the user the ability to make direct comparisons regardless of total budget size. The datapoints highlighted in the violin plots will also be highlighted in the line graphs to identify trends over time.</p>
-    <p>These capabilities will allow the end user to explore the dataset, discovering useful insights, and directing their research and in-depth statistical analysis. Depending on those findings it can possible to identify potential cost savings, and convince decision-makers in affecting financial policy changes.</p>
-
-    <h1>Acknowledgments</h1>
-
-    <p>We would like to thank everyone who helped make this possible.</p>
-
-    <ul>
-      <li><a href='https://d3js.org/'>D3: Data-Driven Documents</a> by Mike Bostock is used for manipulating the DOM to create visualizations.</li>
-      <li><a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>Pure CSS responsive 'Fork me on GitHub' ribbon</a> by Chris Heilmann is used to create the banner that links back to the source code repository.</li>
-    </ul>
-  </div>
-
-  <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
-  <script src='lib/d3.v6.1.1/d3.min.js'></script>
-  <script src='js/visualization.js'></script>
-
-  <!-- We have to have the global file first so that the colors are called-->
-  <script src='js/global.js'></script>
-  <script src='js/violinplot.js'></script>
-  <script src='js/linegraph.js'></script>
 </body>
+
 </html>
