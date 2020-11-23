@@ -1,10 +1,10 @@
 //source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
 function violinplotchart() {
-  //Defining the margins
-  let margin = { top: 40, right: 30, bottom: 30, left: 40 },
-    width = 1200 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom,
+  //Define the margins
+  let margin = { top: 40, right: 30, bottom: 30, left: 60 },
+    width = 1000 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
     yLabelText = "",
@@ -28,28 +28,28 @@ function violinplotchart() {
     //get Max Y value from all xFields value.
     //This will help in setting the Y-axis Max Value
     let maxY = 0;
-
     data.forEach((record) => {
       xFields.forEach((field) => {
         //console.log(field, "This is a field") //--> uncomment to see what is meant by field
         //I parsed it because it was treating the number as text
         const fieldMax = parseFloat(record[field]);
         //console.log(fieldMax, "This is the value in each record")
-        if (maxY < fieldMax) {
-          maxY = fieldMax;
-        }
-        console.log(maxY, 'Final value of maxY')
+        if (maxY < fieldMax) {maxY = fieldMax;}
+        // console.log(maxY, 'Final value of maxY')
       });
     });
 
     yScale
-      .domain([0, maxY + 5]) // Note that here the Y scale is set manually Otherwise plots look cut
+      .domain([0, maxY + maxY*.05]) // 5% cushion added to the top of the violin plot chart
       .rangeRound([height, 0]);
 
-    const yAxis = svg.append("g").call(d3.axisLeft(yScale));
+    const yAxis = svg
+      .append("g")
+      .call(d3.axisLeft(yScale));
 
     //Setting up x-axis
-    xScale.range([0, width]).domain(xFields).padding(0.05); // This is important: it is the space between 2 groups. 0 means no padding. 1 is the maximum.
+    xScale.range([0, width]).domain(xFields).padding(0.05);
+    // padding(0.05) is the space between 2 violins. 0 = no padding. 1 = maximum.
 
     //add x-axis at the bottom of svg
     const xAxis = svg
