@@ -4,7 +4,7 @@ function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 30, bottom: 30, left: 60 },
     width = 1000 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom,
+    height = 600 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
     yLabelText = "",
@@ -158,17 +158,17 @@ function violinplotchart() {
         d.cy = yScale(parseFloat(d.value));
         return d.cy;
       })
-      .attr("r", 5)
+      .attr("r", 3)
       .style("fill", function (d) {
         const matched = legends.find((l) => l.name === d.name);
         return matched.color;
       })
-      .attr("stroke", "white")
+      .attr("stroke", "gray")
       .on("mouseover", function (e, d) {
         d3.select(this).style("stroke", "blue").style("stroke-width", 2);
       })
       .on("mouseout", function (e, d) {
-        d3.select(this).style("stroke", "white").style("stroke-width", 1);
+        d3.select(this).style("stroke", "gray").style("stroke-width", 1);
       });
 
     // X axis label
