@@ -15,57 +15,46 @@
 
     //define five fields to draw line chart
     const fields = [
-      {slabel: "Instruction",
-         dlabel: "Instruction - Current year total",},
-      {slabel: "Academic_Support",
-        dlabel: "Academic support - Current year total",},
-      {slabel: "Student_Services",
-        dlabel: "Student services - Current year total",},
-      {slabel: "Institutional_Support",
-        dlabel: "Institutional support - Current year total",},
-      {slabel: "Auxillary_Enterprises",
-        dlabel: "Auxiliary enterprises -- Current year total",},
+      {slabel: "Instruction", dlabel: "Instruction_Expenses"},
+      {slabel: "Academic_Support", dlabel: "AcademicSupport_Expenses"},
+      {slabel: "Student_Services", dlabel: "StudentServices_Expenses"},
+      {slabel: "Institutional_Support", dlabel: "InstitutionalSupport_Expenses"},
+      {slabel: "Auxiliary_Enterprises", dlabel: "AuxiliaryEnterprises_Expenses"},
     ];
 
-      //Assiginig a color to each university
-      //https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+    // Assign a color to each university
+    // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
     const legends = [...new Set(data.map((e) => e.SchoolName))].map(
-      (sn, i) => ({
-        name: sn,
-        color: colors[i],
-       })
-    );
-    //console.log(legends, "These are the colors") //--> Uncomment to see how it looks like
+      (sn, i) => ({name: sn, color: colors[i]}));
+    // console.log(legends, "These are the colors") //--> Uncomment to see how it looks like
 
-    //get linecharts holder element for adding each linechart dynamically
+    // get linecharts holder element for adding each linechart dynamically
     const linechartsHolder = d3.select(".linecharts-holder");
-    //adding 5 divs for each line chart and they will have 5 different schools
+    // adding 5 divs for each line chart and they will have 5 different schools
     linechartsHolder
       .selectAll("chart")
       .data(fields)
       .enter()
       .append("div")
       .attr("class", (d) => `line-chart-container line-chart-${d.slabel}`);
+// I have no idea what *this* ^ is or what it does
 
       updateLineCharts();
 
-      //Same concept as Assignment 8, slightly modified
-
+    //Same concept as Assignment 8, slightly modified
     const violin = violinplotchart()
       .xFields(fields.map((d) => d.slabel))
       .xLabel("Columns")
       .yLabel("Percent(%)")
-      .selectionDispatcher(d3.dispatch(dispatchString))(
-      ".violinplot-holder",
-      data,
-      legends
-    );
+      .selectionDispatcher(d3.dispatch(dispatchString))(".violinplot-holder",data,legends);
 
     // When the violin selection is updated via brushing,
     // tell the linechart to update it's selection (linking)
     violin.selectionDispatcher().on(dispatchString, function (selectedData) {
       const one = selectedData[0];
-      //Check if there are matched records
+      console.log(selectedData, 'This was selected');
+
+      // find matching records
       if (one) {
         const years = [...new Set(selectedData.map((d) => d.year))];
         const reDrawData = data.filter((d) => years.includes(d["YearData"]));
@@ -76,18 +65,18 @@
           .y((d) => d[dlabel])
           .yLabel(dlabel)
           .yLabelOffset(40)(
-          `.line-chart-${one.field}`, //*** one.field
-          reDrawData, // *** reDrawData
-          legends,
-          // this last param presents if this linechart has legends or not.
-          one.field === fields[fields.length - 1].slabel ? true : false
-        );
-      } else {
-        updateLineCharts();
+            `.line-chart-${one.field}`, //*** one.field
+            reDrawData, // *** reDrawData
+            legends,
+            // this last param presents if this linechart has legends or not.
+            one.field === fields[fields.length - 1].slabel ? true : false
+          )
       }
+      // if there are no matching records, show everything?
+      else {updateLineCharts();}
     });
 
-    //add line charts for five fields
+    // add line charts for five fields
     function updateLineCharts() {
       fields.forEach((field, i) => {
         linechart()
@@ -96,11 +85,11 @@
           .y((d) => d[field.dlabel])
           .yLabel(field.dlabel)
           .yLabelOffset(40)(
-          `.line-chart-${field.slabel}`,
-          data,
-          legends,
-          field.slabel === fields[fields.length - 1].slabel ? true : false
-        );
+            `.line-chart-${field.slabel}`,
+            data,
+            legends,
+            field.slabel === fields[fields.length - 1].slabel ? true : false
+          );
       });
     }
   });
