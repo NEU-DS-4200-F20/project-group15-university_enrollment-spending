@@ -77,9 +77,9 @@ function linechart() {
     ///////////// temporarily hard-coded the y-axis scale ///////////////
     yScale
       .domain([
-        // d3.min(data, (d) => parseFloat(yValue(d))),
-        // d3.max(data, (d) => parseFloat(yValue(d))),
-        0,100000000
+        d3.min(data, (d) => parseFloat(yValue(d))),
+        d3.max(data, (d) => parseFloat(yValue(d))),
+        // 0,100000000
       ])
       .rangeRound([height, 0]);
 
