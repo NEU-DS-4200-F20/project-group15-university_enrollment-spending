@@ -2,7 +2,7 @@
 // variables and prevent conflicts
 
 (() => {
-  d3.csv("data/mergedDataFinal2.csv").then((data) => {
+  d3.csv("data/Data.csv").then((data) => {
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
@@ -13,14 +13,56 @@
     // a dispatcher (d3-dispatch) for selection events;
     // a div id selector to put our svg in; and the data to use.
 
-    //define five fields to draw line chart
+    // define the five fields used in the violinplot and linechart
+    // slabels are used in the violinplots, dlabels are used in the linegraphs
     const fields = [
-      {slabel: "Instruction", dlabel: "Instruction_Expenses"},
-      {slabel: "Academic_Support", dlabel: "AcademicSupport_Expenses"},
-      {slabel: "Student_Services", dlabel: "StudentServices_Expenses"},
-      {slabel: "Institutional_Support", dlabel: "InstitutionalSupport_Expenses"},
-      {slabel: "Auxiliary_Enterprises", dlabel: "AuxiliaryEnterprises_Expenses"},
+      {slabel: "Instruction_Pct", dlabel: "Instruction_PerFTE"},
+      {slabel: "AcademicSupport_Pct", dlabel: "AcademicSupport_PerFTE"},
+      {slabel: "StudentServices_Pct", dlabel: "StudentServices_PerFTE"},
+      {slabel: "InstitutionalSupport_Pct", dlabel: "InstitutionalSupport_PerFTE"},
+      {slabel: "AuxiliaryEnterprises_Pct", dlabel: "AuxiliaryEnterprises_PerFTE"},
     ];
+
+/*
+These are the columns in the Data.csv file
+
+SchoolName
+Year
+TotalFTE
+
+TuitionAndFeesRevenuesPerFTE
+TuitionAndFeesRevenues%
+AuxiliaryEnterprisesRevenuesPerFTE
+Auxiliary EnterprisesRevenues%
+OperatingRevenuesPerFTE
+OperatingRevenues%
+NonoperatingRevenuesPerFTE
+NonoperatingRevenues%
+TotalRevenues
+
+Instruction_PerFTE
+Instruction_%
+PublicService_PerFTE
+PublicService_%
+AcademicSupport_PerFTE
+AcademicSupport_%
+StudentServices_PerFTE
+StudentServices_%
+InstitutionalSupport_PerFTE
+InstitutionalSupport_%
+NetScholarships_PerFTE
+NetScholarships_%
+AuxiliaryEnterprises_PerFTE
+AuxiliaryEnterprises_%
+Other_PerFTE
+Other_%
+Total_
+TotalWages_PerFTE
+TotalWages_%
+TotalFringeBenefits_PerFTE
+TotalFringeBenefits_%
+ChangeInNetPosition
+*/
 
     // Assign a color to each university
     // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
@@ -37,7 +79,6 @@
       .enter()
       .append("div")
       .attr("class", (d) => `line-chart-container line-chart-${d.slabel}`);
-// I have no idea what *this* ^ is or what it does
 
       updateLineCharts();
 
