@@ -55,6 +55,7 @@ function linechart() {
       legendG
         .append("circle")
         .style("fill", (d) => d.color)
+        .attr("stroke", "black")
         .attr("r", 7);
 
       legendG
@@ -136,7 +137,7 @@ function linechart() {
       .style("stroke-width", 2)
       .attr("cx", X)
       .attr("cy", Y)
-      .attr("r", 5);
+      .attr("r", 2);
 
     return chart;
   }
