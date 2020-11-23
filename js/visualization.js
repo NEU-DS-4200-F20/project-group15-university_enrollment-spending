@@ -1,5 +1,5 @@
-// // Immediately Invoked Function Expression to limit access to our
-// // variables and prevent conflicts
+// Immediately Invoked Function Expression to limit access to our
+// variables and prevent conflicts
 
 (() => {
   d3.csv("data/mergedDataFinal2.csv").then((data) => {
@@ -44,8 +44,8 @@
     //Same concept as Assignment 8, slightly modified
     const violin = violinplotchart()
       .xFields(fields.map((d) => d.slabel))
-      .xLabel("Columns")
-      .yLabel("Percent(%)")
+      .xLabel("Category")
+      .yLabel("Percent of Total Expenses")
       .selectionDispatcher(d3.dispatch(dispatchString))(".violinplot-holder",data,legends);
 
     // When the violin selection is updated via brushing,
@@ -57,11 +57,11 @@
       // find matching records
       if (one) {
         const years = [...new Set(selectedData.map((d) => d.year))];
-        const reDrawData = data.filter((d) => years.includes(d["YearData"]));
+        const reDrawData = data.filter((d) => years.includes(d["Year"]));
         const dlabel = fields.find((e) => e.slabel === one.field).dlabel;
         linechart()
-          .x((d) => d["YearData"])
-          .xLabel("YearData")
+          .x((d) => d["Year"])
+          .xLabel("Year")
           .y((d) => d[dlabel])
           .yLabel(dlabel)
           .yLabelOffset(40)(
@@ -80,8 +80,8 @@
     function updateLineCharts() {
       fields.forEach((field, i) => {
         linechart()
-          .x((d) => d["YearData"])
-          .xLabel("YearData")
+          .x((d) => d["Year"])
+          .xLabel("Year")
           .y((d) => d[field.dlabel])
           .yLabel(field.dlabel)
           .yLabelOffset(40)(
