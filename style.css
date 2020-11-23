@@ -1,8 +1,10 @@
 /* General formatting */
 body {
 	padding: 0 10px;
-	font: 18px/1.5 -apple-system, BlinkMacSystemFont, "avenir next",avenir, "Segoe UI", "lucida grande", "helvetica neue", helvetica, "Fira Sans",roboto, noto, "Droid Sans", cantarell, oxygen, ubuntu, "franklin gothic medium", "century gothic", "Liberation Sans",
-	sans-serif;
+	font: 18px/1.5 -apple-system, BlinkMacSystemFont, "avenir next",avenir,
+	"Segoe UI", "lucida grande", "helvetica neue", helvetica, "Fira Sans",
+	roboto, noto, "Droid Sans", cantarell, oxygen, ubuntu,
+	"franklin gothic medium", "century gothic", "Liberation Sans", sans-serif;
 }
 
 h1, h2, h3 {
@@ -15,25 +17,13 @@ h1, h2, h3 {
 	margin: 40px auto;
 }
 
-/* The visualization should occupy the center 1200 px of the window */
+/* The visualization should occupy the center 1000 px of the window */
 .vis-holder {
-  width: 1200px;
+  width: 1000px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* The violinplot-holder is a container within the vis-holder */
-.violinplot-holder {
-  flex: 1;
-  justify-content: center;
-}
-
-/* The lineplot-holder is a container within the vis-holder */
-.linegraph-holder {
-  flex: 1;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 /* All added styling */
@@ -46,21 +36,27 @@ h1, h2, h3 {
 
 .point {
 	fill: white;
-	stroke: #69b3a2;
+	stroke: #6aa;
 	stroke-width: 3;
 }
 
 .axisLabel {
-	fill: #475d7c;
+	fill: #457;
 	font-size: 14px;
 }
 
 .legend-text {
-	font-size: 10px;
+	font-size: 14px;
 	color: #000;
 }
 
-.holder {
+.violinplot-holder {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.linecharts-holder {
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
@@ -72,10 +68,6 @@ h1, h2, h3 {
 	justify-content: center;
 }
 
-/* Unused
-.vis-svg {
-  background-color: #f4f1f0;
-} */
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
 #forkongithub a{
