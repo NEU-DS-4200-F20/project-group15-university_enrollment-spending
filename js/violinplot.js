@@ -163,7 +163,7 @@ function violinplotchart() {
         const matched = legends.find((l) => l.name === d.name);
         return matched.color;
       })
-      .attr("stroke", "white")
+      .attr("stroke", "black")
       .on("mouseover", function (e, d) {
         d3.select(this).style("stroke", "blue").style("stroke-width", 2);
       })
