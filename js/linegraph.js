@@ -6,7 +6,7 @@
 
 function linechart() {
   let margin = {top: 40,left: 80,right: 20,bottom: 40,},
-    width = 400 - margin.left - margin.right,
+    width = 330 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom,
     xValue = (d) => d[0],
     yValue = (d) => d[1],
@@ -21,28 +21,29 @@ function linechart() {
   // Create the chart by adding an svg to the div with the id
   // specified by the selector using the given data
   function chart(selector, data, legends, hasLegends = false) {
-    //if legends exists, chart's width should be increased to show legends.
-    if (hasLegends) {
-      margin.right = 300;
-    }
+
+    //if legends exists, chart width must be increased.
+    if (hasLegends) {margin.right = 330;}
 
     //clear all svg elements before start to draw new chart
     d3.select(selector).selectAll("*").remove();
+
     let svg = d3
       .select(selector)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
 
-    // add legends into chart
+    // add legends into chart if applicable
     if (hasLegends) {
       const legendsG = svg
         .append("g")
         .attr("class", "legends-g")
         .attr(
           "transform",
-          `translate(${width + margin.left + 20}, ${margin.top + 20})`
+          `translate(${width + margin.left + 100}, ${margin.top + 20})`
         );
+
       const legendG = legendsG
         .selectAll(".legend")
         .data(legends)
@@ -55,6 +56,7 @@ function linechart() {
         .append("circle")
         .style("fill", (d) => d.color)
         .attr("r", 7);
+
       legendG
         .append("text")
         .attr("class", "legend-text")
@@ -68,31 +70,29 @@ function linechart() {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //Define scales
-    xScale.domain(d3.group(data, xValue).keys()).rangeRound([0, width]);
+    xScale
+      .domain(d3.group(data, xValue).keys())
+      .rangeRound([0, width]);
 
+    ///////////// temporarily hard-coded the y-axis scale ///////////////
     yScale
       .domain([
-        d3.min(data, (d) => parseFloat(yValue(d))),
-        d3.max(data, (d) => parseFloat(yValue(d))),
+        // d3.min(data, (d) => parseFloat(yValue(d))),
+        // d3.max(data, (d) => parseFloat(yValue(d))),
+        0,100000000
       ])
       .rangeRound([height, 0]);
 
-    // X axis
+    // X axis and label
     let xAxis = svg
       .append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(xScale));
-
-    // Put X axis tick labels at an angle
-    xAxis
+      .call(d3.axisBottom(xScale))
       .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
-      .attr("transform", "rotate(-65)");
-
-    // X axis label
-    xAxis
+      .attr("transform", "rotate(-65)") // Put X axis tick labels at an angle
       .append("text")
       .attr("class", "axisLabel")
       .attr("text-anchor", "end")
@@ -106,14 +106,12 @@ function linechart() {
       .append("text")
       .attr("class", "axisLabel")
       .attr("text-anchor", "start")
-      .attr(
-        "transform",
-        "translate(" + (yLabelOffsetPx - margin.left) + ", -10)"
-      )
+      .attr("transform","translate(" + (yLabelOffsetPx - margin.left) + ", -10)")
       .text(yLabelText);
 
-    //grouped path data per each school
+    // group path data per each school
     const sumstat = d3.group(data, (d) => d.SchoolName);
+
     // Add the lines
     const pathG = svg
       .selectAll(".path-g")
@@ -140,7 +138,7 @@ function linechart() {
       .attr("cy", Y)
       .attr("r", 5);
 
-      return chart;
+    return chart;
   }
 
   // The x-accessor from the datum
