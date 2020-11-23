@@ -6,7 +6,7 @@ const colors = [
   "#9900cc", // Salem (violet)
   "#ff8800", // Westfield (orange)
   "#ffee00", // Worcester (yellow)
-  "#ff00ff", // ? (pink)
+  "#ff00ff", // Mean (pink)
   "#993300", // ? (brown)
   "#999999", // ? (gray)
 ];
