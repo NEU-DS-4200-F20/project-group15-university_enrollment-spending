@@ -31,13 +31,12 @@ h1, h2, h3 {
 .circle.selected {
 	fill: pink;
 	stroke: red;
-	opacity: 0.5;
+	/* opacity: 0.5; */
 }
 
 .point {
 	fill: white;
-	stroke: #6aa;
-	stroke-width: 3;
+	stroke: #999;
 }
 
 .axisLabel {
