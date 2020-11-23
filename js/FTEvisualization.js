@@ -16,18 +16,18 @@
     // define the five fields used in the violingraph and linechart
     // slabels are used in the linegraphs, dlabels are used in the violinplots
     const fields = [
-      {slabel: "Instruction Expenses per FTE", dlabel: "Instruction Expenses per FTE"},
-      {slabel: "Academic Support Expenses per FTE", dlabel: "Academic Support Expenses per FTE"},
-      {slabel: "Student Services Expenses per FTE", dlabel: "Student Services Expenses per FTE"},
-      {slabel: "Institutional Support Expenses per FTE", dlabel: "Institutional Support Expenses per FTE"},
-      {slabel: "Other Expenses per FTE", dlabel: "Other Expenses per FTE"},
+      {slabel: "InstructionExpenses", dlabel: "InstructionExpenses"},
+      {slabel: "AcademicSupportExpenses", dlabel: "AcademicSupportExpenses"},
+      {slabel: "StudentServicesExpenses", dlabel: "StudentServicesExpenses"},
+      {slabel: "InstitutionalSupportExpenses", dlabel: "InstitutionalSupportExpenses"},
+      {slabel: "OtherExpenses", dlabel: "OtherExpenses"},
     ];
 
 /*
 These are the columns in the FTEData.csv file
 
 TotalFTE
-TuitionAndFeeRevenues
+TuitionAndFeesRevenues
 AuxiliaryEnterprisesRevenues
 OperatingRevenues
 NonoperatingRevenues
@@ -62,7 +62,6 @@ ChangeInNetPosition
       .enter()
       .append("div")
       .attr("class", (d) => `line-chart-container line-chart-${d.slabel}`);
-// I have no idea what *this* ^ is or what it does
 
       updateLineCharts();
 
