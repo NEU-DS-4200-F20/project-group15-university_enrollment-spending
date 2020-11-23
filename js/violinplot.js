@@ -142,7 +142,7 @@ function violinplotchart() {
             field: e[0],
             value: e[1],
             name: d.SchoolName,
-            year: d.YearData,
+            year: d.Year,
           }))
       )
       .enter()
