@@ -65,6 +65,14 @@ h1, h2, h3 {
 	color: #000;
 }
 
+/* Format the tooltip */
+.tooltip {
+    fill:#2b2929;
+    font-family: Georgia;
+    font-size: 150%;
+}
+
+
 /* I don't believe this does anything */
 .line-chart-container {
 	display: flex;
