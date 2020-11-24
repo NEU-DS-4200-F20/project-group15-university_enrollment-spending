@@ -13,56 +13,28 @@
     // a dispatcher (d3-dispatch) for selection events;
     // a div id selector to put our svg in; and the data to use.
 
-    // define the five fields used in the violinplot and linechart
-    // slabels are used in the violinplots, dlabels are used in the linegraphs
+    // Define the fields used in the violinplot and linechart
+    // The slabels are used in the violinplots, dlabels are used in the linegraphs
+    // Comment out the lines not needed. Max is probably 6 or maybe 7.
     const fields = [
-      {slabel: "Instruction_Pct", dlabel: "Instruction_PerFTE"},
+      // {slabel: "TotalFTE", dlabel: "TotalFTE"},
+      // {slabel: "TuitionAndFeesRevenuesPct", dlabel: "TuitionAndFeesRevenuesPerFTE"},
+      // {slabel: "AuxiliaryEnterprisesRevenuesPct", dlabel: "AuxiliaryEnterprisesRevenuesPerFTE"},
+      // {slabel: "OperatingRevenuesPct", dlabel: "OperatingRevenuesPerFTE"},
+      // {slabel: "NonoperatingRevenuesPct", dlabel: "NonoperatingRevenuesPerFTE"},
+      // {slabel: "TotalRevenues", dlabel: "TotalRevenues"},
+      // {slabel: "Instruction_Pct", dlabel: "Instruction_PerFTE"},
+      {slabel: "PublicService_Pct", dlabel: "PublicService_PerFTE"},
       {slabel: "AcademicSupport_Pct", dlabel: "AcademicSupport_PerFTE"},
       {slabel: "StudentServices_Pct", dlabel: "StudentServices_PerFTE"},
       {slabel: "InstitutionalSupport_Pct", dlabel: "InstitutionalSupport_PerFTE"},
+      {slabel: "NetScholarships_Pct", dlabel: "NetScholarships_PerFTE"},
       {slabel: "AuxiliaryEnterprises_Pct", dlabel: "AuxiliaryEnterprises_PerFTE"},
+      {slabel: "Other_Pct", dlabel: "Other_PerFTE"},
+      // {slabel: "TotalExpenses", dlabel: "TotalExpenses"},
+      // {slabel: "TotalWages_Pct", dlabel: "TotalWages_PerFTE"},
+      // {slabel: "TotalFringeBenefits_Pct", dlabel: "TotalFringeBenefits_PerFTE"},
     ];
-
-/*
-These are the columns in the Data.csv file
-
-SchoolName
-Year
-TotalFTE
-
-TuitionAndFeesRevenuesPerFTE
-TuitionAndFeesRevenues%
-AuxiliaryEnterprisesRevenuesPerFTE
-Auxiliary EnterprisesRevenues%
-OperatingRevenuesPerFTE
-OperatingRevenues%
-NonoperatingRevenuesPerFTE
-NonoperatingRevenues%
-TotalRevenues
-
-Instruction_PerFTE
-Instruction_%
-PublicService_PerFTE
-PublicService_%
-AcademicSupport_PerFTE
-AcademicSupport_%
-StudentServices_PerFTE
-StudentServices_%
-InstitutionalSupport_PerFTE
-InstitutionalSupport_%
-NetScholarships_PerFTE
-NetScholarships_%
-AuxiliaryEnterprises_PerFTE
-AuxiliaryEnterprises_%
-Other_PerFTE
-Other_%
-Total_
-TotalWages_PerFTE
-TotalWages_%
-TotalFringeBenefits_PerFTE
-TotalFringeBenefits_%
-ChangeInNetPosition
-*/
 
     // Assign a color to each university
     // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
@@ -79,6 +51,7 @@ ChangeInNetPosition
       .enter()
       .append("div")
       .attr("class", (d) => `line-chart-container line-chart-${d.slabel}`);
+// REVIEW THIS ^
 
       updateLineCharts();
 
@@ -93,7 +66,7 @@ ChangeInNetPosition
     // tell the linechart to update it's selection (linking)
     violin.selectionDispatcher().on(dispatchString, function (selectedData) {
       const one = selectedData[0];
-      console.log(selectedData, 'This was selected');
+    // console.log(selectedData, 'This was selected');
 
       // find matching records
       if (one) {
@@ -117,7 +90,7 @@ ChangeInNetPosition
       else {updateLineCharts();}
     });
 
-    // add line charts for five fields
+    // add line charts for fields
     function updateLineCharts() {
       fields.forEach((field, i) => {
         linechart()
