@@ -137,7 +137,46 @@ function linechart() {
       .style("stroke-width", 2)
       .attr("cx", X)
       .attr("cy", Y)
-      .attr("r", 2);
+      .attr("r", 2)
+
+    //mouse events 
+    .on('mouseover', function(d) {
+      
+      tooltip.transition()
+       .delay(30)
+       .duration(200)
+       .style("opacity", 1);
+ 
+       tooltip.html(d.measurement)
+      // .style("left", (d3.event.PageX+ 25) + "px")
+      // .style("top", (d3.event.PageY) + "px");
+
+       //use raise() to bring the element forward when hovering the mouse 
+       //hide when mouse moves away 
+
+       const selection = d3.select(this).raise();
+       selection
+       .transition()
+       .delay("20")
+       .duration("200")
+       .attr("r", 20)
+       .style("opacity", 1)
+       .style("fill", "pink")
+    })
+
+      .on("mouseout", function(d) {
+        tooltip.transition()
+        .duration(100)
+        .style("opacity",0);
+
+        const selection = d3.select(this);
+        selection
+            .transition()
+            .delay("20")
+            .duration("200")
+            .attr("r", 10)
+            .style("opacity", 0);
+        });  
 
     return chart;
   }
