@@ -20,6 +20,12 @@ function linechart() {
   // selectableElements = d3.select(null),
   // dispatcher;
 
+  //define tooltip 
+  const tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute");
+
   // Create the chart by adding an svg to the div with the id
   // specified by the selector using the given data
   function chart(selector, data, legends, hasLegends = false) {
@@ -159,7 +165,7 @@ function linechart() {
        .transition()
        .delay("20")
        .duration("200")
-       .attr("r", 20)
+       .attr("r", 7)
        .style("opacity", 1)
        .style("fill", "pink")
     })
