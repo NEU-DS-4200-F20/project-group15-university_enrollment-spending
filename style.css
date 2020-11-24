@@ -26,29 +26,7 @@ h1, h2, h3 {
   /* justify-content: center; */
 }
 
-/* All added styling */
-
-.circle.selected {
-	fill: pink;
-	stroke: red;
-	/* opacity: 0.5; */
-}
-
-.point {
-	fill: white;
-	stroke: #999;
-}
-
-.axisLabel {
-	fill: #457;
-	font-size: 14px;
-}
-
-.legend-text {
-	font-size: 14px;
-	color: #000;
-}
-
+/* visualization holders within the vis-holder */
 .violinplot-holder {
 	display: flex;
 	width: 100%;
@@ -62,10 +40,36 @@ h1, h2, h3 {
 	justify-content: center;
 }
 
+/* ? */
+.circle.selected {
+	fill: pink;
+	stroke: red;
+	/* opacity: 0.5; */
+}
+
+/* ? */
+.point {
+	fill: white;
+	stroke: #999;
+}
+
+/* ? */
+.axisLabel {
+	fill: #457;
+	font-size: 14px;
+}
+
+/* Format the legend next to the last linegraph */
+.legend-text {
+	font-size: 14px;
+	color: #000;
+}
+
+/* I don't believe this does anything */
 .line-chart-container {
 	display: flex;
 	justify-content: center;
-}
+} */
 
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
