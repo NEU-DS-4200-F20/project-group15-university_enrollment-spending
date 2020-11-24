@@ -4,7 +4,7 @@ function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 30, bottom: 30, left: 60 },
     width = 1000 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom,
+    height = 800 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
     yLabelText = "",
@@ -123,7 +123,9 @@ function violinplotchart() {
             .y(function (d) {
               return yScale(d.x0);
             })
-            .curve(d3.curveCatmullRom) // This makes the line smoother to give the violin appearance. Try d3.curveStep to see the difference
+            .curve(d3.curveCatmullRom)
+            // This makes the line smoother to give the violin appearance.
+            // Try d3.curveStep to see the difference
         );
     });
 
