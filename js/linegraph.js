@@ -4,9 +4,11 @@
 // Based on Mike Bostock's margin convention
 // https://bl.ocks.org/mbostock/3019563
 
+let w=500
+
 function linechart() {
   let margin = {top: 40,left: 80,right: 20,bottom: 40,},
-    width = 330 - margin.left - margin.right,
+    width = w - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom,
     xValue = (d) => d[0],
     yValue = (d) => d[1],
@@ -23,7 +25,7 @@ function linechart() {
   function chart(selector, data, legends, hasLegends = false) {
 
     //if legends exists, chart width must be increased.
-    if (hasLegends) {margin.right = 330;}
+    if (hasLegends) {margin.right = w;}
 
     //clear all svg elements before start to draw new chart
     d3.select(selector).selectAll("*").remove();
@@ -75,12 +77,10 @@ function linechart() {
       .domain(d3.group(data, xValue).keys())
       .rangeRound([0, width]);
 
-    ///////////// temporarily hard-coded the y-axis scale ///////////////
     yScale
       .domain([
         d3.min(data, (d) => parseFloat(yValue(d))),
         d3.max(data, (d) => parseFloat(yValue(d))),
-        // 0,100000000
       ])
       .rangeRound([height, 0]);
 
