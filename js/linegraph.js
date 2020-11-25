@@ -4,12 +4,12 @@
 // Based on Mike Bostock's margin convention
 // https://bl.ocks.org/mbostock/3019563
 
-let w=500
+let w=600
 
 function linechart() {
   let margin = {top: 40,left: 80,right: 20,bottom: 40,},
     width = w - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom,
+    height = 280 - margin.top - margin.bottom,
     xValue = (d) => d[0],
     yValue = (d) => d[1],
     xLabelText = "",
@@ -20,7 +20,7 @@ function linechart() {
   // selectableElements = d3.select(null),
   // dispatcher;
 
-  //define tooltip 
+  //define tooltip
   const tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0)
@@ -31,7 +31,7 @@ function linechart() {
   function chart(selector, data, legends, hasLegends = false) {
 
     //if legends exists, chart width must be increased.
-    if (hasLegends) {margin.right = w;}
+    // if (hasLegends) {margin.right = w;}
 
     //clear all svg elements before start to draw new chart
     d3.select(selector).selectAll("*").remove();
@@ -43,36 +43,36 @@ function linechart() {
       .attr("height", height + margin.top + margin.bottom);
 
     // add legends into chart if applicable
-    if (hasLegends) {
-      const legendsG = svg
-        .append("g")
-        .attr("class", "legends-g")
-        .attr(
-          "transform",
-          `translate(${width + margin.left + 100}, ${margin.top + 20})`
-        );
+    // if (hasLegends) {
+    //   const legendsG = svg
+    //     .append("g")
+    //     .attr("class", "legends-g")
+    //     .attr(
+    //       "transform",
+    //       `translate(${width + margin.left + 100}, ${margin.top + 20})`
+    //     );
 
-      const legendG = legendsG
-        .selectAll(".legend")
-        .data(legends)
-        .enter()
-        .append("g")
-        .attr("class", "legend-g")
-        .attr("transform", (_, i) => `translate(0, ${i * 30})`);
+    //   const legendG = legendsG
+    //     .selectAll(".legend")
+    //     .data(legends)
+    //     .enter()
+    //     .append("g")
+    //     .attr("class", "legend-g")
+    //     .attr("transform", (_, i) => `translate(0, ${i * 30})`);
 
-      legendG
-        .append("circle")
-        .style("fill", (d) => d.color)
-        .attr("stroke", "black")
-        .attr("r", 7);
+    //   legendG
+    //     .append("circle")
+    //     .style("fill", (d) => d.color)
+    //     .attr("stroke", "black")
+    //     .attr("r", 7);
 
-      legendG
-        .append("text")
-        .attr("class", "legend-text")
-        .attr("dx", "1em")
-        .attr("dy", ".4em")
-        .text((d) => d.name);
-    }
+    //   legendG
+    //     .append("text")
+    //     .attr("class", "legend-text")
+    //     .attr("dx", "1em")
+    //     .attr("dy", ".4em")
+    //     .text((d) => d.name);
+    // }
 
     svg = svg
       .append("g")
@@ -145,25 +145,25 @@ function linechart() {
       .attr("cy", Y)
       .attr("r", 2)
 
-    //mouse events 
+    //mouse events
     .on('mouseover', function(d) {
-      
+
       tooltip.transition()
        .delay(30)
        .duration(200)
        .style("opacity", 1);
- 
+
        tooltip.html(d.measurement)
       // .style("left", (d3.event.PageX+ 25) + "px")
       // .style("top", (d3.event.PageY) + "px");
 
-       //use raise() to bring the element forward when hovering the mouse 
-       //hide when mouse moves away 
+       //use raise() to bring the element forward when hovering the mouse
+       //hide when mouse moves away
 
        const selection = d3.select(this).raise();
        selection
        .transition()
-       .delay("20")
+       .delay("5")
        .duration("200")
        .attr("r", 7)
        .style("opacity", 1)
@@ -178,11 +178,11 @@ function linechart() {
         const selection = d3.select(this);
         selection
             .transition()
-            .delay("20")
+            .delay("5")
             .duration("200")
             .attr("r", 10)
             .style("opacity", 0);
-        });  
+        });
 
     return chart;
   }
