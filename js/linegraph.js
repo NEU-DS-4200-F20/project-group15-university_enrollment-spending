@@ -122,21 +122,25 @@ function linechart() {
     // Add the lines
     const pathG = svg
       .selectAll(".path-g")
-      .data(Array.from(sumstat.values()))
+      .data(Array.from(sumstat))
       .enter()
       .append("g");
 
     pathG
       .append("path")
       .attr("fill", "none")
-      .attr("stroke", (_, i) => colors[i])
+      .attr("stroke", (d) => {
+        //d[0] is schoolname, d[1] is line data to draw line
+        const matchedColor = legends.find((e) => e.name === d[0]).color;
+        return matchedColor;
+      })
       .attr("stroke-width", 3)
-      .attr("d", (d) => d3.line().x(X).y(Y)(d));
+      .attr("d", (d) => d3.line().x(X).y(Y)(d[1]));
 
     // Add the points
     let points = pathG
       .selectAll(".line-point")
-      .data((d) => d)
+      .data((d) => d[1])
       .enter()
       .append("circle")
       .attr("class", "point line-point")
