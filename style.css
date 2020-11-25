@@ -17,16 +17,23 @@ h1, h2, h3 {
 	margin: 40px auto;
 }
 
-/* The visualizations should occupy the center 1400 px of the window */
+
+
+/* The visualizations should occupy the center 1640 px of the window */
+/* This vis-holder container holds all visualization containers*/
 .vis-holder {
+	/* width can be reduced to 1400px if we move the legend */
+	/* Also see line 37 below and violinplot.js line 7 */
 	width: 1640px;
 	/* Exrtra height needed to allow for split scrolling */
 	height: 2300px;
 	margin: 40px auto;
 }
 
-/* STICKY visualization holder within the vis-holder */
+
+/* STICKY violinplot holder within the vis-holder */
 .violinplot-holder {
+	/* Reduce this width to 800 if the legend is moved */
 	width: 1040px;
 	float: left;
 	position: -webkit-sticky;
@@ -35,7 +42,7 @@ h1, h2, h3 {
 	overflow: auto;
 }
 
-/* SCROLLING visualization holder within the vis-holder */
+/* SCROLLING linegraph holder within the vis-holder */
 .linecharts-holder {
 	float: right;
 	width: 600px;
@@ -67,7 +74,7 @@ circle.selected {
 	font-size: 14px;
 }
 
-/* Format the legend next to the last linegraph */
+/* Format the legend */
 .legend-text {
 	font-size: 14px;
 	color: #000;
