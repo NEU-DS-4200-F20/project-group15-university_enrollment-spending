@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang='en'>
 
+
+<!-- 
+
+***** Tasks/thoughts: *****
+
+The violin x-axis labels need to be a little bigger
+Make a big chart of FTE linegraphs above violins
+Move legend next to the FTE linegraph chart
+Need mouseover details!!!
+Add checkboxes to add/remove schools
+  which will allow us to add more schools [to a max of 8?]
+Can the legend and the checkboxes be the same thing?
+  a legend with checkboxes?
+If no checkboxes, can brushing and linking be used in the legend?
+  if so, can we brush multiple noncontiguous areas?
+
+ -->
+
+
+
+
 <!-- Metadata -->
 
 <head>
@@ -54,13 +75,16 @@
 
   <!-- Visualizations -->
   <div class='vis-holder'>
+    <!-- This holder contains all the visualizations and allows for split scrolling -->
 
     <div class='violinplot-holder'>
       <h3>Distribution of spending as a percent of each school's total expenses</h3>
+      <!-- violinplot is inserted here by js -->
     </div>
 
     <div class='linecharts-holder'>
-      <h3>Trends over time, as dollars per FTE</h3>
+      <h3>Trends over time, as dollars per FTE Student</h3>
+      <!-- Line graphs are inserted here by js -->
     </div>
 
   </div>
