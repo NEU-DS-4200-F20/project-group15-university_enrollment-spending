@@ -3,7 +3,7 @@
 function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 60, bottom: 120, left: 240},
-    width = 800 - margin.left - margin.right,
+    width = 1040 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
@@ -180,7 +180,7 @@ function violinplotchart() {
       .append("text")
       .attr("class", "axisLabel")
       .attr("text-anchor", "end")
-      .attr("transform", "translate(" + width + ",-10)")
+      .attr("transform", `translate(${width + margin.right},-10)`)
       .text(xLabelText);
 
     // Y axis and label
@@ -190,7 +190,7 @@ function violinplotchart() {
       .attr("text-anchor", "start")
       .attr(
         "transform",
-        "translate(" + (yLabelOffsetPx - margin.left) + ", -10)"
+        "translate(" + (yLabelOffsetPx - margin.left / 2) + ", -10)"
       )
       .text(yLabelText);
 

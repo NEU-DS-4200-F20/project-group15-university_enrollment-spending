@@ -63,8 +63,16 @@
 
       // find records that match the brushed plots
       if (one) {
+        //unique schoolNames from selected Data
+        const schoolNames = [
+          ...new Set(selectedData.map((record) => record.name)),
+        ];
+        console.log(schoolNames, "schoolnames");
         const years = [...new Set(selectedData.map((d) => d.year))];
-        const reDrawData = data.filter((d) => years.includes(d["Year"]));
+        //get filtered data from selection Data.
+        const reDrawData = data
+          .filter((d) => years.includes(d["Year"]))
+          .filter((record) => schoolNames.includes(record.SchoolName));
         const dlabel = fields.find((e) => e.slabel === one.field).dlabel;
         linechart()
           .x((d) => d["Year"])
@@ -76,7 +84,7 @@
             reDrawData, // *** reDrawData
             legends,
             one.field === fields[fields.length - 1].slabel ? true : false
-          )
+          );
       }
       // If the user brushes nothing, show everything?
       else {updateLineCharts();}
