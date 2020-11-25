@@ -49,7 +49,7 @@ h1, h2, h3 {
 }
 
 /* ? */
-.circle.selected {
+circle.selected {
 	fill: pink;
 	stroke: red;
 	/* opacity: 0.5; */
