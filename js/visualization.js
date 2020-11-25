@@ -13,7 +13,7 @@
     // a dispatcher (d3-dispatch) for selection events;
     // a div id selector to put our svg in; and the data to use.
 
-    // Define the fields used in the violinplot and linechart
+    // First, define the fields used in the violinplot and linechart
     // The slabels are used in the violinplots, dlabels are used in the linegraphs
     // Comment out the lines not needed. Max is probably 6 or maybe 7.
     const fields = [
