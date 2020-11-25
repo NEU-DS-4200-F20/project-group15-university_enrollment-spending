@@ -11,33 +11,41 @@ h1, h2, h3 {
 	line-height: 1.2
 }
 
-/* Your text should be in a nice narrow column */
-.content-column {
+/* A column of text above the visualizations */
+.top-content-column {
 	max-width: 650px;
 	margin: 40px auto;
 }
 
-/* The visualization should occupy the center 1000 px of the window */
+/* The visualizations should occupy the center 1400 px of the window */
 .vis-holder {
-  width: 1000px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content: center; */
+	width: 1400px;
+	/* Exrtra height needed to allow for split scrolling */
+	height: 2300px;
+	margin: 40px auto;
 }
 
-/* visualization holders within the vis-holder */
+/* STICKY visualization holder within the vis-holder */
 .violinplot-holder {
-	display: flex;
-	width: 100%;
-	flex-wrap: wrap;
-	justify-content: center;
+	width: 800px;
+	float: left;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	overflow: auto;
 }
+
+/* SCROLLING visualization holder within the vis-holder */
 .linecharts-holder {
-	display: flex;
-	width: 100%;
-	flex-wrap: wrap;
-	justify-content: center;
+	float: right;
+	width: 600px;
+	overflow: auto;
+}
+
+/* A column of text below the visualizations */
+.bottom-content-column {
+	max-width: 650px;
+	margin: 40px auto;
 }
 
 /* ? */
@@ -71,14 +79,6 @@ h1, h2, h3 {
     font-family: Georgia;
     font-size: 150%;
 }
-
-
-/* I don't believe this does anything */
-.line-chart-container {
-	display: flex;
-	justify-content: center;
-} */
-
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
 #forkongithub a{
