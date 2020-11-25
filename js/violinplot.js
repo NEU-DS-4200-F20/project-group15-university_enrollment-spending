@@ -4,7 +4,7 @@ function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 30, bottom: 30, left: 60 },
     width = 800 - margin.left - margin.right,
-    height = 1000 - margin.top - margin.bottom,
+    height = 800 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
     yLabelText = "",
