@@ -3,6 +3,7 @@
 function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 60, bottom: 120, left: 240},
+    // Adjust the width to 800 if the legend is moved
     width = 1040 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom,
     xFields = [],
@@ -58,7 +59,7 @@ function violinplotchart() {
     let maxY = 0;
     data.forEach((record) => {
       xFields.forEach((field) => {
-        //console.log(field, "This is a field") //--> uncomment to see what is meant by field
+        //console.log(field, "This is a field") //--> uncomment to debug
         //I parsed it because it was treating the number as text
         const fieldMax = parseFloat(record[field]);
         //console.log(fieldMax, "This is the value in each record")
@@ -107,7 +108,7 @@ function violinplotchart() {
       );
 
       //get array from Map type --> we are turning it into key, value
-      //console.log(sumstat, "Befor turning into key-value") //--> uncomment to see how it looks like
+      //console.log(sumstat, "Befor turning into key-value") //--> uncomment to debug
       sumstat = Array.from(sumstat.entries()).map(([key, value]) => ({
         key: key,
         value: value,
