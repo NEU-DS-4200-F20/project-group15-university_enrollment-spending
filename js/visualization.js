@@ -3,15 +3,17 @@
 // General event type for selections, used by d3-dispatch -> https://github.com/d3/d3-dispatch
 
 (() => {
+
+
+// get the data from the csv file
   d3.csv("data/Data.csv").then((data) => {
     const dispatchString = "selectionUpdated";
-    //console.log(data, "This is all the data") //--> Uncomment to see what data looks like
+    // console.log(data, "This is all the data") //--> Uncomment to debug
 
-    // Create a line chart
-
-    // First, define the fields used in the violinplot and linechart
+// Define the columns (fields) used in the violinplot and linecharts
     const fields = [
-    // The slabels are used in the violinplots, dlabels are used in the linegraphs
+    // The slabels are used in the violinplots
+    // dlabels are used in the linegraphs
       // {slabel: "TotalFTE", dlabel: "TotalFTE"},
       // {slabel: "TuitionAndFeesRevenuesPct", dlabel: "TuitionAndFeesRevenuesPerFTE"},
       // {slabel: "AuxiliaryEnterprisesRevenuesPct", dlabel: "AuxiliaryEnterprisesRevenuesPerFTE"},
@@ -29,17 +31,22 @@
       // {slabel: "TotalExpenses", dlabel: "TotalExpenses"},
       // {slabel: "TotalWages_Pct", dlabel: "TotalWages_PerFTE"},
       // {slabel: "TotalFringeBenefits_Pct", dlabel: "TotalFringeBenefits_PerFTE"},
-    ];
+    ];              // end fields
 
-    // Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+
+// Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
     const legends = [...new Set(data.map((e) => e.SchoolName))].map(
       (sn, i) => ({name: sn, color: colors[i]}));
-    // console.log(legends, "These are the colors") //--> Uncomment to see how it looks like
+    // console.log(legends, "These are the colors") //--> Uncomment to debug
 
-    // get linecharts holder element for adding each linechart dynamically
+
+
+
+
+// Get linecharts holder element for adding each linechart dynamically
     const linechartsHolder = d3.select(".linecharts-holder");
 
-    // adding 5 divs for each line chart and they will have 5 different schools
+    // Add divs for each line chart, each holding a different school
     linechartsHolder
       .selectAll("chart")
       .data(fields)
@@ -49,31 +56,42 @@
 
       updateLineCharts();
 
-    //Same concept as Assignment 8, slightly modified
+
+
+
+// Create the violinplots, similar to Assignment 8, slightly modified
     const violin = violinplotchart()
       .xFields(fields.map((d) => d.slabel))
       .xLabel("Category")
       .yLabel("Percent of Total Expenses")
       .selectionDispatcher(d3.dispatch(dispatchString))(".violinplot-holder",data,legends);
 
-    // When the violin selection is brushed, tell the linechart to update it's selection (linking)
+
+
+
+
+// BRUSHING
+// When the violin selection is brushed, tell the linechart to update it's selection (linking)
     violin.selectionDispatcher().on(dispatchString, function (selectedData) {
       const one = selectedData[0];
-    // console.log(selectedData, 'This was selected');
+    // console.log(selectedData, 'This was selected') // Uncomment to debug;
 
       // find records that match the brushed plots
       if (one) {
-        //unique schoolNames from selected Data
-        const schoolNames = [
-          ...new Set(selectedData.map((record) => record.name)),
-        ];
-        console.log(schoolNames, "schoolnames");
+
+        // unique schoolNames from selected Data
+        const schoolNames = [...new Set(selectedData.map((record) => record.name))];
+
+        // console.log(schoolNames, "schoolnames") // Uncomment to debug;
         const years = [...new Set(selectedData.map((d) => d.year))];
-        //get filtered data from selection Data.
+
+        // get filtered data from selection Data.
         const reDrawData = data
           .filter((d) => years.includes(d["Year"]))
           .filter((record) => schoolNames.includes(record.SchoolName));
         const dlabel = fields.find((e) => e.slabel === one.field).dlabel;
+
+        // Now build the linegraph based on what is brushed in the violins
         linechart()
           .x((d) => d["Year"])
           .xLabel("Year")
@@ -84,11 +102,14 @@
             reDrawData, // *** reDrawData
             legends,
             one.field === fields[fields.length - 1].slabel ? true : false
-          );
-      }
-      // If the user brushes nothing, show everything?
+          );        // end .ylabelOffset(
+      }             // end if
+
+      // If the user brushes nothing, show everything
       else {updateLineCharts();}
-    });
+    }               // end function (selectedData) {
+    );              // end violin.selectionDispatcher().on(
+
 
     // add line charts for fields
     function updateLineCharts() {
@@ -104,7 +125,10 @@
             legends,
             field.slabel === fields[fields.length - 1].slabel ? true : false
           );
-      });
-    }
-  });
-})();
+      }             // end => {
+      );            // end forEach(
+    }               // end updateLineCharts{
+
+
+  });               // end d3.csv.then( => {
+})();               // end IFFY
