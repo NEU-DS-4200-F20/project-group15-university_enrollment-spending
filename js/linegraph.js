@@ -152,21 +152,30 @@ function linechart() {
     //mouse events
     .on('mouseover', function(d) {
 
-      // tooltip.transition()
-      //  .delay(30)
-      //  .duration(200)
-      //  .style("opacity", 1);
+      var coordinates = d3.pointer(this);
 
-      //tooltip.html(d.measurement)
-      // .style("left", (d3.event.PageX+ 25) + "px")
-      // .style("top", (d3.event.PageY) + "px");
+      tooltip.transition()
+        .delay(30)
+        .duration(200)
+        .style("opacity", 1);
+
+        tooltip.html(d.values)
+        .style("left", (coordinates[0]+ 25) + "px")
+        .style("top", (coordinates[1]) + "px");
 
        //use raise() to bring the element forward when hovering the mouse
        //hide when mouse moves away
 
        const selection = d3.select(this).raise();
-        selection.transition();
-        repeat();
+       selection
+       .transition()
+       .delay("20")
+       .duration("200")
+       .attr("r", 8)
+       .style("opacity", 1)
+       .style("fill","black");
+   })  
+      /*  repeat();
         // ref line: https://bl.ocks.org/d3noob/bf44061b1d443f455b3f857f82721372
         // stop transition: https://stackoverflow.com/questions/26903355/how-to-cancel-scheduled-transition-in-d3
         function repeat() {
@@ -184,22 +193,25 @@ function linechart() {
             .attr("r", 2)
             .style("opacity", 1)
             .on("end", repeat);
-        }
-      })
+        } */
+      
       .on("mouseout", function (d) {
-        // tooltip.transition().duration(100).style("opacity", 0);
+         tooltip.transition().duration(100).style("opacity", 0);
 
         const selection = d3.select(this);
         selection
           .transition()
           .delay(20)
           .duration(200)
-          .attr("r", 2)
+          .attr("r", 4)
           .style("opacity", 1);
+          console.log(d.values);
       });
+      
 
     return chart;
   }
+  
 
   // The x-accessor from the datum
   function X(d) {
