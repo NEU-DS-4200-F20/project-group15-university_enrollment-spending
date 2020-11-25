@@ -153,7 +153,7 @@ function linechart() {
       //  .duration(200)
       //  .style("opacity", 1);
 
-       tooltip.html(d.measurement)
+      //tooltip.html(d.measurement)
       // .style("left", (d3.event.PageX+ 25) + "px")
       // .style("top", (d3.event.PageY) + "px");
 
