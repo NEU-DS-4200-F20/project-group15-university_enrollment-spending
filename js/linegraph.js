@@ -148,10 +148,10 @@ function linechart() {
     //mouse events
     .on('mouseover', function(d) {
 
-      tooltip.transition()
-       .delay(30)
-       .duration(200)
-       .style("opacity", 1);
+      // tooltip.transition()
+      //  .delay(30)
+      //  .duration(200)
+      //  .style("opacity", 1);
 
        tooltip.html(d.measurement)
       // .style("left", (d3.event.PageX+ 25) + "px")
@@ -161,28 +161,38 @@ function linechart() {
        //hide when mouse moves away
 
        const selection = d3.select(this).raise();
-       selection
-       .transition()
-       .delay("5")
-       .duration("200")
-       .attr("r", 7)
-       .style("opacity", 1)
-       .style("fill", "pink")
-    })
-
-      .on("mouseout", function(d) {
-        tooltip.transition()
-        .duration(100)
-        .style("opacity",0);
+        selection.transition();
+        repeat();
+        // ref line: https://bl.ocks.org/d3noob/bf44061b1d443f455b3f857f82721372
+        // stop transition: https://stackoverflow.com/questions/26903355/how-to-cancel-scheduled-transition-in-d3
+        function repeat() {
+          selection
+            .attr("r", 2)
+            .style("opacity", 1)
+            .transition()
+            .delay(20)
+            .duration(1000)
+            .attr("r", 10)
+            .style("opacity", 0)
+            .transition()
+            .delay(20)
+            .duration(200)
+            .attr("r", 2)
+            .style("opacity", 1)
+            .on("end", repeat);
+        }
+      })
+      .on("mouseout", function (d) {
+        // tooltip.transition().duration(100).style("opacity", 0);
 
         const selection = d3.select(this);
         selection
-            .transition()
-            .delay("5")
-            .duration("200")
-            .attr("r", 10)
-            .style("opacity", 0);
-        });
+          .transition()
+          .delay(20)
+          .duration(200)
+          .attr("r", 2)
+          .style("opacity", 1);
+      });
 
     return chart;
   }
