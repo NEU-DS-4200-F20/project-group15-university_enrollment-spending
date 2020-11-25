@@ -2,7 +2,7 @@
 
 function violinplotchart() {
   //Define the margins
-  let margin = { top: 40, right: 30, bottom: 30, left: 60},
+  let margin = { top: 40, right: 60, bottom: 120, left: 240},
     width = 800 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom,
     xFields = [],
@@ -56,6 +56,8 @@ function violinplotchart() {
       .append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(xScale));
+
+    xAxis.selectAll('text').attr("transform", "rotate(-60)").attr('text-anchor', 'end')
 
     //Features of the histogram
     const histogram = d3
