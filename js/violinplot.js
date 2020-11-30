@@ -1,6 +1,6 @@
 //source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
-violinwidth = 600
+violinwidth = 800
 
 function violinplotchart() {
   //Define the margins
@@ -20,9 +20,9 @@ function violinplotchart() {
     let svg = d3
       .select(selector)
       .append("svg")
-      // .attr("width", width + margin.left + margin.right)
-      // .attr("height", height + margin.top + margin.bottom)
-      .attr("viewbox", 0,0,height + margin.top + margin.bottom,width + margin.left + margin.right);
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      // .attr("viewbox", 0,0,height + margin.top + margin.bottom,width + margin.left + margin.right);
 
     svg = svg
       .append("g")
