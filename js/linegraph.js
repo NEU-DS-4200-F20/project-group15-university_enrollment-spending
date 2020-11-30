@@ -148,7 +148,9 @@ function linechart() {
     .style("border-radius", "5px")
     .style("padding", "5px"); */
 
-  
+  function displaydata(d) {
+
+  }
 
     // Add the points
     let points = pathG
@@ -169,7 +171,8 @@ function linechart() {
                 .style('opacity', 0.9)
                 .style("left", (event.pageX) + "px")
                 .style("top", (event.pageY - 28) + "px");
-                div.html("dfdfdfd");
+                div.html('Data Value is:' + d.AuxiliaryEnterprisesRevenuesPerFTE);
+                console.log(d);
 
       /*tooltip
       .style("opacity", 1)
@@ -190,7 +193,7 @@ function linechart() {
        .transition()
        .delay("20")
        .duration("200")
-       .attr("r", 8)
+       .attr("r", 6)
        .style("opacity", 1)
        .style("fill","purple"); 
    })
@@ -230,12 +233,8 @@ function linechart() {
           .transition()
           .delay(20)
           .duration(200)
-          .attr("r", 4)
+          .attr("r", 2)
           .style("opacity", 1); 
-          tooltip
-          .transition()
-          .duration(200)
-          .style("opacity", 0)
       });
 
       function handlemousemove(event, d) {
