@@ -1,10 +1,12 @@
 //source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
+violinwidth = 600
+
 function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 60, bottom: 120, left: 240},
-    width = 800 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom,
+    width = violinwidth - margin.left - margin.right,
+    height = violinwidth - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
     yLabelText = "",
