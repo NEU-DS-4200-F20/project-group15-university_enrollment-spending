@@ -3,8 +3,7 @@
 function violinplotchart() {
   //Define the margins
   let margin = { top: 40, right: 60, bottom: 120, left: 240},
-    // Adjust the width to 800 if the legend is moved
-    width = 800 - margin.left - margin.right,
+    width = 100% - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
