@@ -20,8 +20,9 @@ function violinplotchart() {
     let svg = d3
       .select(selector)
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom);
+      // .attr("width", width + margin.left + margin.right)
+      // .attr("height", height + margin.top + margin.bottom)
+      .attr("viewbox", 0,0,height + margin.top + margin.bottom,width + margin.left + margin.right);
 
     svg = svg
       .append("g")
