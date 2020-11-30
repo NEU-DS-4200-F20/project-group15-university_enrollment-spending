@@ -33,6 +33,11 @@
       // {slabel: "TotalFringeBenefits_Pct", dlabel: "TotalFringeBenefits_PerFTE"},
     ];              // end fields
 
+// Define the column (FTEfield) used in the FTE line chart
+    const FTEfield = [
+      // {slabel: "TotalFTE", dlabel: "TotalFTE"},
+    ];              // end FTEfield
+
 
 // Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
     const legends = [...new Set(data.map((e) => e.SchoolName))].map(
@@ -45,6 +50,9 @@
 
 // Get linecharts holder element for adding each linechart dynamically
     const linechartsHolder = d3.select(".linecharts-holder");
+
+// Get fte holder element for adding the line chart dynamically
+    const fte = d3.select(".linecharts-holder");
 
     // Add divs for each line chart, each holding a different school
     linechartsHolder
