@@ -39,6 +39,13 @@
       (sn, i) => ({name: sn, color: colors[i]}));
     // console.log(legends, "These are the colors") //--> Uncomment to debug
 
+//Create Total FTE chart
+    const linechartFTEHolder = ftelinechart()
+      .x((d) => d["Year"])
+      .xLabel("Year")
+      .y((d) => d["TotalFTE"])
+      .yLabel("Total FTE")
+      .yLabelOffset(40)(".total-fte-holder", data, legends);
 
 
 
@@ -100,8 +107,7 @@
           .yLabelOffset(40)(
             `.line-chart-${one.field}`, //*** one.field
             reDrawData, // *** reDrawData
-            legends,
-            one.field === fields[fields.length - 1].slabel ? true : false
+            legends
           );        // end .ylabelOffset(
       }             // end if
 
@@ -122,8 +128,7 @@
           .yLabelOffset(40)(
             `.line-chart-${field.slabel}`,
             data,
-            legends,
-            field.slabel === fields[fields.length - 1].slabel ? true : false
+            legends
           );
       }             // end => {
       );            // end forEach(

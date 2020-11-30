@@ -33,6 +33,13 @@ h1, h2, h3 {
 	margin: 40px auto;
 }
 
+.total-fte-holder {	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 
 /* STICKY violinplot holder within the vis-holder */
 .violinplot-holder {
