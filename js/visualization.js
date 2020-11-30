@@ -1,4 +1,4 @@
-// Immediately Invoked Function Expression to limit access to our variables and prevent conflicts
+// Immediately Invoked Function Expression to limit access to our variables and prevent conflicts 
 
 // General event type for selections, used by d3-dispatch -> https://github.com/d3/d3-dispatch
 

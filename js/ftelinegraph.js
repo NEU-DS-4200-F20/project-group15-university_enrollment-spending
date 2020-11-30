@@ -1,4 +1,4 @@
-// Initialize a line chart. Modeled after Mike Bostock's
+// Initialize a line chart. Modeled after Mike Bostock's 
 // Reusable Chart framework https://bost.ocks.org/mike/chart/
 
 // Based on Mike Bostock's margin convention
