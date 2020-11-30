@@ -19,8 +19,7 @@ h1, h2, h3 {
 
 /* A single full-width FTE visualization */
 .fte {
-	max-width: 1440px;
-	min-width: 1024px;
+	width: 1300px;
 	margin: 40px auto;
 }
 
@@ -28,8 +27,7 @@ h1, h2, h3 {
 /* This vis-holder container holds all visualization containers*/
 .vis-holder {
 	/*width: 100%;*/
-	max-width: 1440px;
-	min-width: 1024px;
+	width: 1300px;
 	/* Exrtra height needed to allow for split scrolling */
 	height: 2300px;
 	margin: 40px auto;
@@ -38,7 +36,7 @@ h1, h2, h3 {
 
 /* STICKY violinplot holder within the vis-holder */
 .violinplot-holder {
-	width: calc(100% - 500px);
+	width: 800px;
 	float: left;
 	position: -webkit-sticky;
 	position: sticky;
