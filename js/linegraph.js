@@ -20,11 +20,6 @@ function linechart() {
   // selectableElements = d3.select(null),
   // dispatcher;
 
-  //define tooltip
-  const tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0)
-    .style("position", "absolute");
 
   // Create the chart by adding an svg to the div with the id
   // specified by the selector using the given data
@@ -137,6 +132,24 @@ function linechart() {
       .attr("stroke-width", 3)
       .attr("d", (d) => d3.line().x(X).y(Y)(d[1]));
 
+    //define the div for the tooltip 
+    var div = d3.select("body").append("div") 
+    .attr("class", "tooltip")       
+    .style("opacity", 0);
+
+   /* //define the var of tooltip
+    var tooltip = d3.select("#linegraph")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "yellow")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "5px"); */
+
+  
+
     // Add the points
     let points = pathG
       .selectAll(".line-point")
@@ -150,19 +163,25 @@ function linechart() {
       .attr("r", 2)
 
     //mouse events
-    .on('mouseover', function(d) {
+    .on('mouseover', function(event, d) {
 
-      var coordinates = d3.pointer(this);
+      div.transition().duration(200)
+                .style('opacity', 0.9)
+                .style("left", (event.pageX) + "px")
+                .style("top", (event.pageY - 28) + "px");
+                div.html("dfdfdfd");
 
-      tooltip.transition()
-        .delay(30)
-        .duration(200)
-        .style("opacity", 1);
+      /*tooltip
+      .style("opacity", 1)
+      .html(d3.select(this))
+      .style("left", (event.layerX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+      .style("top", (event.layerY) + "px") */
 
-        tooltip.html(d.values)
-        .style("left", (coordinates[0]+ 25) + "px")
-        .style("top", (coordinates[1]) + "px");
-
+      
+      
+      
+      
+    
        //use raise() to bring the element forward when hovering the mouse
        //hide when mouse moves away
 
@@ -173,8 +192,18 @@ function linechart() {
        .duration("200")
        .attr("r", 8)
        .style("opacity", 1)
-       .style("fill","black");
-   })  
+       .style("fill","purple"); 
+   })
+    /*.on('mousemove', function(event, d) {
+    tooltip
+    .html("Data Value" + d)
+  
+    //.style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
+    .style("left", (d3.pointer(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+    .style("top", (d3.pointer(this)[1]) + "px")
+})  */
+
+   
       /*  repeat();
         // ref line: https://bl.ocks.org/d3noob/bf44061b1d443f455b3f857f82721372
         // stop transition: https://stackoverflow.com/questions/26903355/how-to-cancel-scheduled-transition-in-d3
@@ -196,20 +225,33 @@ function linechart() {
         } */
       
       .on("mouseout", function (d) {
-         tooltip.transition().duration(100).style("opacity", 0);
-
         const selection = d3.select(this);
         selection
           .transition()
           .delay(20)
           .duration(200)
           .attr("r", 4)
-          .style("opacity", 1);
-          console.log(d.values);
+          .style("opacity", 1); 
+          tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
       });
+
+      function handlemousemove(event, d) {
+        // svg.append('text').text(function(){return 'shubham'}).style('top',(d3.event.layerY + 10)+'px').style('left',(d3.event.layerX + 10) + 'px')
+        console.log(tooltip.style.top, event.layerY);
+        tooltip
+          .text(function() {
+              return event.layerX;
+          })
+          .style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
+          .style('display', 'block').style('color','red');
+      }
       
 
     return chart;
+    
   }
   
 
@@ -273,3 +315,4 @@ function linechart() {
 
   return chart;
 }
+
