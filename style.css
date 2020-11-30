@@ -81,10 +81,18 @@ circle.selected {
 }
 
 /* Format the tooltip */
-.tooltip {
-    fill:#2b2929;
-    font-family: Georgia;
-    font-size: 150%;
+div.tooltip {   
+    position: absolute;         
+    text-align: center;         
+    width: 60px;                    
+    height: 28px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: visible;    
+        
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
