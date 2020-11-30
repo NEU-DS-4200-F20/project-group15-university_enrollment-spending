@@ -27,7 +27,9 @@ h1, h2, h3 {
 /* The visualizations should occupy the center 1400 px of the window */
 /* This vis-holder container holds all visualization containers*/
 .vis-holder {
-	width: 100%;
+	/*width: 100%;*/
+	max-width: 1440px;
+	min-width: 1024px;
 	/* Exrtra height needed to allow for split scrolling */
 	height: 2300px;
 	margin: 40px auto;
