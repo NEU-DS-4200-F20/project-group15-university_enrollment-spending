@@ -1,9 +1,9 @@
 /* General formatting */
+
 body {
 	padding: 0 10px;
-	font: 18px/1.5 -apple-system, BlinkMacSystemFont, "avenir next",avenir,
-	"Segoe UI", "lucida grande", "helvetica neue", helvetica, "Fira Sans",
-	roboto, noto, "Droid Sans", cantarell, oxygen, ubuntu,
+	font: 18px/1.5 -apple-system, BlinkMacSystemFont, "avenir next",avenir, "Segoe UI", "lucida grande",
+	"helvetica neue", helvetica, "Fira Sans", roboto, noto, "Droid Sans", cantarell, oxygen, ubuntu,
 	"franklin gothic medium", "century gothic", "Liberation Sans", sans-serif;
 }
 
@@ -17,14 +17,16 @@ h1, h2, h3 {
 	margin: 40px auto;
 }
 
+/* A single full-width FTE visualization */
+.fte {
+	width: 1400px;
+	margin: 40px auto;
+}
 
-
-/* The visualizations should occupy the center 1640 px of the window */
+/* The visualizations should occupy the center 1400 px of the window */
 /* This vis-holder container holds all visualization containers*/
 .vis-holder {
-	/* width can be reduced to 1400px if we move the legend */
-	/* Also see line 37 below and violinplot.js line 7 */
-	width: 1640px;
+	width: 1400px;
 	/* Exrtra height needed to allow for split scrolling */
 	height: 2300px;
 	margin: 40px auto;
@@ -33,8 +35,7 @@ h1, h2, h3 {
 
 /* STICKY violinplot holder within the vis-holder */
 .violinplot-holder {
-	/* Reduce this width to 800 if the legend is moved */
-	width: 1040px;
+	width: 800px;
 	float: left;
 	position: -webkit-sticky;
 	position: sticky;
