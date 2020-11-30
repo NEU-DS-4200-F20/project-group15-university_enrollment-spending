@@ -47,7 +47,7 @@ h1, h2, h3 {
 /* SCROLLING linegraph holder within the vis-holder */
 .linecharts-holder {
 	float: right;
-	width: 600px;
+	width: 500px;
 	overflow: auto;
 }
 
