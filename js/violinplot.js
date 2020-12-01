@@ -1,12 +1,13 @@
-//source: https://www.d3-graph-gallery.com/graph/violin_jitter.html 
+//source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
 violinwidth = 800
 
 function violinplotchart() {
   //Define the margins
-  let margin = { top: 40, right: 60, bottom: 120, left: 240},
+  // let margin = { top: 40, right: 60, bottom: 120, left: 240},
+  let margin = { top: 20, right: 50, bottom: 300, left: 20},
     width = violinwidth - margin.left - margin.right,
-    height = violinwidth - margin.top - margin.bottom,
+    height = 850 - margin.top - margin.bottom,
     xFields = [],
     xLabelText = "",
     yLabelText = "",
@@ -22,17 +23,16 @@ function violinplotchart() {
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
-      // .attr("viewbox", 0,0,height + margin.top + margin.bottom,width + margin.left + margin.right);
 
     svg = svg
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
-    // add legends into chart if applicable
+
+    // add legends into chart
     const legendsG = svg
       .append("g")
       .attr("class", "legends-g")
-      .attr("transform", `translate(${-margin.left + 10}, ${margin.top})`);
+      .attr("transform", `translate(${-margin.left + 60}, ${margin.top + 680})`);
 
     const legendG = legendsG
       .selectAll(".legend-for-schoolname")
@@ -40,7 +40,8 @@ function violinplotchart() {
       .enter()
       .append("g")
       .attr("class", "legend-for-schoolname")
-      .attr("transform", (_, i) => `translate(0, ${i * 30})`);
+      // .attr("transform", (_, i) => `translate(0, ${i * 30})`);
+      .attr("transform", (_, i) => `translate(${i%3*220}, ${Math.floor(i/3) * 30})`);
 
     legendG
       .append("circle")
@@ -55,6 +56,7 @@ function violinplotchart() {
       .attr("dy", ".4em")
       .style("fill", "black")
       .text((d) => d.name);
+
 
     //get Max Y value from all xFields value.
     //This will help in setting the Y-axis Max Value
