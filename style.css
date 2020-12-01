@@ -26,7 +26,7 @@ h1, h2, h3 {
 }
 
 /* A small area of text below the FTE line graph */
-.bottom-content-column {
+.mid-content-column {
 	max-width: 860px;
 	margin: 40px auto;
 
