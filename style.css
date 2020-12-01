@@ -25,11 +25,16 @@ h1, h2, h3 {
 	/* top:0; */
 }
 
+/* A small area of text below the FTE line graph */
+.bottom-content-column {
+	max-width: 860px;
+	margin: 40px auto;
+
 /* The visualizations should occupy the center 1400 px of the window */
 /* This vis-holder container holds all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	/* Exrtra height needed to allow for split scrolling */
+	/* Extra height needed to allow for split scrolling */
 	height: 2300px;
 	margin: 40px auto;
 }
