@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-
-<!--  
-
+<!--
 ***** Tasks/thoughts (Nov 25): *****
 
 The violin x-axis labels need to be a little bigger
-Make a big chart of FTE linegraphs above violins
 Move legend next to the FTE linegraph chart
-Need mouseover details!!!
 Add checkboxes to add/remove schools
   which will allow us to add more schools [show a max of 8 at once?]
 Can the legend and the checkboxes be the same thing?
@@ -21,7 +17,7 @@ If no checkboxes, can brushing and linking be used in the legend?
 
 ***** Nov 30 comments (11am) *****
 
-Mouseover works, but I don't know how to male the popup go away.
+Mouseover works, but I don't know how to make the popup go away.
 Also, after hovering the dot fills in purple.
 After moving to a new dot, the old one stays purple (doesn't revert back)
   What is being shown in the popup? Dollars spent per FTE?
@@ -32,14 +28,9 @@ After moving to a new dot, the old one stays purple (doesn't revert back)
       Per FTE Student:   $1,254
       Pct of Expenses:    22.4%
 
-Still need to get an enrollment line graph up top.
 Need to move the legend ABOVE the violin graph, not on the side
 
-
  -->
-
-
-
 
 <!-- Metadata -->
 
@@ -92,23 +83,17 @@ Need to move the legend ABOVE the violin graph, not on the side
       corresponding line graph to only show the data related to those data points.</p>
   </div>
 
-  <!-- BEGIN Test block for new div -->
-
-  <div class='fte'>
-    <h3>Lorem Ipsum</h3>
-    <p>Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. Line graph showing each school's enrollment data will go here. </p>
+  <div class='total-fte-holder'>
+    <h3>Full Time Equivalent enrollment for each school, 2004 to 2018</h3>
 
   </div>
 
-  <!-- END Test block for new div -->
 
   <!-- Visualizations -->
+
   <div class='vis-holder'>
 
-    <div class="total-fte-holder">
-      <h3>Total FTE by year</h3>
-    </div>
-    <!-- This holder contains all the visualizations and allows for split scrolling -->
+    <!-- This container allows for a sticky violin plot with scrolling line graphs -->
 
     <div class='violinplot-holder'>
       <h3>Distribution of spending as a percent of each school's total expenses</h3>
