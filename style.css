@@ -29,6 +29,7 @@ h1, h2, h3 {
 .mid-content-column {
 	max-width: 860px;
 	margin: 40px auto;
+}
 
 /* The visualizations should occupy the center 1400 px of the window */
 /* This vis-holder container holds all visualization containers*/
