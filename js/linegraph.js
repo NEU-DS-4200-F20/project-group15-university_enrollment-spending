@@ -1,10 +1,10 @@
-// Initialize a line chart. Modeled after Mike Bostock's 
+// Initialize a line chart. Modeled after Mike Bostock's
 // Reusable Chart framework https://bost.ocks.org/mike/chart/
 
 // Based on Mike Bostock's margin convention
 // https://bl.ocks.org/mbostock/3019563
 
-let linewidth=500
+let linewidth = 500
 // when adjusting this number also look at line 39 of style.css
 
 function linechart() {
@@ -133,9 +133,9 @@ function linechart() {
       .attr("stroke-width", 3)
       .attr("d", (d) => d3.line().x(X).y(Y)(d[1]));
 
-    //define the div for the tooltip 
-    var div = d3.select("body").append("div") 
-    .attr("class", "tooltip")       
+    //define the div for the tooltip
+    var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
     .style("opacity", 0);
 
    /* //define the var of tooltip
@@ -172,7 +172,8 @@ function linechart() {
                 .style('opacity', 0.9)
                 .style("left", (event.pageX) + "px")
                 .style("top", (event.pageY - 28) + "px");
-                div.html('Data Value is:' + d.AuxiliaryEnterprisesRevenuesPerFTE);
+                // div.html('Data Value is:' + d.AuxiliaryEnterprisesRevenuesPerFTE);
+                div.html(d.SchoolName + '<br />FTE: ' + d.TotalFTE);
                 console.log(d);
 
       /*tooltip
@@ -181,11 +182,7 @@ function linechart() {
       .style("left", (event.layerX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (event.layerY) + "px") */
 
-      
-      
-      
-      
-    
+
        //use raise() to bring the element forward when hovering the mouse
        //hide when mouse moves away
 
@@ -196,18 +193,18 @@ function linechart() {
        .duration("200")
        .attr("r", 6)
        .style("opacity", 1)
-       .style("fill","purple"); 
+       .style("fill","purple");
    })
     /*.on('mousemove', function(event, d) {
     tooltip
     .html("Data Value" + d)
-  
+
     //.style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
     .style("left", (d3.pointer(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
     .style("top", (d3.pointer(this)[1]) + "px")
 })  */
 
-   
+
       /*  repeat();
         // ref line: https://bl.ocks.org/d3noob/bf44061b1d443f455b3f857f82721372
         // stop transition: https://stackoverflow.com/questions/26903355/how-to-cancel-scheduled-transition-in-d3
@@ -227,7 +224,7 @@ function linechart() {
             .style("opacity", 1)
             .on("end", repeat);
         } */
-      
+
       .on("mouseout", function (d) {
         const selection = d3.select(this);
         selection
@@ -235,7 +232,7 @@ function linechart() {
           .delay(20)
           .duration(200)
           .attr("r", 2)
-          .style("opacity", 1); 
+          .style("opacity", 1);
       });
 
       function handlemousemove(event, d) {
@@ -248,12 +245,12 @@ function linechart() {
           .style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
           .style('display', 'block').style('color','red');
       }
-      
+
 
     return chart;
-    
+
   }
-  
+
 
   // The x-accessor from the datum
   function X(d) {
