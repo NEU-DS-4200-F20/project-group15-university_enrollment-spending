@@ -25,6 +25,9 @@
 
 The violin x-axis labels need to be a little bigger
 
+The legend needs to be above the violin plots, not below. FML.
+Better yet, add a legend to one side of the FTE line graph.
+
 Add checkboxes to add/remove schools
   which will allow us to add more schools [show a max of 8 at once?]
 Can the legend and the checkboxes be the same thing?
@@ -33,18 +36,18 @@ If no checkboxes, can brushing and linking be used in the legend?
   if so, can we brush multiple noncontiguous areas?
   i.e. Legend has 20 schools, brush up to 8 you want to graph?
 
-Mouseover works, but I don't know how to make the popup go away.
+Mouseover works, but the popups won't go away.
 Also, after hovering the dot fills in purple.
-After moving to a new dot, the old one stays purple (doesn't revert back)
-  What is being shown in the popup? Dollars spent per FTE?
+After moving to a new dot, the old one stays purple (doesn't revert back to white)
   Nees a dollar sign.
-  How can we add more info? Kurt would love to see this:
+  Popup info needs to be changed? Currently it shows the school name and TotalFTE.
+  Kurt said he would love to see this:
 
-      Actual $ amount: $425,000
-      Per FTE Student:   $1,254
-      Pct of Expenses:    22.4%
+      Actual $ amount: $xxx,xxx
+      Per FTE Student:   $x,xxx
+      Pct of Expenses:    xx.x%
 
-Add functionality to switch linegraphs between 'Dollars per FTE' and 'Percent of Expenses'
+Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Expenses'
 
 -->
 
@@ -54,6 +57,7 @@ Add functionality to switch linegraphs between 'Dollars per FTE' and 'Percent of
   </span>
 
   <!-- Writeup -->
+
   <div class='top-content-column'>
     <h1>Project Team 15: Comparative Analysis of University Spending and Enrollment</h1>
     <p><strong>Marc Leonti</strong>, <strong>Raed Binsaeed</strong>, <strong>Nick Hu</strong></p>
@@ -80,13 +84,17 @@ Add functionality to switch linegraphs between 'Dollars per FTE' and 'Percent of
       corresponding line graph to only show the data related to those data points.</p>
   </div>
 
+  <!-- Visualizations -->
+
   <div class='total-fte-holder'>
     <h3>Trends Over Time: Full Time Equivalent Students for each school, from 2004 to 2018</h3>
   </div>
 
-  <!-- Visualizations -->
+  <div class='mid-content-column'>
+    <p>In the line graph above we can see... </p>
+
   <div class='vis-holder'>
-    <!-- This container allows for a sticky violin plot with scrolling line graphs -->
+    <!-- This container allows for a sticky violin plot on the left with scrolling line graphs on the right -->
 
     <div class='violinplot-holder'>
       <h3>Distribution of spending as a percent of each school's total expenses</h3>
