@@ -14,6 +14,7 @@ function violinplotchart() {
     xScale = d3.scaleBand(),
     xSubScale = d3.scaleLinear(),
     yScale = d3.scaleLinear(),
+    selectableElements = d3.select(null),
     dispatcher;
 
   function chart(selector, data, legends) {
@@ -26,7 +27,7 @@ function violinplotchart() {
     svg = svg
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-      
+
     //get Max Y value from all xFields value.
     //This will help in setting the Y-axis Max Value
     let maxY = 0;
@@ -266,6 +267,18 @@ function violinplotchart() {
     if (!arguments.length) return dispatcher;
     dispatcher = _;
     return chart;
+  };
+
+  // Given selected data from another visualization
+  // select the relevant elements here (linking)
+  chart.updateSelection = function (selectedData) {
+    if (!arguments.length) return;
+
+    // Select an element if its datum was selected
+
+    selectableElements.classed("selected", (d) =>
+      selectedData.includes(d.name)
+    );
   };
 
   return chart;

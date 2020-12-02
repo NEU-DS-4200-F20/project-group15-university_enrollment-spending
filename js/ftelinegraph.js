@@ -14,11 +14,13 @@ function ftelinechart() {
       yLabelText = "",
       yLabelOffsetPx = 0,
       xScale = d3.scalePoint(),
-      yScale = d3.scaleLinear();
+      yScale = d3.scaleLinear(),
+      tooltipFields = [];
 
     // Create the chart by adding an svg to the div with the id
     // specified by the selector using the given data
     function chart(selector, data, legends) {
+      d3.select(selector).selectAll("*").remove();
       let svg = d3
         .select(selector)
         .append("svg")
@@ -43,11 +45,8 @@ function ftelinechart() {
       let xAxis = svg
         .append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(xScale))
-        .selectAll("text")
-        // .style("text-anchor", "end")
-        // .attr("dx", "-.8em")
-        // .attr("dy", ".15em");
+        .call(d3.axisBottom(xScale));
+        
 
       xAxis
         .append("text")
@@ -57,7 +56,7 @@ function ftelinechart() {
         .text(xLabelText);
 
       // Y axis and label
-      let yAxis = svg
+      svg
         .append("g")
         .call(d3.axisLeft(yScale))
         .append("text")
@@ -91,14 +90,11 @@ function ftelinechart() {
         .attr("d", (d) => d3.line().x(X).y(Y)(d[1]));
 
       //define the div for the tooltip
-      var div = d3
+      const div = d3
         .select("body")
         .append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
-
-
-      function displaydata(d) {}
 
       // Add the points
       let points = pathG
@@ -119,9 +115,9 @@ function ftelinechart() {
             .duration(200)
             .style("opacity", 0.9)
             .style("left", event.pageX + "px")
-            .style("top", event.pageY - 50 + "px");
-          div.html(d.SchoolName + "<br/><br/>Total FTE Students: " + d.TotalFTE);
-          console.log(d);
+            .style("top", event.pageY - 28 + "px");
+        div.html(`<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}`);
+
 
 
           //use raise() to bring the element forward when hovering the mouse
@@ -138,6 +134,8 @@ function ftelinechart() {
 
 
         .on("mouseout", function (d) {
+          div.transition();
+          div.style("opacity", 0);
           const selection = d3.select(this);
           selection
             .transition()
@@ -146,20 +144,6 @@ function ftelinechart() {
             .attr("r", 2)
             .style("opacity", 1);
         });
-
-      function handlemousemove(event, d) {
-        console.log(tooltip.style.top, event.layerY);
-        tooltip
-          .text(function () {
-            return event.layerX;
-          })
-          .style(
-            "transform",
-            `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`
-          )
-          .style("display", "block")
-          .style("color", "red");
-      }
 
       return chart;
     }
@@ -222,5 +206,11 @@ function ftelinechart() {
       return chart;
     };
 
+    chart.tooltipFields = function (_) {
+      if (!arguments.length) return tooltipFields;
+      tooltipFields = _;
+      return chart;
+    };
+  
     return chart;
   }

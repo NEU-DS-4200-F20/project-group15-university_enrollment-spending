@@ -17,9 +17,8 @@ function linechart() {
     yLabelText = "",
     yLabelOffsetPx = 0,
     xScale = d3.scalePoint(),
-    yScale = d3.scaleLinear();
-  // selectableElements = d3.select(null),
-  // dispatcher;
+    yScale = d3.scaleLinear(),
+    tooltipFields = [];
 
 
   // Create the chart by adding an svg to the div with the id
@@ -53,7 +52,7 @@ function linechart() {
       .rangeRound([height, 0]);
 
     // X axis and label
-    let xAxis = svg
+    svg
       .append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(xScale))
@@ -69,7 +68,7 @@ function linechart() {
       .text(xLabelText);
 
     // Y axis and label
-    let yAxis = svg
+    svg
       .append("g")
       .call(d3.axisLeft(yScale))
       .append("text")
@@ -105,12 +104,8 @@ function linechart() {
     .style("opacity", 0);
 
 
-  function displaydata(d) {
-
-  }
-
     // Add the points
-    let points = pathG
+    pathG
       .selectAll(".line-point")
       .data((d) => d[1])
       .enter()
@@ -122,14 +117,19 @@ function linechart() {
       .attr("r", 2)
 
     //mouse events
-    .on('mouseover', function(event, d) {
-
-      div.transition().duration(200)
-                .style('opacity', 0.9)
-                .style("left", (event.pageX) + "px")
-                .style("top", (event.pageY - 28) + "px");
-                div.html(d.SchoolName + '<br />FTE: ' + d.TotalFTE);
-                console.log(d);
+    .on("mouseover", function (event, d) {
+      div
+        .transition()
+        .duration(200)
+        .style("opacity", 0.9)
+        .style("left", event.pageX + "px")
+        .style("top", event.pageY - 28 + "px");
+      // tooltipFields[0] is Pct, [1] is FTE
+      div.html(
+        `<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}</br><b>${
+          tooltipFields[1]
+        }</b>: ${d[tooltipFields[1]]}`
+      );
 
 
        //use raise() to bring the element forward when hovering the mouse
@@ -145,6 +145,8 @@ function linechart() {
    })
 
       .on("mouseout", function (d) {
+        div.style("opacity", 0);
+        div.transition();
         const selection = d3.select(this);
         selection
           .transition()
@@ -153,16 +155,6 @@ function linechart() {
           .attr("r", 2)
           .style("opacity", 1);
       });
-
-      function handlemousemove(event, d) {
-        console.log(tooltip.style.top, event.layerY);
-        tooltip
-          .text(function() {
-              return event.layerX;
-          })
-          .style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
-          .style('display', 'block').style('color','red');
-      }
 
 
     return chart;
@@ -225,6 +217,12 @@ function linechart() {
   chart.yLabelOffset = function (_) {
     if (!arguments.length) return yLabelOffsetPx;
     yLabelOffsetPx = _;
+    return chart;
+  };
+
+  chart.tooltipFields = function (_) {
+    if (!arguments.length) return tooltipFields;
+    tooltipFields = _;
     return chart;
   };
 

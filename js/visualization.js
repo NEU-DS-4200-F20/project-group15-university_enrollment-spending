@@ -7,31 +7,62 @@
 
 // get the data from the csv file
   d3.csv("data/Data.csv").then((data) => {
-    const dispatchString = "selectionUpdated";
+    const dispatchUpdateSelectionString = "selectionUpdated",
+      dispatchFilterString = "filterCircles";
     // console.log(data, "This is all the data") //--> Uncomment to debug
 
 // Define the columns (fields) used in the violinplot and linecharts
     const fields = [
-    // The slabels are used in the violinplots
-    // dlabels are used in the linegraphs
-      // {slabel: "TotalFTE", dlabel: "TotalFTE"},
-      // {slabel: "TuitionAndFeesRevenues_Pct", dlabel: "TuitionAndFeesRevenues_PerFTE"},
-      // {slabel: "AuxiliaryEnterprisesRevenues_Pct", dlabel: "AuxiliaryEnterprisesRevenues_PerFTE"},
-      // {slabel: "OperatingRevenues_Pct", dlabel: "OperatingRevenues_PerFTE"},
-      // {slabel: "NonoperatingRevenues_Pct", dlabel: "NonoperatingRevenues_PerFTE"},
-      // {slabel: "TotalRevenues_PerFTE", dlabel: "TotalRevenues_PerFTE"},
-      {slabel: "Instruction_Pct", dlabel: "Instruction_PerFTE"},
-      {slabel: "PublicService_Pct", dlabel: "PublicService_PerFTE"},
-      {slabel: "AcademicSupport_Pct", dlabel: "AcademicSupport_PerFTE"},
-      {slabel: "StudentServices_Pct", dlabel: "StudentServices_PerFTE"},
-      {slabel: "InstitutionalSupport_Pct", dlabel: "InstitutionalSupport_PerFTE"},
-      {slabel: "NetScholarships_Pct", dlabel: "NetScholarships_PerFTE"},
-      {slabel: "AuxiliaryEnterprises_Pct", dlabel: "AuxiliaryEnterprises_PerFTE"},
-      {slabel: "Other_Pct", dlabel: "Other_PerFTE"},
+      {
+        slabel: "Instruction_Pct",
+        dlabel: "Instruction_PerFTE",
+        tooltipFields: ["Instruction_Pct", "Instruction_PerFTE"],
+      },
+      {
+        slabel: "PublicService_Pct",
+        dlabel: "PublicService_PerFTE",
+        tooltipFields: ["PublicService_Pct", "PublicService_PerFTE"],
+      },
+      {
+        slabel: "AcademicSupport_Pct",
+        dlabel: "AcademicSupport_PerFTE",
+        tooltipFields: ["AcademicSupport_Pct", "AcademicSupport_PerFTE"],
+      },
+      {
+        slabel: "StudentServices_Pct",
+        dlabel: "StudentServices_PerFTE",
+        tooltipFields: ["StudentServices_Pct", "StudentServices_PerFTE"],
+      },
+      {
+        slabel: "InstitutionalSupport_Pct",
+        dlabel: "InstitutionalSupport_PerFTE",
+        tooltipFields: [
+          "InstitutionalSupport_Pct",
+          "InstitutionalSupport_PerFTE",
+        ],
+      },
+      {
+        slabel: "NetScholarships_Pct",
+        dlabel: "NetScholarships_PerFTE",
+        tooltipFields: ["NetScholarships_Pct", "NetScholarships_PerFTE"],
+      },
+      {
+        slabel: "AuxiliaryEnterprises_Pct",
+        dlabel: "AuxiliaryEnterprises_PerFTE",
+        tooltipFields: [
+          "AuxiliaryEnterprises_Pct",
+          "AuxiliaryEnterprises_PerFTE",
+        ],
+      },
+      {
+        slabel: "Other_Pct",
+        dlabel: "Other_PerFTE",
+        tooltipFields: ["Other_Pct", "Other_PerFTE"],
+      },
       // {slabel: "TotalExpenses", dlabel: "TotalExpenses"},
       // {slabel: "TotalWages_Pct", dlabel: "TotalWages_PerFTE"},
       // {slabel: "TotalFringeBenefits_Pct", dlabel: "TotalFringeBenefits_PerFTE"},
-    ];              // end fields
+    ]; // end fields
 
 
 // Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
@@ -41,15 +72,18 @@ const legends = [
 // console.log(legends, "These are the colors") //--> Uncomment to debug
 
 //Create legend for schoolnames
-legend()(".legend-zone", legends);
+const legendChart = legend().selectionDispatcher(
+  d3.dispatch(dispatchFilterString)
+)(".legend-zone", legends);
 
 //Create Total FTE chart
-    const linechartFTEHolder = ftelinechart()
-      .x((d) => d["Year"])
-      .xLabel("Year")
-      .y((d) => d["TotalFTE"])
-      .yLabel("Total FTE Students")
-      .yLabelOffset(40)(".total-fte-holder", data, legends);
+ftelinechart()
+.x((d) => d["Year"])
+.xLabel("Year")
+.y((d) => d["TotalFTE"])
+.yLabel("Total FTE")
+.tooltipFields(["TotalFTE"])
+.yLabelOffset(40)(".total-fte-holder", data, legends);
 
     // const linechartFTEHolder = ftelinechart()
     //   .x((d) => d["Year"])
@@ -64,8 +98,6 @@ legend()(".legend-zone", legends);
 // Get linecharts holder element for adding each linechart dynamically
     const linechartsHolder = d3.select(".linecharts-holder");
 
-// Get fte holder element for adding the line chart dynamically
-    const fte = d3.select(".linecharts-holder");
 
     // Add divs for each line chart, each holding a different school
     linechartsHolder
@@ -75,7 +107,7 @@ legend()(".legend-zone", legends);
       .append("div")
       .attr("class", (d) => `line-chart-container line-chart-${d.slabel}`);
 
-      updateLineCharts();
+      updateLineCharts(data);
 
 
 
@@ -85,15 +117,39 @@ legend()(".legend-zone", legends);
       .xFields(fields.map((d) => d.slabel))
       .xLabel("Category")
       .yLabel("Percent of Total Expenses")
-      .selectionDispatcher(d3.dispatch(dispatchString))(".violinplot-holder",data,legends);
+      .selectionDispatcher(d3.dispatch(dispatchUpdateSelectionString))(
+        ".violinplot-holder",
+        data,
+        legends
+      );
 
+    //When use click schoolName circle, tell the linechart to update it's circles
+    legendChart
+      .selectionDispatcher()
+      .on(dispatchFilterString, function (selectedSchools) {
+        console.log(selectedSchools, "selectedSchools");
+        // get filtered data from selection Data.
+        const reDrawData = data.filter((record) =>
+          selectedSchools.includes(record.SchoolName)
+        );
 
+        violin.updateSelection(selectedSchools);
+
+        updateLineCharts(reDrawData);
+        ftelinechart()
+          .x((d) => d["Year"])
+          .xLabel("Year")
+          .y((d) => d["TotalFTE"])
+          .yLabel("Total FTE")
+          .tooltipFields(["TotalFTE"])
+          .yLabelOffset(40)(".total-fte-holder", reDrawData, legends);
+      });
 
 
 
 // BRUSHING
 // When the violin selection is brushed, tell the linechart to update it's selection (linking)
-    violin.selectionDispatcher().on(dispatchString, function (selectedData) {
+    violin.selectionDispatcher().on(dispatchUpdateSelectionString, function (selectedData) {
       const one = selectedData[0];
     // console.log(selectedData, 'This was selected') // Uncomment to debug;
 
@@ -111,6 +167,8 @@ legend()(".legend-zone", legends);
           .filter((d) => years.includes(d["Year"]))
           .filter((record) => schoolNames.includes(record.SchoolName));
         const dlabel = fields.find((e) => e.slabel === one.field).dlabel;
+        const tooltips = fields.find((e) => e.slabel === one.field)
+            .tooltipFields;
 
         // Now build the linegraph based on what is brushed in the violins
         linechart()
@@ -118,36 +176,39 @@ legend()(".legend-zone", legends);
           .xLabel("Year")
           .y((d) => d[dlabel])
           .yLabel(dlabel)
-          .yLabelOffset(40)(
+          .yLabelOffset(40)
+          .tooltipFields(tooltips)(
             `.line-chart-${one.field}`, //*** one.field
             reDrawData, // *** reDrawData
             legends
-          );        // end .ylabelOffset(
-      }             // end if
+          ); // end .ylabelOffset(
+      } // end if
 
       // If the user brushes nothing, show everything
-      else {updateLineCharts();}
-    }               // end function (selectedData) {
-    );              // end violin.selectionDispatcher().on(
+      else {
+        updateLineCharts(data);
+      }
+    } // end function (selectedData) {
+    ); // end violin.selectionDispatcher().on(
 
 
     // add line charts for fields
-    function updateLineCharts() {
-      fields.forEach((field, i) => {
-        linechart()
-          .x((d) => d["Year"])
-          .xLabel("Year")
-          .y((d) => d[field.dlabel])
-          .yLabel(field.dlabel)
-          .yLabelOffset(40)(
-            `.line-chart-${field.slabel}`,
-            data,
-            legends
-          );
-      }             // end => {
-      );            // end forEach(
-    }               // end updateLineCharts{
-
-
-  });               // end d3.csv.then( => {
-})();               // end IFFY
+    function updateLineCharts(visualData) {
+      fields.forEach(
+        (field) => {
+          linechart()
+            .x((d) => d["Year"])
+            .xLabel("Year")
+            .y((d) => d[field.dlabel])
+            .yLabel(field.dlabel)
+            .tooltipFields(field.tooltipFields)
+            .yLabelOffset(40)(
+              `.line-chart-${field.slabel}`,
+              visualData,
+              legends
+            );
+        } // end => {
+      ); // end forEach(
+    } // end updateLineCharts{
+  }); // end d3.csv.then( => {
+})(); // end IFFY

@@ -7,6 +7,7 @@ function legend() {
       },
       width = 800,
       height = 80;
+    let selectedSchools = [];
     function chart(selector, data) {
       let svg = d3
         .select(selector)
@@ -41,7 +42,22 @@ function legend() {
         .append("circle")
         .style("fill", (d) => d.color)
         .attr("stroke", "black")
-        .attr("r", 7);
+        .attr("r", 7)
+        .on("click", function (event, d) {
+            if (selectedSchools.includes(d.name)) {
+              selectedSchools = selectedSchools.filter((s) => s !== d.name);
+              d3.select(this).style("stroke", "black").style("stroke-width", 1);
+            } else {
+              selectedSchools = [...selectedSchools, d.name];
+              d3.select(this).style("stroke", "pink").style("stroke-width", 3);
+            }
+    
+            // Get the name of our dispatcher's event
+            let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
+    
+            // // Let other charts know
+            dispatcher.call(dispatchString, this, selectedSchools);
+          });
   
       legendG
         .append("text")
@@ -50,7 +66,17 @@ function legend() {
         .attr("dy", ".4em")
         .style("fill", "black")
         .text((d) => d.name);
-    }
+    
     return chart;
-  }
+}
+
+// Gets or sets the dispatcher we use for selection events
+chart.selectionDispatcher = function (_) {
+  if (!arguments.length) return dispatcher;
+  dispatcher = _;
+  return chart;
+};
+
+return chart;
+}
   
