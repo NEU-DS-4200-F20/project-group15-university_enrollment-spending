@@ -11,78 +11,73 @@ h1, h2, h3 {
 	line-height: 1.2
 }
 
-/* A column of text above and below the visualizations */
+/* A narrow column of text */
 .narrow-column {
 	max-width: 650px;
 	margin: 40px auto;
 }
 
-/* A wider colmn of text */
-.mid-column {
-	max-width: 860px;
-	margin: 40px auto;
-}
-/* A wider colmn of text */
-.centered-image {
-	max-width: 860px;
-	align-content: center;
-	margin: 40px auto;
-}
-
-.sticky-zone {
-	float: left;
-	position: -webkit-sticky;
-	position: sticky;
-	/* overflow: auto; */
-	top: 0;
-  }
-  
-.legend-zone {
-	width: 800px;
-  }
-  
-  /* STICKY violinplot holder within the vis-holder */
-.violinplot-holder {
-	width: 800px;
-  }
-
-
-
-
-/* A single full-width FTE visualization */
-.total-fte-holder {
-	width: 860px;
-	margin: 40px auto;
-}
-
-/* The visualizations should occupy the center 1400 px of the window */
-/* This vis-holder container holds all visualization containers*/
+/* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	/* Extra height needed to allow for split scrolling */
-	height: 2470px;
+	height: 3340px; /* Extra height needed to allow for split scrolling */
 	margin: 40px auto;
 }
 
-/* STICKY violinplot holder within the vis-holder */
-.violinplot-holder {
-	width: 800px;
-	float: left;
-	overflow: auto;
-}
+		/* A container for the FTE line graph */
+		.total-fte-holder {
+			width: 870px;
+			margin: auto;
+		}
 
-/* SCROLLING linegraph holder within the vis-holder */
-.linecharts-holder {
-	margin-top: 55px;
-	float: right;
-	width: 500px;
-	overflow: auto;
+		/* A wide column of text */
+		.full-width-column {
+			max-width: 1300px;
+		}
+
+		/* A container that "sticks" to the top right corner of the
+		screen while scrolling through content on the right. The
+		violin and legend containers reside inside this container*/
+		.sticky-zone {
+			float: left;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+			}
+
+				/* A container for the violinplot */
+				.violinplot-holder {
+					width: 800px;
+					float: left;
+					}
+
+				/* A container for the legend */
+				.legend-zone {
+					width: 800px;
+					}
+
+		/* A container for the linegraphs */
+		.linecharts-holder {
+			margin-top: 164px; /* Align the top graph with the violin plot */
+			float: right;
+			overflow: auto;
+			width: 500px;
+				/* when adjusting this number also look at:
+					linegraph.js linewidth = 500px */
+		}
+
+/* A temporary class for debugging */
+.blank-area {
+	width: 650px;
+	height: 2500px;
+	margin: auto;
 }
 
 /* ? */
 circle.selected {
-	fill: pink;
-	stroke: red;
+	stroke: pink;
+	fill: red;
+	stroke-width: 3;
 	/* opacity: 0.5; */
 }
 
@@ -106,16 +101,16 @@ circle.selected {
 
 /* Format the tooltip */
 div.tooltip {
-    position: absolute;
-    text-align: left;
-		width: 160px;
-    height: 45px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 4px;
-    pointer-events: visible;
+	position: absolute;
+	text-align: left;
+	width: 200px;
+	height: 45px;
+	padding: 2px;
+	font: 12px sans-serif;
+	background: lightsteelblue;
+	border: 0px;
+	border-radius: 4px;
+	pointer-events: visible;
 
 }
 
