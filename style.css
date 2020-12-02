@@ -8,26 +8,29 @@ body {
 }
 
 h1, h2, h3 {
-	/* line-height: 1.2 */
+	line-height: 1.2
 }
 
-/* A column of text above the visualizations */
-.top-content-column {
+/* A column of text above and below the visualizations */
+.narrow-column {
 	max-width: 650px;
 	margin: 40px auto;
 }
 
+/* A wider colmn of text */
+.mid-column {
+	max-width: 860px;
+	margin: 40px auto;
+}
+/* A wider colmn of text */
+.centered-image {
+	max-width: 860px;
+	align-content: center;
+	margin: 40px auto;
+}
 /* A single full-width FTE visualization */
 .total-fte-holder {
 	width: 860px;
-	margin: 40px auto;
-	/* position: sticky; */
-	/* top:0; */
-}
-
-/* A small area of text below the FTE line graph */
-.mid-content-column {
-	max-width: 860px;
 	margin: 40px auto;
 }
 
@@ -36,7 +39,7 @@ h1, h2, h3 {
 .vis-holder {
 	width: 1300px;
 	/* Extra height needed to allow for split scrolling */
-	height: 2300px;
+	height: 2470px;
 	margin: 40px auto;
 }
 
@@ -52,15 +55,10 @@ h1, h2, h3 {
 
 /* SCROLLING linegraph holder within the vis-holder */
 .linecharts-holder {
+	margin-top: 55px;
 	float: right;
 	width: 500px;
 	overflow: auto;
-}
-
-/* A column of text below the visualizations */
-.bottom-content-column {
-	max-width: 650px;
-	margin: 40px auto;
 }
 
 /* ? */
@@ -76,13 +74,13 @@ circle.selected {
 	stroke: #999;
 }
 
-/* ? */
+/* x-axis and y-axis labels */
 .axisLabel {
 	fill: #457;
 	font-size: 14px;
 }
 
-/* Format the legend */
+/* School names in the legend */
 .legend-text {
 	font-size: 14px;
 	color: #000;
@@ -91,14 +89,14 @@ circle.selected {
 /* Format the tooltip */
 div.tooltip {
     position: absolute;
-    text-align: center;
-    width: 60px;
-    height: 28px;
+    text-align: left;
+		width: 160px;
+    height: 45px;
     padding: 2px;
     font: 12px sans-serif;
     background: lightsteelblue;
     border: 0px;
-    border-radius: 8px;
+    border-radius: 4px;
     pointer-events: visible;
 
 }
