@@ -58,7 +58,7 @@ h1, h2, h3 {
 
 		/* A container for the linegraphs */
 		.linecharts-holder {
-			margin-top: 164px; /* Align the top graph with the violin plot */
+			margin-top: 283px; /* Align the top graph with the violin plot */
 			float: right;
 			overflow: auto;
 			width: 500px;
