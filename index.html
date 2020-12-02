@@ -100,10 +100,15 @@ Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Exp
   <div class='vis-holder'>
     <!-- This container allows for a sticky violin plot on the left with scrolling line graphs on the right -->
 
+    <div class="sticky-zone">
+      <div class="legend-zone"></div>
+      <div class='violinplot-holder'>
+        <h2>Spending Trends:</h2>
+        <h3>Distribution of spending as a percent of each school's total expenses</h3>
 
-    <div class='violinplot-holder'>
-      <h2>Spending Trends:</h2>
-      <h3>Distribution of spending as a percent of each school's total expenses</h3>
+
+    </div>
+    
       <!-- violinplot is inserted here by js -->
     </div>
 
@@ -164,6 +169,7 @@ Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Exp
 
     <!-- Now we can build the violin and line graphs -->
     <script src="js/ftelinegraph.js"></script>
+    <script src="js/legend.js"></script>
     <script src='js/violinplot.js'></script>
     <script src='js/linegraph.js'></script>
 

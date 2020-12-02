@@ -26,37 +26,7 @@ function violinplotchart() {
     svg = svg
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    // add legends into chart
-    const legendsG = svg
-      .append("g")
-      .attr("class", "legends-g")
-      .attr("transform", `translate(${-margin.left + 60}, ${margin.top + 680})`);
-
-    const legendG = legendsG
-      .selectAll(".legend-for-schoolname")
-      .data(legends)
-      .enter()
-      .append("g")
-      .attr("class", "legend-for-schoolname")
-      // .attr("transform", (_, i) => `translate(0, ${i * 30})`);
-      .attr("transform", (_, i) => `translate(${i%3*220}, ${Math.floor(i/3) * 30})`);
-
-    legendG
-      .append("circle")
-      .style("fill", (d) => d.color)
-      .attr("stroke", "black")
-      .attr("r", 7);
-
-    legendG
-      .append("text")
-      .attr("class", "legend-text")
-      .attr("dx", "1em")
-      .attr("dy", ".4em")
-      .style("fill", "black")
-      .text((d) => d.name);
-
-
+      
     //get Max Y value from all xFields value.
     //This will help in setting the Y-axis Max Value
     let maxY = 0;

@@ -34,17 +34,14 @@
     ];              // end fields
 
 
-
-// Define the column (FTEfield) used in the FTE line chart
-    const FTEfield = [
-      // {slabel: "TotalFTE", dlabel: "TotalFTE"},
-    ];              // end FTEfield
-
-
 // Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
-    const legends = [...new Set(data.map((e) => e.SchoolName))].map(
-      (sn, i) => ({name: sn, color: colors[i]}));
-    // console.log(legends, "These are the colors") //--> Uncomment to debug
+const legends = [
+  ...new Set(data.map((e) => e.SchoolName)),
+].map((sn, i) => ({ name: sn, color: colors[i] }));
+// console.log(legends, "These are the colors") //--> Uncomment to debug
+
+//Create legend for schoolnames
+legend()(".legend-zone", legends);
 
 //Create Total FTE chart
     const linechartFTEHolder = ftelinechart()
