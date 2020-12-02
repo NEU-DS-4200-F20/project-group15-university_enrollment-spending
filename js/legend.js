@@ -5,8 +5,8 @@ function legend() {
 		bottom: 10,
 		left: 50,
 		},
-		width = 800,
-		height = 80;
+		width = 1300,
+		height = 200;
 
 	let selectedSchools = [];
 
@@ -34,12 +34,12 @@ function legend() {
 			.attr(
 				"transform",
 				(_, i) => {
-					if (i % 3 === 0) {
+					if (i % 4 === 0) {
 						yPos += 30;
 						xPos = 0;
 					}
 					else {
-						xPos = (i % 3) * 220;
+						xPos = (i % 4) * 300;
 					}
 					return `translate(${xPos}, ${yPos})`;
 				}
