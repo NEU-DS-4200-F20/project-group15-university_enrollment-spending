@@ -15,11 +15,11 @@
     // The slabels are used in the violinplots
     // dlabels are used in the linegraphs
       // {slabel: "TotalFTE", dlabel: "TotalFTE"},
-      // {slabel: "TuitionAndFeesRevenuesPct", dlabel: "TuitionAndFeesRevenuesPerFTE"},
-      // {slabel: "AuxiliaryEnterprisesRevenuesPct", dlabel: "AuxiliaryEnterprisesRevenuesPerFTE"},
-      // {slabel: "OperatingRevenuesPct", dlabel: "OperatingRevenuesPerFTE"},
-      // {slabel: "NonoperatingRevenuesPct", dlabel: "NonoperatingRevenuesPerFTE"},
-      // {slabel: "TotalRevenues", dlabel: "TotalRevenues"},
+      // {slabel: "TuitionAndFeesRevenues_Pct", dlabel: "TuitionAndFeesRevenues_PerFTE"},
+      // {slabel: "AuxiliaryEnterprisesRevenues_Pct", dlabel: "AuxiliaryEnterprisesRevenues_PerFTE"},
+      // {slabel: "OperatingRevenues_Pct", dlabel: "OperatingRevenues_PerFTE"},
+      // {slabel: "NonoperatingRevenues_Pct", dlabel: "NonoperatingRevenues_PerFTE"},
+      // {slabel: "TotalRevenues_PerFTE", dlabel: "TotalRevenues_PerFTE"},
       {slabel: "Instruction_Pct", dlabel: "Instruction_PerFTE"},
       {slabel: "PublicService_Pct", dlabel: "PublicService_PerFTE"},
       {slabel: "AcademicSupport_Pct", dlabel: "AcademicSupport_PerFTE"},
@@ -32,6 +32,8 @@
       // {slabel: "TotalWages_Pct", dlabel: "TotalWages_PerFTE"},
       // {slabel: "TotalFringeBenefits_Pct", dlabel: "TotalFringeBenefits_PerFTE"},
     ];              // end fields
+
+
 
 // Define the column (FTEfield) used in the FTE line chart
     const FTEfield = [
@@ -49,8 +51,15 @@
       .x((d) => d["Year"])
       .xLabel("Year")
       .y((d) => d["TotalFTE"])
-      .yLabel("Total FTE")
+      .yLabel("Total FTE Students")
       .yLabelOffset(40)(".total-fte-holder", data, legends);
+
+    // const linechartFTEHolder = ftelinechart()
+    //   .x((d) => d["Year"])
+    //   .xLabel("Year")
+    //   .y((d) => d["OperatingRevenues_PerFTE"])
+    //   .yLabel("Total Operating Revenues per FTE")
+    //   .yLabelOffset(40)(".total-fte-holder", data, legends);
 
 
 
