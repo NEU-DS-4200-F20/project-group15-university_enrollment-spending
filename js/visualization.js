@@ -118,9 +118,9 @@ d3.csv("data/Data.csv").then((data) => {
 	ftelinechart()
 		.x((d) => d["Year"])
 		.xLabel("Year")
-		.y((d) => d["TotalFTE"])
+		.y((d) => d["Total_FTE_Students"])
 		.yLabel("Total FTE Students")
-		.tooltipFields(["TotalFTE"])
+		.tooltipFields(["Total_FTE_Students"])
 		.yLabelOffset(40)(".total-fte-holder", data, legends);
 
 	// Used this to generate some data for Kurt. Please do not delete.
@@ -179,9 +179,9 @@ d3.csv("data/Data.csv").then((data) => {
 				ftelinechart()
 					.x((d) => d["Year"])
 					.xLabel("Year")
-					.y((d) => d["TotalFTE"])
+					.y((d) => d["Total_FTE_Students"])
 					.yLabel("Total FTE Students")
-					.tooltipFields(["TotalFTE"])
+					.tooltipFields(["Total_FTE_Students"])
 					.yLabelOffset(40)(
 						".total-fte-holder",
 						reDrawData,
