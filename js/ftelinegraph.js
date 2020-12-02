@@ -7,7 +7,7 @@
 function ftelinechart() {
     let margin = { top: 25, left: 50, right: 20, bottom: 20 },
       width = 800 //- margin.left - margin.right,
-      height = 280 - margin.top - margin.bottom,
+      height = 405 - margin.top - margin.bottom,
       xValue = (d) => d[0],
       yValue = (d) => d[1],
       xLabelText = "",
@@ -46,7 +46,7 @@ function ftelinechart() {
         .append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(xScale));
-        
+
 
       xAxis
         .append("text")
@@ -114,9 +114,11 @@ function ftelinechart() {
             .transition()
             .duration(200)
             .style("opacity", 0.9)
-            .style("left", event.pageX + "px")
-            .style("top", event.pageY - 28 + "px");
-        div.html(`<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}`);
+            .style("left", event.pageX - 90 + "px")
+            .style("top", event.pageY - 55 + "px");
+        div.html(
+			`${d.SchoolName}<br/><br/>
+			<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}`);
 
 
 
@@ -211,6 +213,6 @@ function ftelinechart() {
       tooltipFields = _;
       return chart;
     };
-  
+
     return chart;
   }
