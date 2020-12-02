@@ -97,16 +97,6 @@ function ftelinechart() {
         .attr("class", "tooltip")
         .style("opacity", 0);
 
-      /* //define the var of tooltip
-      var tooltip = d3.select("#linegraph")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "yellow")
-      .style("border", "solid")
-      .style("border-width", "1px")
-      .style("border-radius", "5px")
-      .style("padding", "5px"); */
 
       function displaydata(d) {}
 
@@ -129,19 +119,13 @@ function ftelinechart() {
             .duration(200)
             .style("opacity", 0.9)
             .style("left", event.pageX + "px")
-            .style("top", event.pageY - 28 + "px");
-          div.html(d.SchoolName + "<br/>FTE students:" + d.TotalFTE);
+            .style("top", event.pageY - 50 + "px");
+          div.html(d.SchoolName + "<br/><br/>Total FTE Students: " + d.TotalFTE);
           console.log(d);
 
-          /*tooltip
-        .style("opacity", 1)
-        .html(d3.select(this))
-        .style("left", (event.layerX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (event.layerY) + "px") */
 
           //use raise() to bring the element forward when hovering the mouse
           //hide when mouse moves away
-
           const selection = d3.select(this).raise();
           selection
             .transition()
@@ -151,34 +135,7 @@ function ftelinechart() {
             .style("opacity", 1)
             .style("fill", "purple");
         })
-        /*.on('mousemove', function(event, d) {
-      tooltip
-      .html("Data Value" + d)
 
-      //.style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
-      .style("left", (d3.pointer(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", (d3.pointer(this)[1]) + "px")
-  })  */
-
-        /*  repeat();
-          // ref line: https://bl.ocks.org/d3noob/bf44061b1d443f455b3f857f82721372
-          // stop transition: https://stackoverflow.com/questions/26903355/how-to-cancel-scheduled-transition-in-d3
-          function repeat() {
-            selection
-              .attr("r", 2)
-              .style("opacity", 1)
-              .transition()
-              .delay(20)
-              .duration(1000)
-              .attr("r", 10)
-              .style("opacity", 0)
-              .transition()
-              .delay(20)
-              .duration(200)
-              .attr("r", 2)
-              .style("opacity", 1)
-              .on("end", repeat);
-          } */
 
         .on("mouseout", function (d) {
           const selection = d3.select(this);
@@ -191,7 +148,6 @@ function ftelinechart() {
         });
 
       function handlemousemove(event, d) {
-        // svg.append('text').text(function(){return 'shubham'}).style('top',(d3.event.layerY + 10)+'px').style('left',(d3.event.layerX + 10) + 'px')
         console.log(tooltip.style.top, event.layerY);
         tooltip
           .text(function () {
