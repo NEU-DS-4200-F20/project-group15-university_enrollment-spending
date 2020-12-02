@@ -4,8 +4,7 @@ violinwidth = 800
 
 function violinplotchart() {
   //Define the margins
-  // let margin = { top: 40, right: 60, bottom: 120, left: 240},
-  let margin = { top: 20, right: 50, bottom: 300, left: 20},
+  let margin = { top: 30, right: 50, bottom: 300, left: 20},
     width = violinwidth - margin.left - margin.right,
     height = 850 - margin.top - margin.bottom,
     xFields = [],
@@ -90,7 +89,10 @@ function violinplotchart() {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(xScale));
 
-    xAxis.selectAll('text').attr("transform", "rotate(-60)").attr('text-anchor', 'end')
+    xAxis
+      .selectAll('text')
+      .attr("transform", "rotate(-60)")
+      .attr('text-anchor', 'end')
 
     //Features of the histogram
     const histogram = d3
@@ -132,36 +134,30 @@ function violinplotchart() {
         }
       }
       // The maximum width of a violin must be x.bandwidth = the width dedicated to a group
-      xSubScale.range([0, xScale.bandwidth()]).domain([-maxNum, maxNum]);
+      xSubScale
+        .range([0, xScale.bandwidth()])
+        .domain([-maxNum, maxNum]);
+
       svg
         .selectAll("myViolin")
         .data(sumstat)
         .enter() // So now we are working group per group
         .append("g")
         .attr("transform", function () {
-          return "translate(" + xScale(field) + " ,0)";
-        }) // Translation on the right to be at the group position
+          return "translate(" + xScale(field) + " ,0)";}) // Translation on the right to be at the group position
         .append("path")
         .datum(function (d) {
-          return d.value;
-        }) // So now we are working bin per bin
+          return d.value;}) // So now we are working bin per bin
         .style("fill", "grey")
         .style("stroke", "grey")
-        .attr(
-          "d",
-          d3
-            .area()
-            .x0(xSubScale(0))
-            .x1(function (d) {
-              return xSubScale(d.length);
-            })
-            .y(function (d) {
-              return yScale(d.x0);
-            })
-            .curve(d3.curveCatmullRom)
-            // This makes the line smoother to give the violin appearance.
-            // Try d3.curveStep to see the difference
-        );
+        .attr("d",d3
+                  .area()
+                  .x0(xSubScale(0))
+                  .x1(function (d) {return xSubScale(d.length);})
+                  .y(function (d) {return yScale(d.x0);})
+                  .curve(d3.curveCatmullRom));
+                  // This makes the line smoother to give the violin appearance.
+                  // Try d3.curveStep to see the difference
     });
 
     // Add individual points with jitter
