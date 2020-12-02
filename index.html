@@ -25,16 +25,13 @@
 
 The violin x-axis labels need to be a little bigger
 
-The legend needs to be above the violin plots, not below. FML.
-Better yet, add another legend, to one side of the FTE line graph.
-
 Add checkboxes to add/remove schools
-  which will allow us to add more schools [show a max of 8 at once?]
+  which will allow us to add more schools [show a max of 6 at once?]
 Can the legend and the checkboxes be the same thing?
   a legend with checkboxes?
-If no checkboxes, can brushing and linking be used in the legend?
+If we can't do checkboxes, can brushing and linking be used in the legend?
   if so, can we brush multiple noncontiguous areas?
-  i.e. Legend has 20 schools, brush up to 8 you want to graph?
+  i.e. if the legend has 20 schools, brush up to 6 you want to graph?
 
 Mouseover works, but the popups won't go away.
 Also, after hovering the dot fills in purple.
@@ -56,9 +53,9 @@ Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Exp
     <a href='https://github.com/NEU-DS-4200-F20/project-group15-university_enrollment-spending'>Fork me on GitHub</a>
   </span>
 
-  <!-- Writeup -->
+  <!-- Introduction -->
 
-  <div class='top-content-column'>
+  <div class='narrow-column'>
     <h1>Project Team 15: Comparative Analysis of University Spending and Enrollment</h1>
     <p><strong>Marc Leonti</strong>, <strong>Raed Binsaeed</strong>, <strong>Nick Hu</strong></p>
     <p>Service-Learning Course Project as part of
@@ -69,12 +66,12 @@ Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Exp
     </p>
 
     <h1>Abstract</h1>
-    <p>These visualizations explore the spending patterns of post-secondary institutions and their impacts on
-      enrollment. This work provides the visualizations necessary to compare spending patterns that lead to higher
-      enrollments across comparable institutions. These visualizations could be used to compare different spending
-      patterns of multiple universities and visually deduce statistically significant spending variations. Proper
-      guidance can then be given to the universities that are not following spending patterns that lead to higher
-      enrollment.</p>
+    <p>These visualizations explore the spending patterns of post-secondary institutions to better understand their
+      impacts on enrollment. This work provides the visualizations necessary to compare spending patterns that lead
+      to higher enrollments across comparable institutions. These visualizations could be used to compare different
+      spending patterns of multiple universities and visually deduce statistically significant spending variations.
+      Proper guidance can then be given to the universities that are not following spending patterns that lead to
+      higher enrollment.</p>
 
     <h1>Visualizations</h1>
     <p>The violin plots show the distribution of the data for each of the key five spending categories, as a percentage
@@ -85,35 +82,46 @@ Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Exp
   </div>
 
   <!-- Visualizations -->
+  <div class='mid-column'>
+    <h2>Enrollment Trends:</h2>
+    <h3>Full Time Equivalent (FTE) Students for each school</h3>
 
-  <div class='total-fte-holder'>
-    <h3>Trends Over Time: Full Time Equivalent Students for each school, from 2004 to 2018</h3>
-  </div>
-
-  <div class='mid-content-column'>
+    <div class='total-fte-holder'></div>
     <img src='img/legend.png' alt='school legend'>
-    <p>In the first visualization, the line graph above shows... </p>
+    <p>The line graph above shows each school's calculated Full Time Equivalent (FTE) Students, which is a
+      measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure
+      enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year
+      enrollments to calculate how many students would be attending if they were all enrolled full-time.</p>
+    <p>With this dataset, we see Bridgewater State (red) has the most FTE Students, while Fitchburg State
+      University (green) usually has the least. Most schools have reported positive growth over time, with the exception of
+      Salem State University (purple) and Worcester State University (yellow), which have reported flat or negative growth.</p>
   </div>
 
   <div class='vis-holder'>
     <!-- This container allows for a sticky violin plot on the left with scrolling line graphs on the right -->
 
+
     <div class='violinplot-holder'>
+      <h2>Spending Trends:</h2>
       <h3>Distribution of spending as a percent of each school's total expenses</h3>
       <!-- violinplot is inserted here by js -->
     </div>
 
     <div class='linecharts-holder'>
-      <h3>Trends Over Time: Dollars spent per FTE Student</h3>
+      <h3>Dollars spent per FTE Student</h3>
       <!-- Line graphs are inserted here by js -->
     </div>
 
   </div>
+
   <!-- Further writeup -->
-    <div class='bottom-content-column'>
+
+    <div class='narrow-column'>
       <h1>Demo Video</h1>
       <p>In this section we will embed a video demonstrating how to use our tool.</p>
-      <!-- <video controls width='100%'> <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'> <p>Your browser doesn't support HTML5 video. Here is a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p> </video> -->
+      <!-- <video controls width='100%'> <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'
+        type='video/mp4'> <p>Your browser doesn't support HTML5 video. Here is a
+        <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p> </video> -->
 
       <h1>Visualization explanation</h1>
       <p>The second visualization, a violin plot, addresses the end-user's most important goals by allowing the user to
