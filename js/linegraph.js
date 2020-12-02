@@ -8,7 +8,7 @@ let linewidth = 500
 // when adjusting this number also look at line 39 of style.css
 
 function linechart() {
-  let margin = {top: 40,left: 80,right: 20,bottom: 40,},
+  let margin = {top: 30,left: 80,right: 20,bottom: 40,},
     width = linewidth - margin.left - margin.right,
     height = 280 - margin.top - margin.bottom,
     xValue = (d) => d[0],
@@ -26,8 +26,6 @@ function linechart() {
   // specified by the selector using the given data
   function chart(selector, data, legends, hasLegends = false) {
 
-    //if legends exists, chart width must be increased.
-    // if (hasLegends) {margin.right = w;}
 
     //clear all svg elements before start to draw new chart
     d3.select(selector).selectAll("*").remove();
@@ -37,38 +35,6 @@ function linechart() {
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
-
-    // add legends into chart if applicable
-    // if (hasLegends) {
-    //   const legendsG = svg
-    //     .append("g")
-    //     .attr("class", "legends-g")
-    //     .attr(
-    //       "transform",
-    //       `translate(${width + margin.left + 100}, ${margin.top + 20})`
-    //     );
-
-    //   const legendG = legendsG
-    //     .selectAll(".legend")
-    //     .data(legends)
-    //     .enter()
-    //     .append("g")
-    //     .attr("class", "legend-g")
-    //     .attr("transform", (_, i) => `translate(0, ${i * 30})`);
-
-    //   legendG
-    //     .append("circle")
-    //     .style("fill", (d) => d.color)
-    //     .attr("stroke", "black")
-    //     .attr("r", 7);
-
-    //   legendG
-    //     .append("text")
-    //     .attr("class", "legend-text")
-    //     .attr("dx", "1em")
-    //     .attr("dy", ".4em")
-    //     .text((d) => d.name);
-    // }
 
     svg = svg
       .append("g")
@@ -138,16 +104,6 @@ function linechart() {
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-   /* //define the var of tooltip
-    var tooltip = d3.select("#linegraph")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "yellow")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "5px"); */
 
   function displaydata(d) {
 
@@ -172,20 +128,12 @@ function linechart() {
                 .style('opacity', 0.9)
                 .style("left", (event.pageX) + "px")
                 .style("top", (event.pageY - 28) + "px");
-                // div.html('Data Value is:' + d.AuxiliaryEnterprisesRevenuesPerFTE);
                 div.html(d.SchoolName + '<br />FTE: ' + d.TotalFTE);
                 console.log(d);
-
-      /*tooltip
-      .style("opacity", 1)
-      .html(d3.select(this))
-      .style("left", (event.layerX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", (event.layerY) + "px") */
 
 
        //use raise() to bring the element forward when hovering the mouse
        //hide when mouse moves away
-
        const selection = d3.select(this).raise();
        selection
        .transition()
@@ -195,35 +143,6 @@ function linechart() {
        .style("opacity", 1)
        .style("fill","purple");
    })
-    /*.on('mousemove', function(event, d) {
-    tooltip
-    .html("Data Value" + d)
-
-    //.style('transform', `translate(${event.layerX - 300}px, ${event.layerY - 300}px)`)
-    .style("left", (d3.pointer(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-    .style("top", (d3.pointer(this)[1]) + "px")
-})  */
-
-
-      /*  repeat();
-        // ref line: https://bl.ocks.org/d3noob/bf44061b1d443f455b3f857f82721372
-        // stop transition: https://stackoverflow.com/questions/26903355/how-to-cancel-scheduled-transition-in-d3
-        function repeat() {
-          selection
-            .attr("r", 2)
-            .style("opacity", 1)
-            .transition()
-            .delay(20)
-            .duration(1000)
-            .attr("r", 10)
-            .style("opacity", 0)
-            .transition()
-            .delay(20)
-            .duration(200)
-            .attr("r", 2)
-            .style("opacity", 1)
-            .on("end", repeat);
-        } */
 
       .on("mouseout", function (d) {
         const selection = d3.select(this);
@@ -236,7 +155,6 @@ function linechart() {
       });
 
       function handlemousemove(event, d) {
-        // svg.append('text').text(function(){return 'shubham'}).style('top',(d3.event.layerY + 10)+'px').style('left',(d3.event.layerX + 10) + 'px')
         console.log(tooltip.style.top, event.layerY);
         tooltip
           .text(function() {
