@@ -106,7 +106,7 @@ function ftelinechart() {
         .style("stroke-width", 2)
         .attr("cx", X)
         .attr("cy", Y)
-        .attr("r", 2)
+        .attr("r", 3)
 
         //mouse events
         .on("mouseover", function (event, d) {
@@ -141,9 +141,9 @@ function ftelinechart() {
           const selection = d3.select(this);
           selection
             .transition()
-            .delay(20)
-            .duration(200)
-            .attr("r", 2)
+            .delay('20')
+            .duration('200')
+            .attr("r", 3)
 			.style("opacity", 1)
 			.style("fill", "white");
         });
