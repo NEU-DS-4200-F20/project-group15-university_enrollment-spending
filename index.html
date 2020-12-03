@@ -78,47 +78,87 @@ End tasks to be completed -->
 
 		<h1>Visualizations</h1>
 		<p>
-			The violin plots show the distribution of the data for each of the key five spending categories, as a percentage of each school's total spending. The colored dots represent the actual data values, with each color representing a different school (see the legend below the line charts). Below are line graphs which show the each school's spending trends over time. Brushing on any of the points on the right side of a violin will filter the corresponding line graph to only show the data related to those data points.
+			Brushing, linking, clicking, etc instructions go here.
 		</p>
+		<!-- <p>
+			The violin plots show the distribution of the data for each of the key five spending categories, as a percentage of each school's total spending. The colored dots represent the actual data values, with each color representing a different school (see the legend below the line charts). Below are line graphs which show the each school's spending trends over time. Brushing on any of the points on the right side of a violin will filter the corresponding line graph to only show the data related to those data points.
+		</p> -->
 	</div><!-- End narrow-column -->
 <!-- End Introduction -->
+
+
+
+
+
+
+
+
+
 
 
 <!-- Begin Visualizations -->
 	<div class='vis-holder'>
 	<!-- This container holds all visualizations -->
 
-		<div class='full-width-column'>
-			<h2>Enrollment Trends:</h2>
+
+	<h2>Enrollment Trends:</h2>
+		<div class='side-text-column'>
 			<p>
-				The line graph below shows each school's calculated Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments to calculate how many students would be attending if they were all enrolled full-time.
+				The adjacent line graph shows each school's calculated Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments to calculate how many students would be attending if they were all enrolled full-time.
 			</p>
 			<p>
-				With this dataset, we see Bridgewater State (red) has the most FTE Students, while Fitchburg State University (green) usually has the least. Most schools have reported positive growth over time, with the exception of Salem State University (purple) and Worcester State University (yellow), which have reported flat or negative growth.
+				With this dataset, we see Bridgewater State (red) has the most FTE Students, while Fitchburg State University (green) usually has the least. Most schools have reported positive growth over time, with the exception of Salem State University (purple) and Worcester State University (yellow), which have reported flat or negative growth. Additionally, the averaged data for the Boston, Dartmouth, and Lowell campuses of the University of Massachusetts are also shown (pink).
 			</p>
-			<h3>Full Time Equivalent (FTE) Students for each school</h3>
-			<div class='total-fte-holder'><!-- Total FTE line graph is inserted here by js --></div><!-- End total-fte-holder -->
-		</div><!-- End full-width-column -->
+		</div><!-- End side-text-column -->
+
+
+		<div class='side-graph-column'>
+			<h3>Full Time Equivalent (FTE) Students per school</h3>
+			<div class='total-fte-holder1'><!-- Total FTE line graph is inserted here by js --></div>
+		</div><!-- End side-graph-column -->
+
 
 		<div class="sticky-zone"><!-- This container holds the violin and legend -->
-		<div class="legend-zone"><!-- legend is inserted here by js --></div><!-- End legend-zone -->
+
+			<div class="legend-zone"><!-- legend is inserted here by js --></div>
+			<h2>Spending Trends:</h2>
+
 			<div class='violinplot-holder'>
-				<h2>Spending Trends:</h2>
 				<h3>Distribution of spending as a percent of each school's total expenses</h3>
 				<!-- violinplot is inserted here by js -->
 			</div><!-- End violinplot-holder -->
 
-
-
 		</div><!-- End sticky-zone -->
 
 		<div class='linecharts-holder'>
+			<p>
+				The second visualization, a violin plot, addresses the end-user's most important goals by allowing the user to explore the data from the comparison schools in several spending categories by generating violin plots that show the distribution of the values. This helps the user visualize areas of spending that are different to assess for statistical significance and possibly provide insight into where spending should be redirected. The height of each violin represents the range of the values, measured in standard deviations away from the mean. The width of the violin represents the frequency of the different values found in the data for this financial category. Hovering over any individual violin will provides details on demand to the user about the institution, year, and actual value of the datapoint.
+			</p>
+			<p>
+				The line graphs below are interactive based on the user's interactions with any violin plot. The line graphs show time-series data for any institution's data that contributed to the generation of the violin. The institutions displayed will correlate with the datapoints represented in that portion of the violin. The data displayed shows the dollar amounts spent annually per Total Full-Time Enrollment hour. This is a powerful metric giving the user the ability to make direct comparisons regardless of total budget size. The datapoints highlighted in the violin plots will also be highlighted in the line graphs to identify trends over time....
+			</p>
 			<h3>Dollars spent per FTE Student</h3>
 			<!-- Line graphs are inserted here by js -->
 		</div><!-- End linecharts-holder -->
 
+
+
 	</div><!-- End vis-holder -->
 <!-- End Visualizations -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Begin Video -->
@@ -138,11 +178,9 @@ End tasks to be completed -->
 
 <!-- Begin Conclusion -->
 		<h1>Visualization explanation</h1>
+
 		<p>
-			The second visualization, a violin plot, addresses the end-user's most important goals by allowing the user to explore the data from the comparison schools in several spending categories by generating violin plots that show the distribution of the values. This helps the user visualize areas of spending that are different to assess for statistical significance and possibly provide insight into where spending should be redirected. The height of each violin represents the range of the values, measured in standard deviations away from the mean. The width of the violin represents the frequency of the different values found in the data for this financial category. Hovering over any individual violin will provides details on demand to the user about the institution, year, and actual value of the datapoint.
-		</p>
-		<p>
-			The next visualizations, line graphs, are interactive based on the user's interactions with any violin plot. The line graphs show time-series data for any institution's data that contributed to the generation of the violin. The institutions displayed will correlate with the datapoints represented in that portion of the violin. The data displayed shows the dollar amounts spent annually per Total Full-Time Enrollment hour. This is a powerful metric giving the user the ability to make direct comparisons regardless of total budget size. The datapoints highlighted in the violin plots will also be highlighted in the line graphs to identify trends over time.
+
 		</p>
 		<p>
 			These capabilities will allow the end user to explore the dataset, discovering useful insights, and directing their research and in-depth statistical analysis. Depending on those findings it can possible to identify potential cost savings, and convince decision-makers in affecting financial policy changes.
@@ -177,7 +215,7 @@ End tasks to be completed -->
 	<script src='js/global.js'></script> <!-- color chart -->
 
 	<!-- Now we can build the violin and line graphs -->
-	<script src="js/ftelinegraph.js"></script>
+	<script src="js/ftelinegraph1.js"></script>
 	<script src="js/legend.js"></script>
 	<script src='js/violinplot.js'></script>
 	<script src='js/linegraph.js'></script>
