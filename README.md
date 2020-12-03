@@ -2,7 +2,7 @@
 
 This repository is your starting point for your project. Please look through all these materials so you know how to organize your project.
 
-Link to your GitHub pages website: https://github.com/NEU-DS-4200-F20/project-group15-university_enrollment-spending
+Link to your GitHub pages website: https://neu-ds-4200-f20.github.io/project-group15-university_enrollment-spending/
 
 # Aim of the assignment
 
@@ -74,8 +74,8 @@ Each folder has an explanatory `README.md` file.
 
 ## Software license
 
-1. Review the license for your project in `LICENSE`. The default license we include in the template `LICENCE` file is the open source [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause). You are not required to make your project open source but it is preferred and enables easier adoption of your contributions by others. 
-   
+1. Review the license for your project in `LICENSE`. The default license we include in the template `LICENCE` file is the open source [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause). You are not required to make your project open source but it is preferred and enables easier adoption of your contributions by others.
+
 1. Add your names to `LICENCE`.
 If you make any changes to your license other than including your names that are not approved by the teaching staff, you will need to sign a [Non-exclusive Right to Use and Modify Agreement](https://www.ccs.neu.edu/home/cody/courses/shared/S-L_project_partner_usage_agreement.pdf) so your project partner can actually use what you’ve made.
 
