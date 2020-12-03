@@ -25,24 +25,42 @@
 
 /********************** TASKS TO BE COMPLETED *************************/
 
-The violin x-axis labels need to be a little bigger
+	Violins
+Ensure violin graph isn't too tall
+Make graph text not-selectable (axis)
+Better (bigger) x-axis labels
+Less saturated colors
+Smaller, more transparent Violin dots?
 
-Selecing schools in the legend is great, but there is no way to clear the selections
+	Line graphs
+Ensure tool tips disappear (and colored dots)
+More info in tool tips (see below)
+Voroni point picker / bobble cursor + bigger line dots
+"faster tooltips" ? (per Cody)
+
+	Other
+Clearly discuss how brushing & linking works
+Explain what it all means. How to make a conclusion.
+Clarify what FTE is
+Remove Console logs
+Add link to page in readme.md
+
+
+
+Filtering schools in the legend is great, but there is no way to clear the selections
 without manually clicking each color again or reloading the page. Can this be fixed?
 
-Mouseover works, but the popups won't go away.
-Getting the tooltips to pop us can be tricky.
-Cody recommends "faster tooltip movement" and using a veroni point picker or bubble cursor.
-Also, hovering fills the dot in purple. After moving, it doesn't revert back to white.
-
-Tooltip info needs to be changed. Kurt said he would love to see this:
+Kurt said he would love to see this in the tooltips:
 		School Name
 		Year
 		Per FTE Student:   $x,xxx
 		Pct of Expenses:    xx.x%
 		Actual $ amount: $xxx,xxx
 
-Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Expenses'
+Kurt also said he would love to see:
+	Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Expenses'
+but this may be a big undertaking. Maybe later. Low priority for now.
+
 
 End tasks to be completed -->
 
@@ -68,12 +86,12 @@ End tasks to be completed -->
 
 		<h1>Abstract</h1>
 		<p>
-			These visualizations explore the spending patterns of post-secondary institutions to better understand their impacts on enrollment. This work provides the visualizations necessary to compare spending patterns that lead to higher enrollments across comparable institutions. These visualizations could be used to compare different spending patterns of multiple universities and visually deduce statistically significant spending variations. Proper guidance can then be given to the universities that are not following spending patterns that lead to higher enrollment.
+			Our service partner is the Sustainable Path Forward Task Force from Salem State University (SSU), which has been charged with making recommendations for increasing revenue and reducing expenses. Their goal is to reallocate spending in areas that drive enrollments (increasing revenue) and decrease spending in areas that do not drive enrollments (reducing expenses). The following visualizations explore the spending patterns of post-secondary institutions to search for patterns and explore their impacts on enrollment. This work provides the visualizations necessary to compare spending patterns between similar schools to find spending patterns that may lead to higher enrollments. If patterns are found in these visualizations, the task force can focus their efforts on a deeper statistacal analysis of the underlying data to determine if these patterns are statistically significant. Proper guidance can then be given to advise the school board on possible policy changes to the school's financial expenditures.
 		</p>
 
 		<h1>Visualizations</h1>
 		<p>
-			Explain methodology, why these schools have been selected, and how we expect out end users to leverage these visualizations to explore the data and generate a theory. Graph-specific details and instructions will be included in the sections below.
+			Our partner has identified eight schools in which are most similar to Salem State University and would be appropriate for comparison based on region (Massachusetts), sector (four-year public institutions) and size (mre than 1,000 but less than 15,000 students). Explain methodology, why these schools have been selected, and how we expect out end users to leverage these visualizations to explore the data and generate a theory. Graph-specific details and instructions will be included in the sections below.
 		</p>
 		<!-- <p>
 			The violin plots show the distribution of the data for each of the key five spending categories, as a percentage of each school's total spending. The colored dots represent the actual data values, with each color representing a different school (see the legend below the line charts). Below are line graphs which show the each school's spending trends over time. Brushing on any of the points on the right side of a violin will filter the corresponding line graph to only show the data related to those data points.
