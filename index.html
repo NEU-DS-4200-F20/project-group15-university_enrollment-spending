@@ -27,25 +27,20 @@
 
 The violin x-axis labels need to be a little bigger
 
-Add checkboxes to add/remove schools
-	which will allow us to add more schools [show a max of 6 at once?]
-Can the legend and the checkboxes be the same thing?
-	a legend with checkboxes?
-If we can't do checkboxes, can brushing and linking be used in the legend?
-	if so, can we brush multiple noncontiguous areas?
-	i.e. if the legend has 20 schools, brush up to 6 you want to graph?
+Selecing schools in the legend is great, but there is no way to clear the selections
+without manually clicking each color again or reloading the page. Can this be fixed?
 
 Mouseover works, but the popups won't go away.
-Also, after hovering the dot fills in purple.
-After moving to a new dot, the old one stays purple (doesn't revert back to white)
-	Nees a dollar sign.
-	Popup info needs to be changed? Currently it shows the school name and TotalFTE.
-	Kurt said he would love to see this:
+Getting the tooltips to pop us can be tricky.
+Cody recommends "faster tooltip movement" and using a veroni point picker or bubble cursor.
+Also, hovering fills the dot in purple. After moving, it doesn't revert back to white.
 
+Tooltip info needs to be changed. Kurt said he would love to see this:
 		School Name
-		Actual $ amount: $xxx,xxx
+		Year
 		Per FTE Student:   $x,xxx
 		Pct of Expenses:    xx.x%
+		Actual $ amount: $xxx,xxx
 
 Add functionality to switch chart data from 'Dollars per FTE' to 'Percent of Expenses'
 
@@ -78,7 +73,7 @@ End tasks to be completed -->
 
 		<h1>Visualizations</h1>
 		<p>
-			Brushing, linking, clicking, etc instructions go here.
+			Explain methodology, why these schools have been selected, and how we expect out end users to leverage these visualizations to explore the data and generate a theory. Graph-specific details and instructions will be included in the sections below.
 		</p>
 		<!-- <p>
 			The violin plots show the distribution of the data for each of the key five spending categories, as a percentage of each school's total spending. The colored dots represent the actual data values, with each color representing a different school (see the legend below the line charts). Below are line graphs which show the each school's spending trends over time. Brushing on any of the points on the right side of a violin will filter the corresponding line graph to only show the data related to those data points.
@@ -101,27 +96,29 @@ End tasks to be completed -->
 	<!-- This container holds all visualizations -->
 
 
-	<h2>Enrollment Trends:</h2>
 		<div class='side-text-column'>
+			<h2>Enrollment Trends:</h2>
 			<p>
-				The adjacent line graph shows each school's calculated Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments to calculate how many students would be attending if they were all enrolled full-time.
+				The adjacent line graph shows each school's reported Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments to calculate how many students would be attending if they were all enrolled full-time.
 			</p>
 			<p>
-				With this dataset, we see Bridgewater State (red) has the most FTE Students, while Fitchburg State University (green) usually has the least. Most schools have reported positive growth over time, with the exception of Salem State University (purple) and Worcester State University (yellow), which have reported flat or negative growth. Additionally, the averaged data for the Boston, Dartmouth, and Lowell campuses of the University of Massachusetts are also shown (pink).
+				With this dataset, we see Bridgewater State (red) has the most FTE Students of the MA State Universities, and the average of the UMASS schools (gray) have the highest enrollment among all MA public schools. Fitchburg State University (green) had the least in every year except 2010. On average, MA public schools (light blue) have reported positive growth over time, but Salem State University (purple) has shown negative growth since 2007. Most schools have reported flat or negative growth over the last two years.
+			</p>
+			<p>
+				In this linechart, hovering over any pint in the graph will reveal more data about that specific point. Click any colored dot in the legend to filter down to only selected schools. It is important to note all calculated averages DO NOT include data from Salem State University, the school that is the focus of this study.
 			</p>
 		</div><!-- End side-text-column -->
 
 
 		<div class='side-graph-column'>
 			<h3>Full Time Equivalent (FTE) Students per school</h3>
-			<div class='total-fte-holder1'><!-- Total FTE line graph is inserted here by js --></div>
+			<div class='total-fte-holder'><!-- Total FTE line graph is inserted here by js --></div>
 		</div><!-- End side-graph-column -->
 
 
 		<div class="sticky-zone"><!-- This container holds the violin and legend -->
 
 			<div class="legend-zone"><!-- legend is inserted here by js --></div>
-			<h2>Spending Trends:</h2>
 
 			<div class='violinplot-holder'>
 				<h3>Distribution of spending as a percent of each school's total expenses</h3>
@@ -131,6 +128,7 @@ End tasks to be completed -->
 		</div><!-- End sticky-zone -->
 
 		<div class='linecharts-holder'>
+			<h2>Spending Trends:</h2>
 			<p>
 				The second visualization, a violin plot, addresses the end-user's most important goals by allowing the user to explore the data from the comparison schools in several spending categories by generating violin plots that show the distribution of the values. This helps the user visualize areas of spending that are different to assess for statistical significance and possibly provide insight into where spending should be redirected. The height of each violin represents the range of the values, measured in standard deviations away from the mean. The width of the violin represents the frequency of the different values found in the data for this financial category. Hovering over any individual violin will provides details on demand to the user about the institution, year, and actual value of the datapoint.
 			</p>
@@ -215,7 +213,7 @@ End tasks to be completed -->
 	<script src='js/global.js'></script> <!-- color chart -->
 
 	<!-- Now we can build the violin and line graphs -->
-	<script src="js/ftelinegraph1.js"></script>
+	<script src="js/ftelinegraph.js"></script>
 	<script src="js/legend.js"></script>
 	<script src='js/violinplot.js'></script>
 	<script src='js/linegraph.js'></script>
