@@ -4,7 +4,7 @@
 // Based on Mike Bostock's margin convention
 // https://bl.ocks.org/mbostock/3019563
 
-function ftelinechart1() {
+function ftelinechart() {
     let margin = { top: 25, left: 40, right: 20, bottom: 20 },
 	  width = 775 - margin.left - margin.right,
       height = 425 - margin.top - margin.bottom,
