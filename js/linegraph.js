@@ -162,7 +162,8 @@ function linechart() {
 					.delay(20)
 					.duration(200)
 					.attr("r", 2)
-					.style("opacity", 1);
+					.style("opacity", 1)
+					.style("fill","white");
 			}
 		);
 
