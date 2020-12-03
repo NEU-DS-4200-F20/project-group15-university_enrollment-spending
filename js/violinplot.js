@@ -99,7 +99,6 @@ function violinplotchart() {
 			// console.log(sumstat,"second") //--> after turning into key-value
 
 			//get max bandwidth of each violin plot.
-
 			let maxNum = 0;
 
 			for (i in sumstat) {
@@ -142,11 +141,9 @@ function violinplotchart() {
 			);
 			// This makes the line smoother to give the violin appearance.
 			// Try d3.curveStep to see the difference
-		}
-
+		},);
 
 		// Add individual points with jitter
-		,);
 
 		let jitterWidth = 40;
 		svg
