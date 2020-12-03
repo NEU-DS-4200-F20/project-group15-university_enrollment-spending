@@ -10,10 +10,10 @@ let linewidth = 500
 
 function linechart() {
 	let margin = {
-		top: 30, //fit the y-axis titles
-		left: 80, //fit the y-axis labels
+		top: 30, // Make room for the y-axis titles
+		left: 80, // Make room for the y-axis labels
 		right: 10,
-		bottom: 40, //fit the x-axis labels
+		bottom: 40, // Make room for the x-axis labels
 	},
 	width = linewidth - margin.left - margin.right,
 	height = 280 - margin.top - margin.bottom,
