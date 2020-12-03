@@ -115,13 +115,13 @@ d3.csv("data/Data.csv").then((data) => {
 		(".legend-zone", legends);
 
 	//Create Total FTE chart
-	ftelinechart()
+	ftelinechart1()
 		.x((d) => d["Year"])
 		.xLabel("Year")
 		.y((d) => d["Total_FTE_Students"])
 		.yLabel("Total FTE Students")
 		.tooltipFields(["Total_FTE_Students"])
-		.yLabelOffset(40)(".total-fte-holder", data, legends);
+		.yLabelOffset(40)(".total-fte-holder1", data, legends);
 
 	// Used this to generate some data for Kurt. Please do not delete.
 	// ftelinechart()
@@ -176,17 +176,17 @@ d3.csv("data/Data.csv").then((data) => {
 
 				updateLineCharts(reDrawData);
 
-				ftelinechart()
+				ftelinechart1()
 					.x((d) => d["Year"])
 					.xLabel("Year")
 					.y((d) => d["Total_FTE_Students"])
 					.yLabel("Total FTE Students")
 					.tooltipFields(["Total_FTE_Students"])
 					.yLabelOffset(40)(
-						".total-fte-holder",
+						".total-fte-holder1",
 						reDrawData,
 						legends,
-					); // End ftelinechart
+					); // End ftelinechart1
 			}
 		);
 
