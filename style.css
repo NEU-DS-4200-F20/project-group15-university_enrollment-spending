@@ -20,19 +20,20 @@ h1, h2, h3 {
 /* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	height: 3700px; /* Extra height needed to allow for split scrolling */
+	height: 3680px; /* Extra height needed to allow for split scrolling */
 	margin: 40px auto;
 }
 
 		/* A container for the FTE line graph */
-		.total-fte-holder1 {
-			width: 800px;
-			margin: auto;
+		.total-fte-holder {
+			/* width: 800px; */
+			/* margin: auto; */
 			/* float: left; */
 		}
 
 		/* A column for text */
 		.side-text-column {
+			font-size: 16px;
 			max-width: 500px;
 			float: right;
 		}
@@ -43,7 +44,7 @@ h1, h2, h3 {
 			float: left;
 		}
 
-		/* A container that "sticks" to the top right corner of the
+		/* A container that "sticks" to the top left corner of the
 		screen while scrolling through content on the right. The
 		violin and legend containers reside inside this container*/
 		.sticky-zone {
@@ -53,32 +54,33 @@ h1, h2, h3 {
 			top: 0;
 			}
 
-				/* A container for the violinplot */
-				.violinplot-holder {
-					width: 800px;
-					float: left;
-					}
-
 				/* A container for the legend */
 				.legend-zone {
 					width: 800px;
 					margin: auto;
 					}
 
-		/* A container for the linegraphs */
+				/* A container for the violinplot */
+				.violinplot-holder {
+					width: 800px;
+					float: left;
+					}
+
+		/* A container for the linegraphs  pinned to the right side of the sticky-zone */
 		.linecharts-holder {
-			/* margin-top: 20px; Align the top graph with the violin plot */
+			font-size: 16px;
+			margin-top: 30px; /* Align the top graph with the violin plot */
 			float: right;
 			overflow: auto;
 			width: 500px;
 				/* when adjusting this number also look at:
-					linegraph.js linewidth = 500px */
+					linegraph.js linewidth = ?px */
 		}
 
 /* A temporary class for debugging */
 .blank-area {
 	width: 650px;
-	height: 2500px;
+	height: 300px;
 	margin: auto;
 }
 
