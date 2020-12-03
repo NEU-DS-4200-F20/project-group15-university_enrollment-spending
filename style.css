@@ -8,7 +8,7 @@ body {
 }
 
 h1, h2, h3 {
-	line-height: 1.2
+	line-height: 1.2;
 }
 
 /* A narrow column of text */
@@ -20,19 +20,27 @@ h1, h2, h3 {
 /* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	height: 3340px; /* Extra height needed to allow for split scrolling */
+	height: 3700px; /* Extra height needed to allow for split scrolling */
 	margin: 40px auto;
 }
 
 		/* A container for the FTE line graph */
-		.total-fte-holder {
-			width: 870px;
+		.total-fte-holder1 {
+			width: 800px;
 			margin: auto;
+			/* float: left; */
 		}
 
-		/* A wide column of text */
-		.full-width-column {
-			max-width: 1300px;
+		/* A column for text */
+		.side-text-column {
+			max-width: 500px;
+			float: right;
+		}
+
+		/* A column for a graph */
+		.side-graph-column {
+			max-width: 800px;
+			float: left;
 		}
 
 		/* A container that "sticks" to the top right corner of the
@@ -54,11 +62,12 @@ h1, h2, h3 {
 				/* A container for the legend */
 				.legend-zone {
 					width: 800px;
+					margin: auto;
 					}
 
 		/* A container for the linegraphs */
 		.linecharts-holder {
-			margin-top: 283px; /* Align the top graph with the violin plot */
+			/* margin-top: 20px; Align the top graph with the violin plot */
 			float: right;
 			overflow: auto;
 			width: 500px;
