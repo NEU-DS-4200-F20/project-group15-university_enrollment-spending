@@ -7,28 +7,36 @@ body {
 	"franklin gothic medium", "century gothic", "Liberation Sans", sans-serif;
 }
 
-h1, h2, h3 {
+h1 {
 	line-height: 1.2;
+}
+
+h2, h3 {
+	line-height: 0.8;
+}
+
+h4 {
+	line-height: 0.5;
 }
 
 /* A narrow column of text */
 .narrow-column {
 	max-width: 650px;
-	margin: 40px auto;
+	margin: 20px auto;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 /* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	height: 3680px; /* Extra height needed to allow for split scrolling */
-	margin: 40px auto;
+	height: 4050px; /* Extra height needed to allow for split scrolling */
+	margin: 20px auto;
 }
 
 		/* A container for the FTE line graph */
 		.total-fte-holder {
-			/* width: 800px; */
-			/* margin: auto; */
-			/* float: left; */
+			margin: auto;
 		}
 
 		/* A column for text */
@@ -36,6 +44,8 @@ h1, h2, h3 {
 			font-size: 16px;
 			max-width: 500px;
 			float: right;
+			text-align: justify;
+			text-justify: inter-word;
 		}
 
 		/* A column for a graph */
@@ -69,12 +79,14 @@ h1, h2, h3 {
 		/* A container for the linegraphs  pinned to the right side of the sticky-zone */
 		.linecharts-holder {
 			font-size: 16px;
-			margin-top: 30px; /* Align the top graph with the violin plot */
+			margin-top: 10px; /* Align the top graph with the violin plot */
 			float: right;
 			overflow: auto;
 			width: 500px;
 				/* when adjusting this number also look at:
 					linegraph.js linewidth = ?px */
+			text-align: justify;
+			text-justify: inter-word;
 		}
 
 /* A temporary class for debugging */
@@ -114,15 +126,28 @@ circle.selected {
 div.tooltip {
 	position: absolute;
 	text-align: left;
-	width: 200px;
-	height: 45px;
+	width: 210px;
+	height: 55px;
 	padding: 2px;
 	font: 12px sans-serif;
 	background: lightsteelblue;
 	border: 0px;
 	border-radius: 4px;
 	pointer-events: visible;
+}
 
+/* Format the tooltip */
+div.tooltip2 {
+	position: absolute;
+	text-align: left;
+	width: 170px;
+	height: 40px;
+	padding: 2px;
+	font: 12px sans-serif;
+	background: lightsteelblue;
+	border: 0px;
+	border-radius: 4px;
+	pointer-events: visible;
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
