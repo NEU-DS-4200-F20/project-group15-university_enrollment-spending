@@ -122,49 +122,43 @@ function linechart() {
 		.attr('r', 3)
 
 		//mouse events
-		.on('mouseover',
-			function (event, d) {
-				div
-				.transition()
+		.on('mouseover',function (event, d) {
+			div.transition()
 				.duration(200)
-				.style('opacity', 0.9)
-				.style('left', event.pageX - 105 + 'px')
-				.style('top', event.pageY - 70 + 'px');
+				.style('opacity', 0.9);
 				// tooltipFields[0] is Pct, [1] is FTE
 				div.html(
 					`<b>${d.SchoolName}</b><br/>
 					<b>${d.Year}</b><br/>
 					<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}</br>
-					<b>${tooltipFields[1]}</b>: ${d[tooltipFields[1]]}`
-				);
+					<b>${tooltipFields[1]}</b>: ${d[tooltipFields[1]]}`)
+					.style('left', event.pageX - 105 + 'px')
+					.style('top', event.pageY - 70 + 'px');
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
 			const selection = d3.select(this).raise();
-			selection
-				.transition()
+			selection.transition()
 				.delay('20')
 				.duration('200')
 				.attr('r', 6)
 				.style('opacity', 1)
 				.style('fill','purple');
-			}
-		)
+			})
 
-		.on('mouseout',
-			function (d) {
-				div.style('opacity', 0);
-				div.transition();
-				const selection = d3.select(this);
-				selection
-					.transition()
+		.on('mouseout',function (d) {
+			div.transition()
+				.duration(500)
+				.style('opacity', 0);
+
+			const selection = d3.select(this);
+				selection.transition()
 					.delay(20)
 					.duration(200)
 					.attr('r', 3)
 					.style('opacity', 1)
 					.style('fill','white');
-			}
-		);
+			});
 
 	return chart;
 
