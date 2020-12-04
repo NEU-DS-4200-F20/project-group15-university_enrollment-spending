@@ -112,8 +112,8 @@ circle.selected {
 
 /* x-axis and y-axis labels */
 .axisLabel {
-	fill: #457;
-	font-size: 14px;
+	fill: #333;
+	font-size: 16px;
 }
 
 /* School names in the legend */
