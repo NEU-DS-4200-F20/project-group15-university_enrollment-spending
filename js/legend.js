@@ -3,10 +3,10 @@ function legend() {
 		top: 10,
 		right: 10,
 		bottom: 10,
-		left: 50,
+		left: 60,
 		},
-		width = 1300,
-		height = 100;
+		width = 730,
+		height = 90;
 
 	let selectedSchools = [];
 
@@ -35,7 +35,7 @@ function legend() {
 				"transform",
 				(_, i) => {
 					if (i % 3 === 0) {
-						yPos += 30;
+						yPos += 25;
 						xPos = 0;
 					}
 					else {
