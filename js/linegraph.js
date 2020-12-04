@@ -128,10 +128,10 @@ function linechart() {
 				.style('opacity', 0.9);
 				// tooltipFields[0] is Pct, [1] is FTE
 				div.html(
-					`<b>${d.SchoolName}</b><br/>
-					<b>${d.Year}</b><br/>
-					<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}</br>
-					<b>${tooltipFields[1]}</b>: ${d[tooltipFields[1]]}`)
+					`<b>${d.SchoolName}<br/>
+					Year: </b>${d.Year}<br/>
+					<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}%</br>
+					<b>${tooltipFields[1]}</b>: $${d[tooltipFields[1]]}`)
 					.style('left', event.pageX - 105 + 'px')
 					.style('top', event.pageY - 70 + 'px');
 
