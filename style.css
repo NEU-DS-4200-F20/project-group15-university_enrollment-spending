@@ -133,7 +133,7 @@ div.tooltip {
 	background: lightsteelblue;
 	border: 0px;
 	border-radius: 4px;
-	pointer-events: visible;
+	pointer-events: none;
 }
 
 /* Format the tooltip */
@@ -147,7 +147,7 @@ div.tooltip2 {
 	background: lightsteelblue;
 	border: 0px;
 	border-radius: 4px;
-	pointer-events: visible;
+	pointer-events: none;
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
