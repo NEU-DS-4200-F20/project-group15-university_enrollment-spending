@@ -176,17 +176,17 @@ d3.csv("data/Data.csv").then((data) => {
 
 				updateLineCharts(reDrawData);
 
-				ftelinechart1()
+				ftelinechart()
 					.x((d) => d["Year"])
 					.xLabel("Year")
 					.y((d) => d["Total_FTE_Students"])
 					.yLabel("Total FTE Students")
 					.tooltipFields(["Total_FTE_Students"])
 					.yLabelOffset(40)(
-						".total-fte-holder1",
+						".total-fte-holder",
 						reDrawData,
 						legends,
-					); // End ftelinechart1
+					); // End ftelinechart
 			}
 		);
 
