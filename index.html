@@ -27,26 +27,12 @@
 
 	Violins
 Make graph text not-selectable (axis)
-Less saturated colors
-
-	Other
-Remove Console logs
-
 
 Filtering schools in the legend is great, but there is no way to clear the selections
 without manually clicking each color again or reloading the page. Can this be fixed?
 
-Kurt said he would love to see this in the tooltips:
-		School Name
-		Year
-		Per FTE Student:   $x,xxx
-		Pct of Expenses:    xx.x%
-		Actual $ amount: $xxx,xxx
-
-Kurt also said he would love to have functionality to switch chart data from 'Dollars
+Kurt said he would love to have functionality to switch chart data from 'Dollars
 per FTE Student' to 'Percent of Expenses' but this may be a big undertaking.
-Maybe later. Low priority for now.
-
 
 End tasks to be completed -->
 
@@ -127,7 +113,7 @@ End tasks to be completed -->
 				The adjacent line graph shows each school's reported Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments by calculating, based on the aggregate total number of credit hours, how many students would have attended if they were all enrolled full-time for an entire academic year.
 			</p>
 			<p>
-				With this dataset, we see Bridgewater State (red) has the most FTE Students of the MA State schools, and the UMass schools (gray) have the highest average enrollment among all MA public schools. Both schools have reported steady growth over the timeframe. Fitchburg State University (green) had the fewest enrollments in every year except 2010. On average, MA public schools (light blue) have reported positive growth over time, but Salem State University (purple) has shown steady negative growth since 2010. Most schools have reported flat or negative growth over the last two years.
+				We can see with this visualization that, on average, MA public schools (light blue) have reported positive growth over time, but Salem State University (purple) has shown steady negative growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools, and the UMass schools (gray) have the highest average enrollment among all MA public schools. Both schools have reported steady growth over the timeframe. Since these schools seem to be getting it right, we would look for similar spending patterns between these schools to find a correlation between certain expenses and increasing enrollments.
 			</p>
 			<p>
 				In this line graph, hovering over any point in the graph will reveal more data about that specific point. Below the line graph, click any colored dot in the legend to filter down to show only selected schools. Continue clicking schools to add or remove them from the visualizations.
@@ -156,10 +142,7 @@ End tasks to be completed -->
 			<h3>Spending Trends:</h3>
 			<h4>Distribution</h4>
 			<p>
-				In the visualization to the right, a violin plot addresses an important concern of the end-user by showing the distribution of the data from SSU and the comparison schools in each of the eight expense categories as a percentage of each school's total spending. This allows the user to visualize each area of spending to determine the range of spending and help assess for statistical significance.
-			</p>
-			<p>
-				The colored dots each represent one data point, the percent of the total budget spent per category in a particular year. Each color represents a different school (see the legend below the line charts). The violin body gives a visual representation of how the data is distributed, and can be read similar to a sideways histogram. The height of each violin body represents the range of the values, measured in standard deviations away from the mean. The width of each violin body represents the frequency of the values found in the data for this financial category, with many values in a narrow range resulting in a wide violin body. Any group of data points outside of the main body of data should be investigated for correlation with increases or decreases in enrollment.
+				In the visualization to the right, a violin plot addresses an important concern of the end-user by showing the distribution of the data from SSU and the comparison schools in each of the eight expense categories as a percentage of each school's total spending. This allows the user to visualize each area of spending to determine the range of spending and help assess for statistical significance. The colored dots each represent one data point, the percent of the total budget spent per category in a particular year. Each color represents a different school (use the legend above the violin plots). The violin body gives a visual representation of how the data is distributed, and can be read similar to a sideways histogram. The height of each violin body represents the range of the values. The width of each violin body represents the frequency of the values found in the data for this financial category, with many values in a narrow range resulting in a wide violin body. Any group of data points outside of the main body of data should be investigated for correlation with increases or decreases in enrollment.
 			</p>
 			<h4>Time-series</h4>
 			<p>
