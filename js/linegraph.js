@@ -119,21 +119,21 @@ function linechart() {
 		.style("stroke-width", 2)
 		.attr("cx", X)
 		.attr("cy", Y)
-		.attr("r", 2)
+		.attr("r", 3)
 
 		//mouse events
-		.on(
-			"mouseover",
+		.on("mouseover",
 			function (event, d) {
 				div
 				.transition()
 				.duration(200)
 				.style("opacity", 0.9)
-				.style("left", event.pageX - 200 + "px")
-				.style("top", event.pageY - 55 + "px");
+				.style("left", event.pageX - 105 + "px")
+				.style("top", event.pageY - 70 + "px");
 				// tooltipFields[0] is Pct, [1] is FTE
 				div.html(
 					`<b>${d.SchoolName}</b><br/>
+					<b>${d.Year}</b><br/>
 					<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}</br>
 					<b>${tooltipFields[1]}</b>: ${d[tooltipFields[1]]}`
 				);
@@ -151,8 +151,7 @@ function linechart() {
 			}
 		)
 
-		.on(
-			"mouseout",
+		.on("mouseout",
 			function (d) {
 				div.style("opacity", 0);
 				div.transition();
@@ -161,7 +160,7 @@ function linechart() {
 					.transition()
 					.delay(20)
 					.duration(200)
-					.attr("r", 2)
+					.attr("r", 3)
 					.style("opacity", 1)
 					.style("fill","white");
 			}
