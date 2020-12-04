@@ -4,9 +4,9 @@ violinwidth = 800
 
 function violinplotchart() {
 	//Define the margins
-	let margin = {top: 30,right: 50,bottom: 110,left: 20},
+	let margin = {top: 30,right: 50,bottom: 150,left: 20},
 	width = violinwidth - margin.left - margin.right,
-	height = 650 - margin.top - margin.bottom,
+	height = 690 - margin.top - margin.bottom,
 	xFields = [],
 	xLabelText = "",
 	yLabelText = "",
@@ -70,6 +70,7 @@ function violinplotchart() {
 		.selectAll('text')
 		.attr("transform", "rotate(-60)")
 		.attr('text-anchor', 'end')
+		.attr('font-size', '14px')
 
 		//Features of the histogram
 		const histogram = d3
@@ -152,54 +153,52 @@ function violinplotchart() {
 		.enter()
 		.append("g")
 		.selectAll("circle")
-		.data(
-			(d) => Object.entries(d)
+		.data((d) => Object.entries(d)
 			.filter(([key, _]) => xFields.includes(key))
 			.map((e) => ({
 				field: e[0],
 				value: e[1],
 				name: d.SchoolName,
 				year: d.Year,
-			}))
-		)
+			})))
+
 		.enter()
 		.append("circle")
-		.attr(
-			"cx", (d) => {
+		.attr("cx", (d) => {
 				d.cx =
 				xScale(d.field) +
 				xScale.bandwidth() / 2 -
 				Math.random() * jitterWidth;
 				return d.cx;
-			}
-		)
-		.attr(
-			"cy", function (d) {
+			})
+
+		.attr("cy", function (d) {
 				d.cy = yScale(parseFloat(d.value));
 				return d.cy;
-			}
-		)
-		.attr("r", 5)
+			})
+
+		.attr("r", 4)
 		.style("fill", function (d) {
 			const matched = legends.find((l) => l.name === d.name);
 			return matched.color;
 		})
+
 		.attr("stroke", "black")
-		.on(
-			"mouseover",
+		.on("mouseover",
 			function (e, d) {
 				d3
 				.select(this)
 				.style("stroke","blue")
 				.style("stroke-width", 2);
-			}
-		)
-		.on(
-			"mouseout",
+			})
+
+		.on("mouseout",
 			function (e, d) {
-				d3.select(this).style("stroke", "white").style("stroke-width", 1);
-			}
-		);
+				d3
+				.select(this)
+				.style("stroke", "white")
+				.style("stroke-width", 1);
+			});
 
 		// X axis label
 		xAxis
@@ -214,10 +213,7 @@ function violinplotchart() {
 		.append("text")
 		.attr("class", "axisLabel")
 		.attr("text-anchor", "start")
-		.attr(
-			"transform",
-			"translate(" + (yLabelOffsetPx - margin.left / 2) + ", -10)"
-		)
+		.attr("transform","translate(" + (yLabelOffsetPx - margin.left / 2) + ", -10)")
 		.text(yLabelText);
 
 		svg.call(brush);
