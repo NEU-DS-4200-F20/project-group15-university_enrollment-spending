@@ -32,6 +32,7 @@ function violinplotchart() {
 		//This will help in setting the Y-axis Max Value
 		let maxY = 0;
 
+		// Find the maximum value to determine the scale of the y-axis
 		data.forEach(
 			(record) => {
 				xFields.forEach((field) => {
@@ -45,30 +46,33 @@ function violinplotchart() {
 			}
 		);
 
+		// build the y-axis
 		yScale
 		.domain([0, maxY + maxY*.05]) // 5% cushion added to the top of the violin plot chart
 		.rangeRound([height, 0]);
 
+		//add y-axis to the bottom of svg
 		const yAxis = svg
 		.append('g')
 		.call(d3.axisLeft(yScale));
 
-		//Setting up x-axis
+		// Build the x-axis
 		xScale
 		.range([0, width])
 		.domain(xFields)
 		.padding(0.05);
 		// padding(0.05) is the space between 2 violins. 0 = no padding. 1 = maximum.
 
-		//add x-axis at the bottom of svg
+		//add x-axis to the bottom of svg
 		const xAxis = svg
 		.append('g')
 		.attr('transform', 'translate(0,' + height + ')')
 		.call(d3.axisBottom(xScale));
 
+		// format the x-axis labels
 		xAxis
 		.selectAll('text')
-		.attr('transform', 'rotate(-60)')
+		.attr('transform', 'rotate(-45)')
 		.attr('text-anchor', 'end')
 		.attr('font-size', '14px')
 
@@ -145,7 +149,6 @@ function violinplotchart() {
 		},);
 
 		// Add individual points with jitter
-
 		let jitterWidth = 40;
 		svg
 		.selectAll('.indPoints')
@@ -184,6 +187,7 @@ function violinplotchart() {
 			return matched.color;
 		})
 
+		// What happens to the plots when hovering
 		.attr('stroke', 'black')
 		.on('mouseover',
 			function (e, d) {
@@ -192,7 +196,7 @@ function violinplotchart() {
 				.style('stroke','blue')
 				.style('stroke-width', 2);
 			})
-
+		// What happens to the plots when no longer hovering
 		.on('mouseout',
 			function (e, d) {
 				d3
@@ -201,7 +205,7 @@ function violinplotchart() {
 				.style('stroke-width', 1);
 			});
 
-		// X axis label
+		// Format X axis label
 		xAxis
 		.append('text')
 		.attr('class', 'axisLabel')
@@ -209,7 +213,7 @@ function violinplotchart() {
 		.attr('transform', `translate(${width + margin.right - 40}, 100)`)
 		.text(xLabelText);
 
-		// Y axis and label
+		// Format Y axis label
 		yAxis
 		.append('text')
 		.attr('class', 'axisLabel')
