@@ -62,10 +62,7 @@
 			.append('text')
 			.attr('class', 'axisLabel')
 			.attr('text-anchor', 'start')
-			.attr(
-			'transform',
-			'translate(' + (yLabelOffsetPx - margin.left) + ', -10)'
-			)
+			.attr('transform','translate(' + (yLabelOffsetPx - margin.left) + ', -10)')
 			.text(yLabelText);
 
 		// group path data per each school
@@ -118,9 +115,10 @@
 			div.html(
 				`<b>${d.SchoolName}<br/>
 				Year: </b>${d.Year}<br/>
-				<b>Total FTE Students</b>: ${d[tooltipFields[0]]}`)
-				.style('left', event.pageX - 90 + 'px')
-				.style('top', event.pageY - 55 + 'px');
+				<b>Total FTE Students</b>: ${d[tooltipFields[0]]}<br/>
+				<b>Annual Enrollment Growth</b>: ${d[tooltipFields[1]]}%`)
+				.style('left', event.pageX - 100 + 'px')
+				.style('top', event.pageY - 70 + 'px');
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
