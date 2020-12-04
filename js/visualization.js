@@ -94,7 +94,6 @@ d3.csv('data/Data.csv').then((data) => {
 		.xLabel('Year')
 		.y((d) => d['Total_FTE_Students'])
 		.yLabel('Total FTE Students')
-		// .tooltipFields(['Total_FTE_Students'], ['FTE_Student_Growth'])
 		.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
 		.yLabelOffset(40)('.total-fte-holder', data, legends);
 
@@ -156,8 +155,8 @@ d3.csv('data/Data.csv').then((data) => {
 					.y((d) => d['Total_FTE_Students'])
 					.yLabel('Total FTE Students')
 					.tooltipFields(
-						['Total_FTE_Students'],
-						['FTE_Student_Growth'])
+						['Total_FTE_Students',
+						'FTE_Student_Growth'])
 					.yLabelOffset(40)(
 						'.total-fte-holder',
 						reDrawData,
