@@ -9,7 +9,6 @@ d3.csv('data/Data.csv').then((data) => {
 	const dispatchUpdateSelectionString = 'selectionUpdated',
 
 	dispatchFilterString = 'filterCircles';
-	// console.log(data, 'This is all the data') //--> Uncomment to debug
 
 	// Define the columns (fields) used in the violinplot and linecharts
 	const fields = [
@@ -77,37 +76,12 @@ d3.csv('data/Data.csv').then((data) => {
 				'Other_PerFTE'
 			],
 		},
-			// {
-			// slabel: 'TotalExpenses_PerFTE',
-			// dlabel: 'TotalExpenses_PerFTE',
-			// tooltipFields: [
-			// 	'TotalExpenses_PerFTE',
-			// 	'TotalExpenses_PerFTE'
-			// 	],
-			// },
-			// {
-			// slabel: 'TotalWages_Pct',
-			// dlabel: 'TotalWages_PerFTE',
-			// tooltipFields: [
-			// 	'TotalWages_Pct',
-			// 	'TotalWages_PerFTE'
-			// 	],
-			// },
-			// {
-			// slabel: 'TotalFringeBenefits_Pct',
-			// dlabel: 'TotalFringeBenefits_PerFTE',
-			// tooltipFields: [
-			// 	'TotalFringeBenefits_Pct',
-			// 	'TotalFringeBenefits_PerFTE'
-			// 	],
-			// },
 	]; // end fields
 
 	// Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
 	const legends = [
 		...new Set(data.map((e) => e.SchoolName)),
 		].map((sn, i) => ({ name: sn, color: colors[i] }));
-		// console.log(legends, 'These are the colors') //--> Uncomment to debug
 
 	//Create legend for schoolnames
 	const legendChart = legend()
@@ -120,7 +94,8 @@ d3.csv('data/Data.csv').then((data) => {
 		.xLabel('Year')
 		.y((d) => d['Total_FTE_Students'])
 		.yLabel('Total FTE Students')
-		.tooltipFields(['Total_FTE_Students'])
+		// .tooltipFields(['Total_FTE_Students'], ['FTE_Student_Growth'])
+		.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
 		.yLabelOffset(40)('.total-fte-holder', data, legends);
 
 	// Used this to generate some data for Kurt. Please do not delete.
@@ -165,7 +140,6 @@ d3.csv('data/Data.csv').then((data) => {
 			dispatchFilterString,
 
 			function (selectedSchools) {
-			// console.log(selectedSchools, 'selectedSchools');
 
 				// get filtered data from selection Data.
 				const reDrawData = data.filter(
@@ -181,7 +155,9 @@ d3.csv('data/Data.csv').then((data) => {
 					.xLabel('Year')
 					.y((d) => d['Total_FTE_Students'])
 					.yLabel('Total FTE Students')
-					.tooltipFields(['Total_FTE_Students'])
+					.tooltipFields(
+						['Total_FTE_Students'],
+						['FTE_Student_Growth'])
 					.yLabelOffset(40)(
 						'.total-fte-holder',
 						reDrawData,
@@ -197,14 +173,12 @@ d3.csv('data/Data.csv').then((data) => {
 		dispatchUpdateSelectionString,
 		function (selectedData) {
 			const one = selectedData[0];
-			// console.log(selectedData, 'This was selected') // Uncomment to debug;
 
 			// find records that match the brushed plots
 			if (one) {
 
 				// unique schoolNames from selected Data
 				const schoolNames = [...new Set(selectedData.map((record) => record.name))];
-				// console.log(schoolNames, 'schoolnames') // Uncomment to debug;
 
 				const years = [...new Set(selectedData.map((d) => d.year))];
 
