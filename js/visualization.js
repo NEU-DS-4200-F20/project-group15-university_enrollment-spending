@@ -46,9 +46,9 @@ d3.csv('data/Data.csv').then((data) => {
 			],
 		},
 		{
-		slabel: 'InstitutionalSupport_Pct',
-		dlabel: 'InstitutionalSupport_PerFTE',
-		tooltipFields: [
+			slabel: 'InstitutionalSupport_Pct',
+			dlabel: 'InstitutionalSupport_PerFTE',
+			tooltipFields: [
 				'InstitutionalSupport_Pct',
 				'InstitutionalSupport_PerFTE',
 			],
