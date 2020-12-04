@@ -140,8 +140,8 @@ div.tooltip {
 div.tooltip2 {
 	position: absolute;
 	text-align: left;
-	width: 170px;
-	height: 40px;
+	width: 200px;
+	height: 55px;
 	padding: 2px;
 	font: 12px sans-serif;
 	background: lightsteelblue;
