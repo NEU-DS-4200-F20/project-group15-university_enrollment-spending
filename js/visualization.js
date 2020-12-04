@@ -150,7 +150,7 @@ d3.csv('data/Data.csv').then((data) => {
 	// Create the violinplots, similar to Assignment 8, slightly modified
 	const violin = violinplotchart()
 		.xFields(fields.map((d) => d.slabel))
-		.xLabel('Category')
+		.xLabel(`Expense Categories`)
 		.yLabel('Percent of Total Expenses')
 		.selectionDispatcher(d3.dispatch(dispatchUpdateSelectionString))(
 			'.violinplot-holder',
