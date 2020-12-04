@@ -36,12 +36,9 @@ function violinplotchart() {
 		data.forEach(
 			(record) => {
 				xFields.forEach((field) => {
-					//console.log(field, 'This is a field') //--> uncomment to debug
 					const fieldMax = parseFloat(record[field]);
-					//console.log(fieldMax, 'This is the value in each record')
 					//I parsed it because it was treating the number as text
 					if (maxY < fieldMax) {maxY = fieldMax;}
-					// console.log(maxY, 'Final value of maxY')
 				});
 			}
 		);
@@ -96,12 +93,10 @@ function violinplotchart() {
 			);
 
 			//get array from Map type --> we are turning it into key, value
-			//console.log(sumstat, 'Befor turning into key-value') //--> uncomment to debug
 			sumstat = Array.from(sumstat.entries()).map(([key, value]) => ({
 				key: key,
 				value: value,
 			}));
-			// console.log(sumstat,'second') //--> after turning into key-value
 
 			//get max bandwidth of each violin plot.
 			let maxNum = 0;
