@@ -7,7 +7,7 @@
 	function ftelinechart() {
 		let margin = { top: 25, left: 40, right: 20, bottom: 30 },
 		width = 775 - margin.left - margin.right,
-		height = 450 - margin.top - margin.bottom,
+		height = 475 - margin.top - margin.bottom,
 		xValue = (d) => d[0],
 		yValue = (d) => d[1],
 		xLabelText = '',
