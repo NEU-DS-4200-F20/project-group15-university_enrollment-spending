@@ -25,14 +25,25 @@
 
 /********************** TASKS TO BE COMPLETED *************************/
 
-	Violins
-Make graph text not-selectable (axis)
+	Graphs
+Make graph text not-selectable (axis labels)
+Add $ or % to y-axis labels
 
-Filtering schools in the legend is great, but there is no way to clear the selections
+	Legend
+Filtering schools in the legend is great, but there is no way to reset the selections
 without manually clicking each color again or reloading the page. Can this be fixed?
 
-Kurt said he would love to have functionality to switch chart data from 'Dollars
-per FTE Student' to 'Percent of Expenses' but this may be a big undertaking.
+Kurt's first request was to be able to have more schools in the analysis. Like 25 of them.
+I think this would require the use of multiple data files and allow switching in the fly.
+Can either of you think of a good way to implement this? If so, I can easily build the
+data files, each holding a basket of SSU plus 6-8 other schools. This would happen by the
+user's selection determining the filename applied in visualization.js line 8. Thoughts?
+
+Kurt said he would love to have functionality to switch chart data from 'Dollars per FTE
+Student' to 'Percent of Expenses'. I imagine this would work in a similar way. We have two
+column lists (one is percent, the other is FTE) and the user can select which one they want.
+Actually, one option would be to use all the slabels and the other option would be to use
+all the dlabels. See visualization.js lines 13 thru 79. Thoughts?
 
 End tasks to be completed -->
 
