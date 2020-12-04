@@ -13,26 +13,26 @@ function legend() {
 	function chart(selector, data) {
 		let svg = d3
 		.select(selector)
-		.append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom);
+		.append('svg')
+		.attr('width', width + margin.left + margin.right)
+		.attr('height', height + margin.top + margin.bottom);
 
 		svg = svg
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			.append('g')
+			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		// add legends into chart if applicable
 		let
 			yPos = 0,
 			xPos = 0;
 		const legendG = svg
-			.selectAll(".legend-for-schoolname")
+			.selectAll('.legend-for-schoolname')
 			.data(data)
 			.enter()
-			.append("g")
-			.attr("class", "legend-for-schoolname")
+			.append('g')
+			.attr('class', 'legend-for-schoolname')
 			.attr(
-				"transform",
+				'transform',
 				(_, i) => {
 					if (i % 3 === 0) {
 						yPos += 25;
@@ -46,20 +46,20 @@ function legend() {
 			);
 
 		legendG
-		.append("circle")
-		.style("fill", (d) => d.color)
-		.attr("stroke", "black")
-		.attr("r", 7)
+		.append('circle')
+		.style('fill', (d) => d.color)
+		.attr('stroke', 'black')
+		.attr('r', 7)
 		.on(
-			"click",
+			'click',
 			function (event, d) {
 				if (selectedSchools.includes(d.name)) {
 					selectedSchools = selectedSchools.filter((s) => s !== d.name);
-					d3.select(this).style("stroke", "black").style("stroke-width", 1);
+					d3.select(this).style('stroke', 'black').style('stroke-width', 1);
 				}
 				else{
 					selectedSchools = [...selectedSchools, d.name];
-					d3.select(this).style("stroke", "pink").style("stroke-width", 3);
+					d3.select(this).style('stroke', 'pink').style('stroke-width', 3);
 				}
 
 				// Get the name of our dispatcher's event
@@ -71,11 +71,11 @@ function legend() {
 		);
 
 		legendG
-			.append("text")
-			.attr("class", "legend-text")
-			.attr("dx", "1em")
-			.attr("dy", ".4em")
-			.style("fill", "black")
+			.append('text')
+			.attr('class', 'legend-text')
+			.attr('dx', '1em')
+			.attr('dy', '.4em')
+			.style('fill', 'black')
 			.text((d) => d.name);
 
 		return chart;

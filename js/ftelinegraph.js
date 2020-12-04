@@ -10,8 +10,8 @@
 		height = 450 - margin.top - margin.bottom,
 		xValue = (d) => d[0],
 		yValue = (d) => d[1],
-		xLabelText = "",
-		yLabelText = "",
+		xLabelText = '',
+		yLabelText = '',
 		yLabelOffsetPx = 0,
 		xScale = d3.scalePoint(),
 		yScale = d3.scaleLinear(),
@@ -20,16 +20,16 @@
 		// Create the chart by adding an svg to the div with the id
 		// specified by the selector using the given data
 		function chart(selector, data, legends) {
-		d3.select(selector).selectAll("*").remove();
+		d3.select(selector).selectAll('*').remove();
 		let svg = d3
 			.select(selector)
-			.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom);
+			.append('svg')
+			.attr('width', width + margin.left + margin.right)
+			.attr('height', height + margin.top + margin.bottom);
 
 		svg = svg
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			.append('g')
+			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		//Define scales
 		xScale.domain(d3.group(data, xValue).keys()).rangeRound([0, width]);
@@ -43,28 +43,28 @@
 
 		// X axis and label
 		let xAxis = svg
-			.append("g")
-			.attr("transform", "translate(0," + height + ")")
+			.append('g')
+			.attr('transform', 'translate(0,' + height + ')')
 			.call(d3.axisBottom(xScale));
 
 
 		xAxis
-			.append("text")
-			.attr("class", "axisLabel")
-			.attr("text-anchor", "end")
-			.attr("transform", "translate(" + width + ",-10)")
+			.append('text')
+			.attr('class', 'axisLabel')
+			.attr('text-anchor', 'end')
+			.attr('transform', 'translate(' + width + ',-10)')
 			.text(xLabelText);
 
 		// Y axis and label
 		svg
-			.append("g")
+			.append('g')
 			.call(d3.axisLeft(yScale))
-			.append("text")
-			.attr("class", "axisLabel")
-			.attr("text-anchor", "start")
+			.append('text')
+			.attr('class', 'axisLabel')
+			.attr('text-anchor', 'start')
 			.attr(
-			"transform",
-			"translate(" + (yLabelOffsetPx - margin.left) + ", -10)"
+			'transform',
+			'translate(' + (yLabelOffsetPx - margin.left) + ', -10)'
 			)
 			.text(yLabelText);
 
@@ -73,49 +73,49 @@
 
 		// Add the lines
 		const pathG = svg
-			.selectAll(".path-g")
+			.selectAll('.path-g')
 			.data(Array.from(sumstat))
 			.enter()
-			.append("g");
+			.append('g');
 
 		pathG
-			.append("path")
-			.attr("fill", "none")
-			.attr("stroke", (d) => {
+			.append('path')
+			.attr('fill', 'none')
+			.attr('stroke', (d) => {
 			//d[0] is schoolname, d[1] is line data to draw line
 			const matchedColor = legends.find((e) => e.name === d[0]).color;
 			return matchedColor;
 			})
-			.attr("stroke-width", 3)
-			.attr("d", (d) => d3.line().x(X).y(Y)(d[1]));
+			.attr('stroke-width', 3)
+			.attr('d', (d) => d3.line().x(X).y(Y)(d[1]));
 
 		//define the div for the tooltip
 		const div = d3
-			.select("body")
-			.append("div")
-			.attr("class", "tooltip2")
-			.style("opacity", 0);
+			.select('body')
+			.append('div')
+			.attr('class', 'tooltip2')
+			.style('opacity', 0);
 
 		// Add the points
 		let points = pathG
-			.selectAll(".line-point")
+			.selectAll('.line-point')
 			.data((d) => d[1])
 			.enter()
-			.append("circle")
-			.attr("class", "point line-point")
-			.style("stroke-width", 2)
-			.attr("cx", X)
-			.attr("cy", Y)
-			.attr("r", 3)
+			.append('circle')
+			.attr('class', 'point line-point')
+			.style('stroke-width', 2)
+			.attr('cx', X)
+			.attr('cy', Y)
+			.attr('r', 3)
 
 			//mouse events
-			.on("mouseover", function (event, d) {
+			.on('mouseover', function (event, d) {
 			div
 				.transition()
 				.duration(200)
-				.style("opacity", 0.9)
-				.style("left", event.pageX - 90 + "px")
-				.style("top", event.pageY - 55 + "px");
+				.style('opacity', 0.9)
+				.style('left', event.pageX - 90 + 'px')
+				.style('top', event.pageY - 55 + 'px');
 			div.html(
 				`<b>${d.SchoolName}<br/>
 				Year: </b>${d.Year}<br/>
@@ -129,25 +129,25 @@
 			const selection = d3.select(this).raise();
 			selection
 				.transition()
-				.delay("20")
-				.duration("200")
-				.attr("r", 6)
-				.style("opacity", 1)
-				.style("fill", "purple");
+				.delay('20')
+				.duration('200')
+				.attr('r', 6)
+				.style('opacity', 1)
+				.style('fill', 'purple');
 			})
 
 
-			.on("mouseout", function (d) {
+			.on('mouseout', function (d) {
 			div.transition();
-			div.style("opacity", 0);
+			div.style('opacity', 0);
 			const selection = d3.select(this);
 			selection
 				.transition()
 				.delay('20')
 				.duration('200')
-				.attr("r", 3)
-				.style("opacity", 1)
-				.style("fill", "white");
+				.attr('r', 3)
+				.style('opacity', 1)
+				.style('fill', 'white');
 			});
 
 		return chart;
