@@ -8,9 +8,9 @@ function violinplotchart() {
 	width = violinwidth - margin.left - margin.right,
 	height = 690 - margin.top - margin.bottom,
 	xFields = [],
-	xLabelText = "",
-	yLabelText = "",
-	yLabelOffsetPx = 0,
+	xLabelText = '',
+	yLabelText = '',
+	yLabelOffsetPx = -10,
 	xScale = d3.scaleBand(),
 	xSubScale = d3.scaleLinear(),
 	yScale = d3.scaleLinear(),
@@ -20,13 +20,13 @@ function violinplotchart() {
 	function chart(selector, data, legends) {
 		let svg = d3
 		.select(selector)
-		.append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
+		.append('svg')
+		.attr('width', width + margin.left + margin.right)
+		.attr('height', height + margin.top + margin.bottom)
 
 		svg = svg
-		.append("g")
-		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		.append('g')
+		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		//get Max Y value from all xFields value.
 		//This will help in setting the Y-axis Max Value
@@ -35,9 +35,9 @@ function violinplotchart() {
 		data.forEach(
 			(record) => {
 				xFields.forEach((field) => {
-					//console.log(field, "This is a field") //--> uncomment to debug
+					//console.log(field, 'This is a field') //--> uncomment to debug
 					const fieldMax = parseFloat(record[field]);
-					//console.log(fieldMax, "This is the value in each record")
+					//console.log(fieldMax, 'This is the value in each record')
 					//I parsed it because it was treating the number as text
 					if (maxY < fieldMax) {maxY = fieldMax;}
 					// console.log(maxY, 'Final value of maxY')
@@ -50,7 +50,7 @@ function violinplotchart() {
 		.rangeRound([height, 0]);
 
 		const yAxis = svg
-		.append("g")
+		.append('g')
 		.call(d3.axisLeft(yScale));
 
 		//Setting up x-axis
@@ -62,13 +62,13 @@ function violinplotchart() {
 
 		//add x-axis at the bottom of svg
 		const xAxis = svg
-		.append("g")
-		.attr("transform", "translate(0," + height + ")")
+		.append('g')
+		.attr('transform', 'translate(0,' + height + ')')
 		.call(d3.axisBottom(xScale));
 
 		xAxis
 		.selectAll('text')
-		.attr("transform", "rotate(-60)")
+		.attr('transform', 'rotate(-60)')
 		.attr('text-anchor', 'end')
 		.attr('font-size', '14px')
 
@@ -92,12 +92,12 @@ function violinplotchart() {
 			);
 
 			//get array from Map type --> we are turning it into key, value
-			//console.log(sumstat, "Befor turning into key-value") //--> uncomment to debug
+			//console.log(sumstat, 'Befor turning into key-value') //--> uncomment to debug
 			sumstat = Array.from(sumstat.entries()).map(([key, value]) => ({
 				key: key,
 				value: value,
 			}));
-			// console.log(sumstat,"second") //--> after turning into key-value
+			// console.log(sumstat,'second') //--> after turning into key-value
 
 			//get max bandwidth of each violin plot.
 			let maxNum = 0;
@@ -116,24 +116,24 @@ function violinplotchart() {
 			.range([0, xScale.bandwidth()])
 			.domain([-maxNum, maxNum]);
 			svg
-			.selectAll("myViolin")
+			.selectAll('myViolin')
 			.data(sumstat)
 			.enter() // So now we are working group per group
-			.append("g")
+			.append('g')
 			.attr(
-				"transform", function () {
-					return "translate(" + xScale(field) + " ,0)";
+				'transform', function () {
+					return 'translate(' + xScale(field) + ' ,0)';
 				}
 			) // Translation on the right to be at the group position
-			.append("path")
+			.append('path')
 			.datum(
 				function (d) {
 					return d.value;
 				}
 			) // So now we are working bin per bin
-			.style("fill", "grey")
-			.style("stroke", "grey")
-			.attr("d",d3
+			.style('fill', 'grey')
+			.style('stroke', 'grey')
+			.attr('d',d3
 				.area()
 				.x0(xSubScale(0))
 				.x1(function (d) {return xSubScale(d.length);})
@@ -148,11 +148,11 @@ function violinplotchart() {
 
 		let jitterWidth = 40;
 		svg
-		.selectAll(".indPoints")
+		.selectAll('.indPoints')
 		.data(data)
 		.enter()
-		.append("g")
-		.selectAll("circle")
+		.append('g')
+		.selectAll('circle')
 		.data((d) => Object.entries(d)
 			.filter(([key, _]) => xFields.includes(key))
 			.map((e) => ({
@@ -163,8 +163,8 @@ function violinplotchart() {
 			})))
 
 		.enter()
-		.append("circle")
-		.attr("cx", (d) => {
+		.append('circle')
+		.attr('cx', (d) => {
 				d.cx =
 				xScale(d.field) +
 				xScale.bandwidth() / 2 -
@@ -172,54 +172,55 @@ function violinplotchart() {
 				return d.cx;
 			})
 
-		.attr("cy", function (d) {
+		.attr('cy', function (d) {
 				d.cy = yScale(parseFloat(d.value));
 				return d.cy;
 			})
 
-		.attr("r", 4)
-		.style("fill", function (d) {
+		// 'r' is the size of the plots
+		.attr('r', 3)
+		.style('fill', function (d) {
 			const matched = legends.find((l) => l.name === d.name);
 			return matched.color;
 		})
 
-		.attr("stroke", "black")
-		.on("mouseover",
+		.attr('stroke', 'black')
+		.on('mouseover',
 			function (e, d) {
 				d3
 				.select(this)
-				.style("stroke","blue")
-				.style("stroke-width", 2);
+				.style('stroke','blue')
+				.style('stroke-width', 2);
 			})
 
-		.on("mouseout",
+		.on('mouseout',
 			function (e, d) {
 				d3
 				.select(this)
-				.style("stroke", "white")
-				.style("stroke-width", 1);
+				.style('stroke', 'white')
+				.style('stroke-width', 1);
 			});
 
 		// X axis label
 		xAxis
-		.append("text")
-		.attr("class", "axisLabel")
-		.attr("text-anchor", "end")
-		.attr("transform", `translate(${width + margin.right},-10)`)
+		.append('text')
+		.attr('class', 'axisLabel')
+		.attr('text-anchor', 'end')
+		.attr('transform', `translate(${width + margin.right - 40}, 100)`)
 		.text(xLabelText);
 
 		// Y axis and label
 		yAxis
-		.append("text")
-		.attr("class", "axisLabel")
-		.attr("text-anchor", "start")
-		.attr("transform","translate(" + (yLabelOffsetPx - margin.left / 2) + ", -10)")
+		.append('text')
+		.attr('class', 'axisLabel')
+		.attr('text-anchor', 'start')
+		.attr('transform','translate(' + (yLabelOffsetPx - margin.left / 2) + ', -10)')
 		.text(yLabelText);
 
 		svg.call(brush);
 
 		//points variable for storing selectable elements
-		let points = svg.selectAll("circle");
+		let points = svg.selectAll('circle');
 
 		selectableElements = points;
 
@@ -227,8 +228,8 @@ function violinplotchart() {
 		function brush(g) {
 			const brush = d3
 			.brush()
-			.on("start brush", highlight)
-			.on("end", brushEnd)
+			.on('start brush', highlight)
+			.on('end', brushEnd)
 			.extent([
 				[-margin.left, -margin.bottom],
 				[width + margin.right, height + margin.top],
@@ -240,7 +241,7 @@ function violinplotchart() {
 				if (event.selection === null) return;
 				const [[x0, y0], [x1, y1]] = event.selection;
 				points.classed(
-					"selected",
+					'selected',
 					(d) => x0 <= d.cx && d.cx <= x1 && y0 <= d.cy && d.cy <= y1
 				);
 			}
@@ -249,7 +250,7 @@ function violinplotchart() {
 				// We don't want infinite recursion
 				if (
 					event.sourceEvent !== undefined &&
-					event.sourceEvent.type != "end"
+					event.sourceEvent.type != 'end'
 				)
 				// then
 				{
@@ -262,7 +263,7 @@ function violinplotchart() {
 					dispatcher.call(
 						dispatchString,
 						this,
-						svg.selectAll(".selected").data()
+						svg.selectAll('.selected').data()
 					);
 				}
 			}
@@ -304,7 +305,7 @@ function violinplotchart() {
 		// Select an element if its datum was selected
 
 		selectableElements.classed(
-			"selected",
+			'selected',
 			(d) => selectedData.includes(d.name)
 		);
 	};
