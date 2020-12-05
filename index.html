@@ -94,7 +94,7 @@ End tasks to be completed -->
 			<li>University of Massachusetts: Lowell</li>
 		</ul>
 		<p>
-			The data for the three University of Massachusetts schools has been averaged and is represented as one entity (gray). The averages of the MA State Schools, excluding SSU, is also displayed (pink).
+			The data for the three University of Massachusetts schools have been averaged and is represented as one entity (gray). The average of the MA State Schools, excluding SSU, is also displayed (pink).
 		</p>
 		<p>
 			The task force expressed they would like to be able to see the rate of growth of enrollments expressed as the number of Full-Time Equivalent Students, distribution of spending as a percentage of total spending, and time-series information showing the year over year differences in spending calculated per Full-Time Equivalent Student. This has been accomplished with the use of a line graph to show time-series enrollment data, a violin plot to show the distribution of spending in eight major categories, and individual line graphs to show the time-series detail of sending in each of those eight categories. In each of the line graphs, tooltips have been implemented to provide additional details on demand for any particular data point when hovering over that point with the pointer.
@@ -113,7 +113,14 @@ End tasks to be completed -->
 
 
 		<div class='side-graph-column'>
-			<h3>Full Time Equivalent (FTE) Students per school</h3>
+			<h3>Full Time Equivalent (FTE) Students per school
+				<!-- a tooltip activated by hovering over an icon near the FTE graph title -->
+				<div class="tooltipicon"> &#9432;
+					<span class="tooltiptext">
+					In this line graph, hovering over any datapoint will reveal more data about that specific point. Click any colored dot in the legend to show only selected schools. Continue clicking the colored dots to add or remove schools from the visualizations.
+					</span>
+				</div>
+			</h3>
 			<div class='total-fte-holder'>
 				<!-- Total FTE line graph is inserted here by js -->
 			</div>
@@ -122,16 +129,27 @@ End tasks to be completed -->
 
 
 		<div class='side-text-column'>
-			<h3>Enrollment Trends:</h3>
+			<h3>Enrollment Trends: <!-- a tooltip activated by hovering over an icon near the FTE graph title -->
+				<div class="tooltipicon"> &#9432;
+					<span class="tooltiptext">
+					We can see with this visualization that most of the schools in this analysis have reported positive growth over time, but Salem State University (purple) has shown steady negative growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools, and the UMass schools (gray) have the highest average enrollment among all MA public schools. Both schools have reported steady growth over the timeframe. Since these schools seem to be getting it right, we would look for similar spending patterns between these schools to find a correlation between certain expenses and increasing enrollments.
+					</span>
+				</div>
+			</h3>
 			<p>
 				The adjacent line graph shows each school's reported Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments by calculating, based on the aggregate total number of credit hours, how many students would have attended if they were all enrolled full-time for an entire academic year.
 			</p>
+
+			<h3>Spending Trends:</h3>
+			<h4>Distribution</h4>
 			<p>
-				We can see with this visualization that most of the schools in this analysis have reported positive growth over time, but Salem State University (purple) has shown steady negative growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools, and the UMass schools (gray) have the highest average enrollment among all MA public schools. Both schools have reported steady growth over the timeframe. Since these schools seem to be getting it right, we would look for similar spending patterns between these schools to find a correlation between certain expenses and increasing enrollments.
+				The violin plot below the legend shows the distribution of the data from SSU and the comparison schools in each of the eight expense categories as a percentage of each school's total spending. To determine the range of spending and help assess for statistical significance. The colored dots each represent one data point, the percent of the total budget spent per category in a particular year. Each color represents a different school. The violin body gives an additional representation of the distribution, read similar to a sideways histogram. The height of each violin body represents the range of the values. The width of each violin body represents the frequency of the values, with many values in a narrow range resulting in a wide violin body. Any group of data points outside of the main body of data should be investigated for correlation with changes in enrollment.
 			</p>
+			<h4>Time-series</h4>
 			<p>
-				In this line graph, hovering over any point in the graph will reveal more data about that specific point. Below the line graph, click any colored dot in the legend to filter down to show only selected schools. Continue clicking schools to add or remove them from the visualizations.
+				The line graphs below show each school's spending trends per category over time. Each graph corresponds with one violin from the violin plots, with the first line graph representing the same data as the far left violin, and the last line graph representing the same data as the far right violin. The data displayed are the dollar amounts spent annually per Full-Time Equivalent Student. This is a powerful metric allowing the ability to make direct comparisons regardless of the number of students or total budget size.
 			</p>
+
 		</div><!-- End side-text-column -->
 
 
@@ -144,7 +162,16 @@ End tasks to be completed -->
 			</div>
 
 			<div class='violinplot-holder'>
-				<h3>Distribution of spending as a percent of each school's total expenses</h3>
+				<h3>Distribution of spending as a percent of each school's total expenses
+					<!-- a tooltip activated by hovering over an icon near the FTE graph title -->
+					<div class="tooltipicon"> &#9432;
+						<span class="tooltiptext">
+						The data displayed in these line graphs are dynamic based on the user's interactions with its corresponding violin plot or with the legend. Brushing (click and drag) on any of the points on the left side of a violin will filter the corresponding line graph to only show the data related to those data points.<br/>
+						<br/>
+						If the brushed points happen to represent Salem State in 2006 and Fitchburg State in 2010, the line graph will show the lines for both Salem and Fitchburg in both 2006 and 2010. It is recommended to only brush one violin at a time, but one can consecutively brush numerous violins to allow each line graph to highlight a different subset of the data.
+						</span>
+					</div>
+				</h3>
 				<!-- violinplot is inserted here by js -->
 			</div><!-- End violinplot-holder -->
 
@@ -153,20 +180,16 @@ End tasks to be completed -->
 
 
 		<div class='linecharts-holder'>
-			<h3>Spending Trends:</h3>
-			<h4>Distribution</h4>
-			<p>
-				In the visualization to the right, a violin plot addresses an important concern of the end-user by showing the distribution of the data from SSU and the comparison schools in each of the eight expense categories as a percentage of each school's total spending. This allows the user to visualize each area of spending to determine the range of spending and help assess for statistical significance. The colored dots each represent one data point, the percent of the total budget spent per category in a particular year. Each color represents a different school (use the legend above the violin plots). The violin body gives a visual representation of how the data is distributed, and can be read similar to a sideways histogram. The height of each violin body represents the range of the values. The width of each violin body represents the frequency of the values found in the data for this financial category, with many values in a narrow range resulting in a wide violin body. Any group of data points outside of the main body of data should be investigated for correlation with increases or decreases in enrollment.
-			</p>
-			<h4>Time-series</h4>
-			<p>
-				The line graphs below show each school's spending trends per category over time. Each graph corresponds with one violin from the violin plots, with the first line graph representing the same data as the far left violin, and the last line graph representing the same data as the far right violin. The data displayed are the dollar amounts spent annually per Full-Time Equivalent Student. This is a powerful metric giving the user the ability to make direct comparisons regardless of the number of students or total budget size.
-			</p>
-			<p>
-				The data displayed in these line graphs are dynamic based on the user's interactions with its corresponding violin plot or with the legend. Brushing on any of the points on the left side of a violin will filter the corresponding line graph to only show the data related to those data points. If the brushed points happen to represent Salem State in 2006 and Fitchburg State in 2010, the line graph will show the lines for both Salem and Fitchburg in both 2006 and 2010. It is recommended to only brush one violin at a time, but one can consecutively brush numerous violins to allow each line graph to highlight a different subset of the data.
-			</p>
-			<h3>Dollars spent per FTE Student</h3>
-			<!-- Line graphs are inserted here by js -->
+			<h3>Dollars spent per FTE Student
+				<!-- a tooltip activated by hovering over an icon near the FTE graph title -->
+				<div class="tooltipicon"> &#9432;
+					<span class="tooltiptext">
+					The data displayed in these line graphs are dynamic based on the user's interactions with its corresponding violin plot or with the legend. Brushing (click and drag) on any of the points on the left side of a violin will filter the corresponding line graph to only show the data related to those data points.<br/>
+					<br/>
+					If the brushed points happen to represent Salem State in 2006 and Fitchburg State in 2010, the line graph will show the lines for both Salem and Fitchburg in both 2006 and 2010. It is recommended to only brush one violin at a time, but one can consecutively brush numerous violins to allow each line graph to highlight a different subset of the data.
+					</span>
+				</div>
+			</h3>
 		</div><!-- End linecharts-holder -->
 
 
@@ -195,10 +218,6 @@ End tasks to be completed -->
 
 <!-- Begin Conclusion -->
 		<h1>Visualization explanation</h1>
-
-		<p>
-
-		</p>
 		<p>
 			These capabilities will allow the end user to explore the dataset and hopefully discover useful insights. While an in-depth statistical analysis will be required to determine if the findings are significant, and beyond the scope of this project, we hope this tool will help users direct the focus of their research. Depending on those findings it can possible to identify which expenses help boost enrollment, which expenses should be reduced, and ultimately convince decision-makers in affecting financial policy changes.
 		</p>
@@ -217,11 +236,9 @@ End tasks to be completed -->
 <!-- End Conclusion -->
 
 
-<!-- Begin debugging area -->
 	<div class='blank-area'>
 		<!-- For testing & debugging. Delete later -->
 	</div><!-- End blank-area -->
-<!-- End debugging area -->
 
 
 	<!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
