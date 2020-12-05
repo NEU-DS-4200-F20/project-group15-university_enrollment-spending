@@ -12,11 +12,12 @@ h1 {
 }
 
 h2, h3 {
-	line-height: 0.8;
+	line-height: 1;
 }
 
 h4 {
-	line-height: 0.5;
+	line-height: .8;
+	margin-bottom: -10px;
 }
 
 /* A narrow column of text */
@@ -30,28 +31,29 @@ h4 {
 /* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	height: 4050px; /* Extra height needed to allow for split scrolling */
+	height: 3270px; /* Extra height needed to allow for split scrolling */
 	margin: 20px auto;
 }
 
-		/* A container for the FTE line graph */
-		.total-fte-holder {
-			margin: auto;
+		/* A column on the left for a graph */
+		.side-graph-column {
+			width: 800px;
+			float: left;
 		}
 
-		/* A column for text */
+			/* A container for the FTE line graph */
+			.total-fte-holder {
+				width: 800px;
+				float: left;
+			}
+
+		/* A column on the right for text */
 		.side-text-column {
 			font-size: 16px;
-			max-width: 500px;
+			width: 500px;
 			float: right;
 			text-align: justify;
 			text-justify: inter-word;
-		}
-
-		/* A column for a graph */
-		.side-graph-column {
-			max-width: 800px;
-			float: left;
 		}
 
 		/* A container that 'sticks' to the top left corner of the
@@ -64,29 +66,26 @@ h4 {
 			top: 0;
 			}
 
-				/* A container for the legend */
-				.legend-zone {
-					width: 800px;
-					margin: auto;
-					}
+			/* A container for the legend */
+			.legend-zone {
+				width: 800px;
+				margin: auto;
+				}
 
-				/* A container for the violinplot */
-				.violinplot-holder {
-					width: 800px;
-					float: left;
-					}
+			/* A container for the violinplot */
+			.violinplot-holder {
+				margin-top: -20px;
+				width: 800px;
+				float: left;
+				}
 
 		/* A container for the linegraphs  pinned to the right side of the sticky-zone */
 		.linecharts-holder {
 			font-size: 16px;
-			margin-top: 10px; /* Align the top graph with the violin plot */
 			float: right;
-			overflow: auto;
 			width: 500px;
 				/* when adjusting this number also look at:
 					linegraph.js linewidth = ?px */
-			text-align: justify;
-			text-justify: inter-word;
 		}
 
 /* A temporary class for debugging */
@@ -122,7 +121,40 @@ circle.selected {
 	color: #000;
 }
 
-/* Format the tooltip */
+
+
+
+/* From https://www.w3schools.com/css/css_tooltip.asp */
+/* Tooltip container */
+.tooltipicon {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltipicon .tooltiptext {
+  visibility: hidden;
+  width: 400px;
+  background-color: lightsteelblue;
+  font: 14px sans-serif;
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  top: 100%;
+  left: 50%;
+  margin-left: -200px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltipicon:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* Format the in-graph tooltips */
 div.tooltip {
 	position: absolute;
 	text-align: left;
