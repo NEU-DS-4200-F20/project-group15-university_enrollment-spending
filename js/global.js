@@ -1,9 +1,8 @@
 // Define the color set that will be used for both linegraph and violinplot
-// 9-class set obtained from ColorBrewer 2.0
-//https://colorbrewer2.org/#type=qualitative&scheme=Set1&n=9
 
-const colors =
-[
+// 9-class set obtained from ColorBrewer 2.0 (plus black)
+//https://colorbrewer2.org/#type=qualitative&scheme=Set1&n=9
+const colors = [
 	'#984ea3', // violet - Salem State Univ.
 	'#e41a1c', // red - Bridgewater State Univ.
 	'#4daf4a', // green - Fitchburg State Univ.
@@ -16,8 +15,8 @@ const colors =
 	'#000000', // black -
 ];
 
-// full 12-class paired set from ColorBrewer 2.0
-// [
+// Full 12-class paired set from ColorBrewer 2.0
+// const colors = [
 // 	'#a6cee3', // Lt Blue
 // 	'#1f78b4', // Dk Blue
 // 	'#b2df8a', // Lt Green
@@ -32,8 +31,8 @@ const colors =
 // 	'#b15928', // Brown
 // ]
 
-// websafe colors I originally selected
-// [
+// Ten websafe colors I originally selected
+// const colors = [
 // 	'#990099', // violet
 // 	'#e41a1c', // red
 // 	'#009900', // green
@@ -47,7 +46,7 @@ const colors =
 // ]
 
 // "Bold" 12 color qualitative scheme from https://carto.com/carto-colors/
-// [
+// const colors = [
 // #E58606,
 // #5D69B1,
 // #52BCA3,
@@ -63,7 +62,7 @@ const colors =
 // ]
 
 // "Vivid" 12 color qualitative scheme from https://carto.com/carto-colors/
-// [
+// const colors = [
 // 	#E58606,
 // 	#5D69B1,
 // 	#52BCA3,
@@ -79,7 +78,7 @@ const colors =
 // ]
 
 // 9-color palette from https://medialab.github.io/iwanthue/
-// [
+// const colors = [
 // 	"#4b393a", // almost black
 // 	"#8ccf53", // leaf
 // 	"#6a47b4", // navy
