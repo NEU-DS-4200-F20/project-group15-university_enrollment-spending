@@ -123,7 +123,7 @@ d3.csv('data/Data.csv').then((data) => {
 	updateLineCharts(data);
 
 	// Create the violinplots, similar to Assignment 8, slightly modified
-	const violin = violinplotchart()
+	const violin = violinPlotChart()
 		.xFields(fields.map((d) => d.slabel))
 		.xLabel('Expense Categories')
 		.yLabel('Percent of Total Expenses')
@@ -215,6 +215,10 @@ d3.csv('data/Data.csv').then((data) => {
 			// If the user brushed nothing (or just clicked in the area) show everything
 			else {
 				updateLineCharts(data)
+		
+			} // end else
+		} // end "function (selectedData)"
+	  ); // end "violin.selectionDispatcher().on("
 
 	// add line charts for fields
 	function updateLineCharts(visualData) {
