@@ -191,7 +191,7 @@ d3.csv('data/Data.csv').then((data) => {
 					.find((e) => e.slabel === one.field).tooltipFields;
 
 				// Now rebuild the linegraphs based on what was brushed in the violins
-				linechart()
+				const currentChart = linechart()
 					.x((d) => d['Year'])
 					.xLabel('Year')
 					.y((d) => d[dlabel])
