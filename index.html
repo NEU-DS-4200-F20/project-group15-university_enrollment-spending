@@ -67,22 +67,13 @@ End tasks to be completed -->
 	<div class='narrow-column'>
 		<h1>Project Team 15: Comparative Analysis of University Spending and Enrollment</h1>
 		<p><strong>Marc Leonti</strong>, <strong>Raed Binsaeed</strong>, <strong>Nick Hu</strong></p>
-		<p>Service-Learning Course Project as part of
-			<a href='https://canvas.instructure.com/courses/1781732'>DS 4200 F20: Information Visualization</a>,
-				taught by <a href='https://cody.khoury.northeastern.edu/'>Prof. Cody Dunne</a>,
-			<a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>,
-			<a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.
-		</p>
+		<p>Service-Learning Course Project as part of <a href='https://canvas.instructure.com/courses/1781732'>DS 4200 F20: Information Visualization</a>, taught by <a href='https://cody.khoury.northeastern.edu/'>Prof. Cody Dunne</a>, <a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>, <a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.</p>
 
 		<h1>Abstract</h1>
-		<p>
-			Our service partner is the Sustainable Path Forward Task Force from Salem State University (SSU), which has been charged with making recommendations for increasing revenue and reducing expenses. Their goal is to reallocate spending in areas that drive enrollments (increasing revenue) and decrease spending in areas that do not drive enrollments (reducing expenses). The following visualizations explore the spending patterns of post-secondary institutions to search for patterns and explore their impacts on enrollment. This work provides the visualizations necessary to compare spending patterns between similar schools to find spending patterns that may lead to higher enrollments. If patterns are found in these visualizations, the task force can focus their efforts on a deeper statistical analysis of the underlying data to determine if these patterns are statistically significant. Proper guidance can then be given to advise the school board on possible policy changes to the school's financial expenditures.
-		</p>
+		<p>Our service partner is the Sustainable Path Forward Task Force from Salem State University (SSU), which has been charged with making recommendations for increasing revenue and reducing expenses. Their goal is to reallocate spending in areas that drive enrollments (increasing revenue) and decrease spending in areas that do not drive enrollments (reducing expenses). The following visualizations explore the spending patterns of post-secondary institutions to search for patterns and explore their impacts on enrollment. This work provides the visualizations necessary to compare spending patterns between similar schools to find spending patterns that may lead to higher enrollments. If patterns are found in these visualizations, the task force can focus their efforts on a deeper statistical analysis of the underlying data to determine if these patterns are statistically significant. Proper guidance can then be given to advise the school board on possible policy changes to the school's financial expenditures.</p>
 
 		<h1>Visualizations</h1>
-		<p>
-			Our partner has identified eight schools which are similar to Salem State University and would be appropriate for comparison based on region (Massachusetts), sector (four-year public institutions) and size (more than 1,000 but less than 15,000 students).
-		</p>
+		<p>Our partner has identified eight schools which are similar to Salem State University and would be appropriate for comparison based on region (Massachusetts), sector (four-year public institutions), and size (more than 1,000 but less than 15,000 students).</p>
 		<ul>
 			<li>Bridgewater State University</li>
 			<li>Fitchburg State University</li>
@@ -93,12 +84,8 @@ End tasks to be completed -->
 			<li>University of Massachusetts: Dartmouth</li>
 			<li>University of Massachusetts: Lowell</li>
 		</ul>
-		<p>
-			The data for the three University of Massachusetts schools have been averaged and is represented as one entity (gray). The average of the MA State Schools, excluding SSU, is also displayed (pink).
-		</p>
-		<p>
-			The task force expressed they would like to be able to see the rate of growth of enrollments expressed as the number of Full-Time Equivalent Students, distribution of spending as a percentage of total spending, and time-series information showing the year over year differences in spending calculated per Full-Time Equivalent Student. This has been accomplished with the use of a line graph to show time-series enrollment data, a violin plot to show the distribution of spending in eight major categories, and individual line graphs to show the time-series detail of sending in each of those eight categories. In each of the line graphs, tooltips have been implemented to provide additional details on demand for any particular data point when hovering over that point with the pointer.
-		</p>
+		<p>The data for the three University of Massachusetts schools have been averaged and is represented as one entity (gray). The average of the MA State Schools, excluding SSU, is also displayed (pink).</p>
+		<p>The task force expressed they would like to be able to see the rate of growth of enrollments expressed as the number of Full-Time Equivalent Students, distribution of spending as a percentage of total spending, and time-series information showing the year over year differences in spending calculated per Full-Time Equivalent Student. This has been accomplished with the use of a line graph to show time-series enrollment data, a violin plot to show the distribution of spending in eight major categories, and individual line graphs to show the time-series detail of sending in each of those eight categories. In each of the line graphs, additional details are displayed when hovering over any point with the pointer. Hover over any &#9432; icon for additional suggestions.</p>
 
 	</div><!-- End narrow-column -->
 <!-- End Introduction -->
@@ -111,15 +98,11 @@ End tasks to be completed -->
 	<!-- This container holds all visualizations -->
 
 
-
 		<div class='side-graph-column'>
-			<h3>Full Time Equivalent (FTE) Students per school
-				<!-- a tooltip activated by hovering over an icon near the FTE graph title -->
-				<span class="tooltipicon"> &#9432;
-					<span class="tooltiptext">
-					In this line graph, hovering over any datapoint will reveal more data about that specific point. Click any colored dot in the legend to show only selected schools. Continue clicking the colored dots to add or remove schools from the visualizations.
-					</span>
-				</span>
+			<h3>
+				Full Time Equivalent (FTE) Students per school
+				<!-- a tooltip activated by hovering over an icon -->
+				<span class="tooltipicon"> &#9432;<span class="tooltiptext">In this line graph, hovering over any datapoint will reveal more data about that specific point. Click any colored dot in the legend below to filter by school. Continue clicking the colored dots to add or remove schools from the visualizations.</span></span>
 			</h3>
 			<div class='total-fte-holder'>
 				<!-- Total FTE line graph is inserted here by js -->
@@ -129,26 +112,16 @@ End tasks to be completed -->
 
 
 		<div class='side-text-column'>
-			<h3>Enrollment Trends: <!-- a tooltip activated by hovering over an icon near the FTE graph title -->
-				<span class="tooltipicon"> &#9432;
-					<span class="tooltiptext">
-					We can see with this visualization that most of the schools in this analysis have reported positive growth over time, but Salem State University (purple) has shown steady negative growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools, and the UMass schools (gray) have the highest average enrollment among all MA public schools. Both schools have reported steady growth over the timeframe. Since these schools seem to be getting it right, we would look for similar spending patterns between these schools to find a correlation between certain expenses and increasing enrollments.
-					</span>
-				</span>
+			<h3>
+				Enrollment Trends:
 			</h3>
-			<p>
-				The adjacent line graph shows each school's reported Full Time Equivalent (FTE) Students, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments by calculating, based on the aggregate total number of credit hours, how many students would have attended if they were all enrolled full-time for an entire academic year.
-			</p>
+			<p>The adjacent line graph shows each nhe number of Full Time Equivalent (FTE) Students reported by each school, which is a measurement equivalent to one student enrolled full time for one academic year. This is the best way to measure enrollments when making comparisons between universities, as it captures full-time, part-time, and partial-year enrollments by calculating, based on the aggregate total number of credit hours, how many students would have attended if they were all enrolled full-time for an entire academic year. <span class="tooltipicon"> &#9432;<span class="tooltiptext">We can see with this visualization that most of the schools in this analysis have reported positive growth over time, but Salem State University (purple) has shown steady negative growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools, and the UMass schools (gray) have the highest average enrollment among all MA public schools. Both schools have reported steady growth over the timeframe. Since these schools seem to be getting it right, we would look for similar spending patterns between these schools to find a correlation between certain expenses and enrollment changes.</span></span></p>
 
 			<h3>Spending Trends:</h3>
-			<h4>Distribution</h4>
-			<p>
-				The violin plot below the legend shows the distribution of the data from SSU and the comparison schools in each of the eight expense categories as a percentage of each school's total spending. To determine the range of spending and help assess for statistical significance. The colored dots each represent one data point, the percent of the total budget spent per category in a particular year. Each color represents a different school. The violin body gives an additional representation of the distribution, read similar to a sideways histogram. The height of each violin body represents the range of the values. The width of each violin body represents the frequency of the values, with many values in a narrow range resulting in a wide violin body. Any group of data points outside of the main body of data should be investigated for correlation with changes in enrollment.
-			</p>
-			<h4>Time-series</h4>
-			<p>
-				The line graphs below show each school's spending trends per category over time. Each graph corresponds with one violin from the violin plots, with the first line graph representing the same data as the far left violin, and the last line graph representing the same data as the far right violin. The data displayed are the dollar amounts spent annually per Full-Time Equivalent Student. This is a powerful metric allowing the ability to make direct comparisons regardless of the number of students or total budget size.
-			</p>
+			<h4>Distribution of data</h4>
+			<p>Below the legend, the violin plots show the distribution of the data from all the schools in each of the eight major expense categories. This can be used to determine the range of spending and help identify outliers. Each colored dot represents one school's spending in that category for a particular year, as a percent of their total budget. The gray violin body gives an alternate representation of the distribution, read similar to a sideways histogram. The height of each violin body represents the range of the values. The width of each violin body represents the frequency of the values, with many values in a narrow range resulting in a wide violin body. Any group of data points outside of the main body of data should be investigated for correlation with changes in enrollment.</p>
+			<h4>Time-series data</h4>
+			<p>Below, the line graphs show each school's spending trends per category over time. Each graph corresponds with one violin from the violin plots, with the top line graph representing the same data as the far left violin, and the bottom line graph representing the same data as the far right violin. The data displayed are the dollar amounts spent annually per Full-Time Equivalent Student. This is a powerful metric allowing for direct comparisons regardless of the number of students or total budget size.</p>
 
 		</div><!-- End side-text-column -->
 
@@ -162,15 +135,10 @@ End tasks to be completed -->
 			</div>
 
 			<div class='violinplot-holder'>
-				<h3>Distribution of spending as a percent of each school's total expenses
-					<!-- a tooltip activated by hovering over an icon near the FTE graph title -->
-					<span class="tooltipicon"> &#9432;
-						<span class="tooltiptext">
-						The data displayed in these line graphs are dynamic based on the user's interactions with its corresponding violin plot or with the legend. Brushing (click and drag) on any of the points on the left side of a violin will filter the corresponding line graph to only show the data related to those data points.<br/>
-						<br/>
-						If the brushed points happen to represent Salem State in 2006 and Fitchburg State in 2010, the line graph will show the lines for both Salem and Fitchburg in both 2006 and 2010. It is recommended to only brush one violin at a time, but one can consecutively brush numerous violins to allow each line graph to highlight a different subset of the data.
-						</span>
-					</span>
+				<h3>
+					Distribution of spending as a percent of total expenses
+					<!-- a tooltip activated by hovering over an icon -->
+					<span class="tooltipicon"> &#9432;<span class="tooltiptext">Brushing (click and drag) on any group of points within a violin will filter the corresponding line graph on the right to only show the lines related to those data points.<br/><br/>For example, if the brushed points happen to represent Salem State in 2006 and Fitchburg State in 2010, the line graph will show the lines for both Salem and Fitchburg in both 2006 and 2010. You can only brush one violin at a time, but consecutively brushing numerous violins will allow each line graph to highlight a different subset of the data.</span></span>
 				</h3>
 				<!-- violinplot is inserted here by js -->
 			</div><!-- End violinplot-holder -->
@@ -181,14 +149,9 @@ End tasks to be completed -->
 
 		<div class='linecharts-holder'>
 			<h3>Dollars spent per FTE Student
-				<!-- a tooltip activated by hovering over an icon near the FTE graph title -->
-				<span class="tooltipicon"> &#9432;
-					<span class="tooltiptext">
-					The data displayed in these line graphs are dynamic based on the user's interactions with its corresponding violin plot or with the legend. Brushing (click and drag) on any of the points on the left side of a violin will filter the corresponding line graph to only show the data related to those data points.<br/>
-					<br/>
-					If the brushed points happen to represent Salem State in 2006 and Fitchburg State in 2010, the line graph will show the lines for both Salem and Fitchburg in both 2006 and 2010. It is recommended to only brush one violin at a time, but one can consecutively brush numerous violins to allow each line graph to highlight a different subset of the data.
-					</span>
-				</span>
+				<!-- a tooltip activated by hovering over an icon -->
+				<span class="tooltipicon"> &#9432;<span class="tooltiptext">Hovering over any datapoint will reveal more data about that specific point. The number of schools represented in these line graphs can also be filtered by clicking on the colored circles in the legend. Also, brushing (click and drag) on any group of points within a violin will filter the corresponding line graph below to only show the lines related to those data points.
+				</span></span>
 			</h3>
 		</div><!-- End linecharts-holder -->
 
@@ -218,19 +181,15 @@ End tasks to be completed -->
 
 <!-- Begin Conclusion -->
 		<h1>Visualization explanation</h1>
-		<p>
-			These capabilities will allow the end user to explore the dataset and hopefully discover useful insights. While an in-depth statistical analysis will be required to determine if the findings are significant, and beyond the scope of this project, we hope this tool will help users direct the focus of their research. Depending on those findings it can possible to identify which expenses help boost enrollment, which expenses should be reduced, and ultimately convince decision-makers in affecting financial policy changes.
-		</p>
+		<p>These capabilities will allow the end user to explore the dataset and hopefully discover useful insights. While an in-depth statistical analysis will be required to determine if the findings are significant, and beyond the scope of this project, we hope this tool will help users direct the focus of their research. Depending on those findings it can possible to identify which expenses help boost enrollment, which expenses should be reduced, and ultimately convince decision-makers in affecting financial policy changes.</p>
 
 		<h1>Acknowledgments</h1>
 		<p>We would like to thank everyone who helped make this possible.</p>
 		<ul>
 			<li><a href='https://d3js.org/'>D3: Data-Driven Documents</a> by Mike Bostock is used for manipulating the DOM to create visualizations.</li>
-			<li><a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>Pure CSS responsive 'Fork me on GitHub'
-				ribbon</a> by Chris Heilmann is used to create the banner that links back to the source code repository.
-			</li>
-			<li><a href='https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicate'>
-				A method to get all the unique values in a javascript array, found at StackOverflow</a> StackOverflow: </li>
+			<li><a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>Pure CSS responsive 'Fork me on GitHub' ribbon</a> by Chris Heilmann is used to create the banner that links back to the source code repository.</li>
+			<li><a href='https://www.w3schools.com/'>W3 Schools</a></a> referenced for numerous definitions, especially for <a href='https://www.w3schools.com/css/css3_animations.asp'>animations</a> and <a href='https://www.w3schools.com/css/css_tooltip.asp'>tooltips</a></li>
+			<li><a href='https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicate'>A method to get all the unique values in a javascript array, found at StackOverflow</a> StackOverflow. </li>
 		</ul>
 	</div><!-- End narrow-column -->
 <!-- End Conclusion -->
