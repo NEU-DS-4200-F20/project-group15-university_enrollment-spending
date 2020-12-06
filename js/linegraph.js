@@ -19,7 +19,8 @@ function linechart() {
 	yLabelOffsetPx = 0,
 	xScale = d3.scalePoint(),
 	yScale = d3.scaleLinear(),
-	tooltipFields = [];
+	tooltipFields = [],
+	dispatcher;
 
 
 	// Create the chart by adding an svg to the div with the id
@@ -99,65 +100,90 @@ function linechart() {
 		.attr('stroke-width', 3)
 		.attr('d', (d) => d3.line().x(X).y(Y)(d[1]));
 
-		//define the div for the tooltip
-		var div = d3
-		.select('body')
-		.append('div')
-		.attr('class', 'tooltip')
-		.style('opacity', 0);
+	//define the div for the tooltip
+    var div = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip tooltip-" + selector.substr(1, selector.length))
+      .style("opacity", 0);
 
-		// Add the points
-		pathG
-		.selectAll('.line-point')
-		.data((d) => d[1])
-		.enter()
-		.append('circle')
-		.attr('class', 'point line-point')
-		.style('stroke-width', 2)
-		.attr('cx', X)
-		.attr('cy', Y)
-		.attr('r', 3)
+    // Add the points
+    pathG
+      .selectAll(".line-point")
+      .data((d) => d[1])
+      .enter()
+      .append("circle")
+      .attr("class", "point line-point")
+      .style("stroke-width", 1.5)
+      .style("stroke", "rgb(225, 225, 225)")
+      .style("fill", (d) => {
+        d.color = legends.find((e) => e.name === d.SchoolName).color;
+        return d.color;
+      })
+      .attr("cx", X)
+      .attr("cy", Y)
+      .attr("r", 3)
+
 
 		//mouse events
-		.on('mouseover', function (event, d) {
-			div.transition()
-			.duration(200)
-			.style('opacity', 0.9);
+		.on("mouseover", function (event, d) {
+			d3.selectAll(".tooltip").style("opacity", 0);
+			// tooltipFields[0] is Pct, [1] is FTE
 			div.html(
-				`<b>${d.SchoolName}<br/>
-				Year: </b>${d.Year}<br/>
-				<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}%</br>
-				<b>${tooltipFields[1]}</b>: $${d[tooltipFields[1]]}`
-				)// tooltipFields[0] is Pct, [1] is FTE
-				.style('left', event.pageX - 105 + 'px')
-				.style('top', event.pageY - 70 + 'px');
+			  `<span><b>${d.SchoolName}</b></span>
+						<span><b>${tooltipFields[0]}</b>: ${parseFloat(d[tooltipFields[0]]).toFixed(
+				2
+			  )}</span>
+						<span><b>${tooltipFields[1]}</b>: ${parseFloat(d[tooltipFields[1]]).toFixed(
+				2
+			  )}</span>`
+			);
+
+			div
+			  // .transition()
+			  // .duration(100)
+			  .style("opacity", 0.9)
+			  .style("left", event.pageX + 8 + "px")
+			  .style("top", event.pageY + 8 + "px");
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
-			const selection = d3.select(this).raise();
-			selection
-			.transition()
-			.delay('20')
-			.duration('200')
-			.attr('r', 6)
-			.style('opacity', 1)
-			.style('fill', 'purple');
-		})
+		const selection = d3.select(this).raise();
+		selection
+          .transition()
+          .delay("20")
+          .duration("200")
+          .attr("r", 8)
+          .style("opacity", 1)
+          .style("fill", d.color);
 
-		.on('mouseout', function (d) {
-			div.transition()
-			.duration(500)
-			.style('opacity', 0);
+        // Get the name of our dispatcher's event
+        let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
+        //dispatchString = 'hoverUpdated'
 
-			const selection = d3.select(this);
-			selection
-			.transition()
-			.delay(20)
-			.duration(200)
-			.attr('r', 3)
-			.style('opacity', 1)
-			.style('fill', 'white');
-		});
+        // Let other charts know
+        dispatcher.call(dispatchString, this, d);
+      })
+
+      .on("mouseout", function (event, d) {
+        div.style("opacity", 0);
+        // div.transition();
+        const selection = d3.select(this);
+        selection
+          .transition()
+          .delay(20)
+          .duration(200)
+          .attr("r", 3)
+          .style("fill", d.color)
+          .style("opacity", 1);
+        // Get the name of our dispatcher's event
+        let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
+
+        // Let other charts know
+        dispatcher.call(dispatchString, this, null);
+      });
+
+	return chart;
 
 		return chart;
 	}
@@ -224,6 +250,13 @@ function linechart() {
 	chart.tooltipFields = function (_) {
 		if (!arguments.length) return tooltipFields;
 		tooltipFields = _;
+		return chart;
+	};
+
+	// Gets or sets the dispatcher we use for selection events
+	chart.hoverDispatcher = function (_) {
+		if (!arguments.length) return dispatcher;
+		dispatcher = _;
 		return chart;
 	};
 

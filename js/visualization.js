@@ -4,117 +4,126 @@
 
 (() => {
 
-	// get the data from the csv file
-	const fileName = 'data/Data.csv'
+// get the data from the csv file
+d3.csv('data/Data.csv').then((data) => {
+	const dispatchUpdateSelectionString = 'selectionUpdated',
 
-	d3.csv(fileName).then((data) => {
+	dispatchFilterString = 'filterCircles',
+	dispatchHoverString = 'hoverUpdated';
 
-		const dispatchUpdateSelectionString = 'selectionUpdated',
-		dispatchFilterString = 'filterCircles';
+	// Define the columns (fields) used in the violinplot and linecharts
+	const fields = [
+		{
+			slabel: 'Instruction_Pct',
+			dlabel: 'Instruction_PerFTE',
+			tooltipFields: [
+				'Instruction_Pct',
+				'Instruction_PerFTE'
+			],
+		},
+		{
+			slabel: 'PublicService_Pct',
+			dlabel: 'PublicService_PerFTE',
+			tooltipFields: [
+				'PublicService_Pct',
+				'PublicService_PerFTE'
+			],
+		},
+		{
+			slabel: 'AcademicSupport_Pct',
+			dlabel: 'AcademicSupport_PerFTE',
+			tooltipFields: [
+				'AcademicSupport_Pct',
+				'AcademicSupport_PerFTE'
+			],
+		},
+		{
+			slabel: 'StudentServices_Pct',
+			dlabel: 'StudentServices_PerFTE',
+			tooltipFields: [
+				'StudentServices_Pct',
+				'StudentServices_PerFTE'
+			],
+		},
+		{
+			slabel: 'InstitutionalSupport_Pct',
+			dlabel: 'InstitutionalSupport_PerFTE',
+			tooltipFields: [
+				'InstitutionalSupport_Pct',
+				'InstitutionalSupport_PerFTE',
+			],
+		},
+		{
+			slabel: 'NetScholarships_Pct',
+			dlabel: 'NetScholarships_PerFTE',
+			tooltipFields: [
+			'NetScholarships_Pct',
+			'NetScholarships_PerFTE'
+		],
+		},
+		{
+			slabel: 'AuxiliaryEnterprises_Pct',
+			dlabel: 'AuxiliaryEnterprises_PerFTE',
+			tooltipFields: [
+				'AuxiliaryEnterprises_Pct',
+				'AuxiliaryEnterprises_PerFTE',
+			],
+		},
+		{
+			slabel: 'Other_Pct',
+			dlabel: 'Other_PerFTE',
+			tooltipFields: [
+				'Other_Pct',
+				'Other_PerFTE'
+			],
+		},
+	]; // end fields
 
-		// Define the columns (fields) used in the violinplot and linecharts
-		const fields = [
-			{
-				slabel: 'Instruction_Pct',
-				dlabel: 'Instruction_PerFTE',
-				tooltipFields: [
-					'Instruction_Pct',
-					'Instruction_PerFTE'
-				],
-			},
-			{
-				slabel: 'PublicService_Pct',
-				dlabel: 'PublicService_PerFTE',
-				tooltipFields: [
-					'PublicService_Pct',
-					'PublicService_PerFTE'
-				],
-			},
-			{
-				slabel: 'AcademicSupport_Pct',
-				dlabel: 'AcademicSupport_PerFTE',
-				tooltipFields: [
-					'AcademicSupport_Pct',
-					'AcademicSupport_PerFTE'
-				],
-			},
-			{
-				slabel: 'StudentServices_Pct',
-				dlabel: 'StudentServices_PerFTE',
-				tooltipFields: [
-					'StudentServices_Pct',
-					'StudentServices_PerFTE'
-				],
-			},
-			{
-				slabel: 'InstitutionalSupport_Pct',
-				dlabel: 'InstitutionalSupport_PerFTE',
-				tooltipFields: [
-					'InstitutionalSupport_Pct',
-					'InstitutionalSupport_PerFTE',
-				],
-			},
-			{
-				slabel: 'NetScholarships_Pct',
-				dlabel: 'NetScholarships_PerFTE',
-				tooltipFields: [
-					'NetScholarships_Pct',
-					'NetScholarships_PerFTE'
-				],
-			},
-			{
-				slabel: 'AuxiliaryEnterprises_Pct',
-				dlabel: 'AuxiliaryEnterprises_PerFTE',
-				tooltipFields: [
-					'AuxiliaryEnterprises_Pct',
-					'AuxiliaryEnterprises_PerFTE',
-				],
-			},
-			{
-				slabel: 'Other_Pct',
-				dlabel: 'Other_PerFTE',
-				tooltipFields: [
-					'Other_Pct',
-					'Other_PerFTE'
-				],
-			},
-		]; // end fields
+	// Assign a color to each university -> https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+	const legends = [
+		...new Set(data.map((e) => e.SchoolName)),
+		].map((sn, i) => ({ name: sn, color: colors[i] }));
 
-		// Assign a color to each school. Thanks to:
-		// https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
-		const legends = [...new Set(data.map((e) => e.SchoolName)),]
-			.map((sn, i) => ({name: sn,color: colors[i]}))
+	//Create legend for schoolnames
+	const legendChart = legend()
+		.selectionDispatcher(d3.dispatch(dispatchFilterString))
+		('.legend-zone', legends);
 
-		// Create legend for schoolNames
-		const legendChart = legend()
-			.selectionDispatcher(d3.dispatch(dispatchFilterString))
-			('.legend-zone', legends)
+	//Create Total FTE chart
+	ftelinechart()
+		.x((d) => d['Year'])
+		.xLabel('Year')
+		.y((d) => d['Total_FTE_Students'])
+		.yLabel('Total FTE Students')
+		.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
+		.yLabelOffset(40)('.total-fte-holder', data, legends);
 
-		//Create Total FTE chart
-		ftelinechart()
-			.x((d) => d['Year'])
-			.xLabel('Year')
-			.y((d) => d['Total_FTE_Students'])
-			.yLabel('Total FTE Students')
-			.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
-			.yLabelOffset(1)('.total-fte-holder', data, legends)
+	// Used this to generate some data for Kurt. Please do not delete.
+	// ftelinechart()
+	// 	.x((d) => d['Year'])
+	// 	.xLabel('Year')
+	// 	.y((d) => d['TotalExpenses_PerFTE'])
+	// 	.yLabel('Total Expenses per FTE Student')
+	// 	.tooltipFields(['TotalExpenses_PerFTE'])
+	// 	.yLabelOffset(40)('.total-fte-holder', data, legends);
 
-		// Get linecharts holder element for adding each linechart dynamically
-		const linechartsHolder = d3.select('.linecharts-holder')
+	// Get linecharts holder element for adding each linechart dynamically
+	const linechartsHolder = d3.select('.linecharts-holder');
 
-		// Add divs for each line chart, each holding a different school
-		linechartsHolder
-			.selectAll('chart')
-			.data(fields)
-			.enter()
-			.append('div')
-			.attr('class', (d) => `line-chart-container line-chart-${d.slabel}`)
 
-		// Now build the line graphs using the data.csv file
-		updateLineCharts(data)
+	// Add divs for each line chart, each holding a different school
+	linechartsHolder
+		.selectAll('chart')
+		.data(fields)
+		.enter()
+		.append('div')
+		.attr('class', (d) => `line-chart-container line-chart-${d.slabel}`);
 
-		// Create the violinplots, similar to Assignment 8, slightly modified
-		const violin = violinPlotChart()
+	// Now build the line graphs using the data.csv file
+	updateLineCharts(data);
+
+	// Create the violinplots, similar to Assignment 8, slightly modified
+	const violin = violinplotchart()
 		.xFields(fields.map((d) => d.slabel))
 		.xLabel('Expense Categories')
 		.yLabel('Percent of Total Expenses')
@@ -188,47 +197,56 @@
 					.y((d) => d[dlabel])
 					.yLabel(dlabel)
 					.yLabelOffset(40)
-					.tooltipFields(tooltips)(
-						`.line-chart-${one.field}`,
-						reDrawData,
-						legends,
-					); // end .tooltipFields(
-
-			} // end if
+					.tooltipFields(tooltips)
+            .hoverDispatcher(d3.dispatch(dispatchHoverString))(
+            `.line-chart-${one.field}`, //*** one.field
+            reDrawData, // *** reDrawData
+            legends
+					);
+					//add handler for hovering action
+          currentChart
+            .hoverDispatcher()
+            .on(dispatchHoverString, function (hoveredData) {
+              dispatchCallback(hoveredData, one.field);
+            });
+          // end .tooltipFields(
+        } // end if
 
 			// If the user brushed nothing (or just clicked in the area) show everything
 			else {
 				updateLineCharts(data)
 
-				ftelinechart()
-				.x((d) => d['Year'])
-				.xLabel('Year')
-				.y((d) => d['Total_FTE_Students'])
-				.yLabel('Total FTE Students')
-				.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
-				.yLabelOffset(1)('.total-fte-holder', data, legends)
-			}
-
-			}); // end 'violin.selectionDispatcher().on('
-
-
-		// add line charts for fields
-		function updateLineCharts(visualData) {
-			fields.forEach((field) => {
-					linechart()
-						.x((d) => d['Year'])
-						.xLabel('Year')
-						.y((d) => d[field.dlabel])
-						.yLabel(field.dlabel)
-						.tooltipFields(field.tooltipFields)
-						.yLabelOffset(40)(
-							`.line-chart-${field.slabel}`,
-							visualData,
-							legends
-						);
-				}); // end 'fields.forEach((field) => {'
-		} // end 'function updateLineCharts(visualData)'
-
-	}); // end 'd3.csv('data/Data.csv').then((data) =>'
-
+	// add line charts for fields
+	function updateLineCharts(visualData) {
+		fields.forEach(
+			(field) => {
+				let curLineChart = linechart()
+					.x((d) => d['Year'])
+					.xLabel('Year')
+					.y((d) => d[field.dlabel])
+					.yLabel(field.dlabel)
+					.tooltipFields(field.tooltipFields)
+					.yLabelOffset(40)
+					//added dispatcher for interaction
+					.hoverDispatcher(d3.dispatch(dispatchHoverString))(
+						`.line-chart-${field.slabel}`,
+						visualData,
+						legends
+					);
+				//added handler for hovering action
+				curLineChart
+					.hoverDispatcher()
+					.on(dispatchHoverString, function (hoveredData) {
+						//call hovering manage function
+						dispatchCallback(hoveredData, field.slabel);
+					});
+			} // end '(field) =>'
+		); // end 'fields.forEach'
+	} // end 'function updateLineCharts(visualData)'
+ //event for hovering of line charts
+	function dispatchCallback(hoveredData, field) {
+		// console.log(hoveredData, 'hoveredD!');
+		violin.updateHighlight(hoveredData, field);
+	}
+}); // end 'd3.csv('data/Data.csv').then((data) =>'
 })(); // end IFFY
