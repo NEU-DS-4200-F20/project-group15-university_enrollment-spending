@@ -2,16 +2,17 @@
 
 body {
 	padding: 0 10px;
-	font: 18px/1.5 -apple-system, BlinkMacSystemFont, 'avenir next',avenir, 'Segoe UI', 'lucida grande',
-	'helvetica neue', helvetica, 'Fira Sans', roboto, noto, 'Droid Sans', cantarell, oxygen, ubuntu,
-	'franklin gothic medium', 'century gothic', 'Liberation Sans', sans-serif;
+	font: 18px/1.5 -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Segoe UI', 'lucida grande',
+		'helvetica neue', helvetica, 'Fira Sans', roboto, noto, 'Droid Sans', cantarell, oxygen, ubuntu,
+		'franklin gothic medium', 'century gothic', 'Liberation Sans', sans-serif;
 }
 
 h1 {
 	line-height: 1.2;
 }
 
-h2, h3 {
+h2,
+h3 {
 	line-height: 1;
 }
 
@@ -31,62 +32,65 @@ h4 {
 /* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	height: 3270px; /* Extra height needed to allow for split scrolling */
+	height: 3230px;
+		/* Extra height needed to allow for split scrolling. Increasing this
+		number increases the distance between the end of the column of
+		linecharts and the beginning of the Demo Video header. */
 	margin: 20px auto;
 }
 
-		/* A column on the left for a graph */
-		.side-graph-column {
-			width: 800px;
-			float: left;
-		}
+/* A column on the left for a graph */
+.side-graph-column {
+	width: 800px;
+	float: left;
+}
 
-			/* A container for the FTE line graph */
-			.total-fte-holder {
-				width: 800px;
-				float: left;
-			}
+/* A container for the FTE line graph */
+.total-fte-holder {
+	width: 800px;
+	float: left;
+}
 
-		/* A column on the right for text */
-		.side-text-column {
-			font-size: 16px;
-			width: 500px;
-			float: right;
-			text-align: justify;
-			text-justify: inter-word;
-		}
+/* A column on the right for text */
+.side-text-column {
+	font-size: 16px;
+	width: 500px;
+	float: right;
+	text-align: justify;
+	text-justify: inter-word;
+}
 
-		/* A container that 'sticks' to the top left corner of the
+/* A container that 'sticks' to the top left corner of the
 		screen while scrolling through content on the right. The
 		violin and legend containers reside inside this container*/
-		.sticky-zone {
-			float: left;
-			position: -webkit-sticky;
-			position: sticky;
-			top: 0;
-			}
+.sticky-zone {
+	float: left;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
 
-			/* A container for the legend */
-			.legend-zone {
-				width: 800px;
-				margin: auto;
-				}
+/* A container for the legend */
+.legend-zone {
+	width: 800px;
+	margin: auto;
+}
 
-			/* A container for the violinplot */
-			.violinplot-holder {
-				margin-top: -20px;
-				width: 800px;
-				float: left;
-				}
+/* A container for the violinplot */
+.violinplot-holder {
+	margin-top: -20px;
+	width: 800px;
+	float: left;
+}
 
-		/* A container for the linegraphs  pinned to the right side of the sticky-zone */
-		.linecharts-holder {
-			font-size: 16px;
-			float: right;
-			width: 500px;
-				/* when adjusting this number also look at:
+/* A container for the linegraphs  pinned to the right side of the sticky-zone */
+.linecharts-holder {
+	font-size: 16px;
+	float: right;
+	width: 500px;
+	/* when adjusting this number also look at:
 					linegraph.js linewidth = ?px */
-		}
+}
 
 /* A temporary class for debugging */
 .blank-area {
@@ -113,6 +117,7 @@ circle.selected {
 .axisLabel {
 	fill: #333;
 	font-size: 16px;
+	font-weight: bold;
 }
 
 /* School names in the legend */
@@ -125,44 +130,55 @@ circle.selected {
 /* From https://www.w3schools.com/css/css_tooltip.asp */
 /* Tooltip container */
 .tooltipicon {
-  position: relative;
-  display: inline-block;
-  animation: blinky 10s linear 1s infinite forwards
+	position: relative;
+	display: inline-block;
+	animation: blinky 10s linear 1s infinite forwards
 }
-	@keyframes blinky {
-		5%  {color: black;}
-		10% {color: white;}
-		15% {color: black;}
-		20% {color: white;}
-		25% {color: black;}
+
+@keyframes blinky {
+	5% {
+		color: black;
 	}
+	10% {
+		color: white;
+	}
+	15% {
+		color: black;
+	}
+	20% {
+		color: white;
+	}
+	25% {
+		color: black;
+	}
+}
 
 /* Tooltip text */
 .tooltipicon .tooltiptext {
-  visibility: hidden;
-  width: 400px;
-  background-color: lightsteelblue;
-  font: 14px sans-serif;
-  color: blue;
-  text-align: left;
-  padding: 10px;
-  border-radius: 6px;
-  top: 100%;
-  left: 50%;
-  margin-left: -200px;
-  animation: 0s;
-  opacity: 0;
-  transition: 350ms;
+	visibility: hidden;
+	width: 400px;
+	background-color: lightsteelblue;
+	font: 14px sans-serif;
+	color: blue;
+	text-align: left;
+	padding: 10px;
+	border-radius: 6px;
+	top: 100%;
+	left: 50%;
+	margin-left: -200px;
+	animation: 0s;
+	opacity: 0;
+	transition: 350ms;
 
-  /* Position the tooltip text */
-  position: absolute;
-  z-index: 1;
+	/* Position the tooltip text */
+	position: absolute;
+	z-index: 1;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltipicon:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 
@@ -193,58 +209,64 @@ div.tooltip2 {
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
-#forkongithub a{
-	background:#00F;
-	color:#fff;
-	text-decoration:none;
-	font-family:arial,sans-serif;
-	text-align:center;
-	font-weight:bold;
-	padding:5px 40px;
-	font-size:1rem;
-	line-height:1.4rem;
-	position:relative;
-	transition:0.5s;
+#forkongithub a {
+	background: #00F;
+	color: #fff;
+	text-decoration: none;
+	font-family: arial, sans-serif;
+	text-align: center;
+	font-weight: bold;
+	padding: 5px 40px;
+	font-size: 1rem;
+	line-height: 1.4rem;
+	position: relative;
+	transition: 0.5s;
 }
-#forkongithub a:hover{
-	background:#118;
-	color:#fff;
+
+#forkongithub a:hover {
+	background: #118;
+	color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after{
-	content:'';
-	width:100%;
-	display:block;
-	position:absolute;
-	top:1px;
-	left:0;
-	height:1px;
-	background:#fff;
+
+#forkongithub a::before,
+#forkongithub a::after {
+	content: '';
+	width: 100%;
+	display: block;
+	position: absolute;
+	top: 1px;
+	left: 0;
+	height: 1px;
+	background: #fff;
 }
-#forkongithub a::after{
-	bottom:1px;
-	top:auto;
+
+#forkongithub a::after {
+	bottom: 1px;
+	top: auto;
 }
-@media screen and (min-width:1000px){
-	#forkongithub{
-		position:absolute;
-		display:block;
-		top:0;
-		right:0;
-		width:200px;
-		overflow:hidden;
-		height:200px;
-		z-index:9999;
+
+@media screen and (min-width:1000px) {
+	#forkongithub {
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 0;
+		width: 200px;
+		overflow: hidden;
+		height: 200px;
+		z-index: 9999;
 	}
-	#forkongithub a{
-		width:200px;
-		position:absolute;
-		top:60px;
-		right:-60px;
-		transform:rotate(45deg);
-		-webkit-transform:rotate(45deg);
-		-ms-transform:rotate(45deg);
-		-moz-transform:rotate(45deg);
-		-o-transform:rotate(45deg);
-		box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+
+	#forkongithub a {
+		width: 200px;
+		position: absolute;
+		top: 60px;
+		right: -60px;
+		transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
 	}
 }
