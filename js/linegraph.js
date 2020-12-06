@@ -127,13 +127,13 @@ function linechart() {
 				.duration(200)
 				.style('opacity', 0.9);
 				// tooltipFields[0] is Pct, [1] is FTE
-				div.html(
-					`<b>${d.SchoolName}<br/>
-					Year: </b>${d.Year}<br/>
-					<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}%</br>
-					<b>${tooltipFields[1]}</b>: $${d[tooltipFields[1]]}`)
-					.style('left', event.pageX - 105 + 'px')
-					.style('top', event.pageY - 70 + 'px');
+			div.html(
+				`<b>${d.SchoolName}<br/>
+				Year: </b>${d.Year}<br/>
+				<b>${tooltipFields[0]}</b>: ${d[tooltipFields[0]]}%</br>
+				<b>${tooltipFields[1]}</b>: $${d[tooltipFields[1]]}`)
+				.style('left', event.pageX - 105 + 'px')
+				.style('top', event.pageY - 70 + 'px');
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
