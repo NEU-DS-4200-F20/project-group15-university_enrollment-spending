@@ -122,14 +122,20 @@ circle.selected {
 }
 
 
-
-
 /* From https://www.w3schools.com/css/css_tooltip.asp */
 /* Tooltip container */
 .tooltipicon {
   position: relative;
   display: inline-block;
+  animation: blinky 10s linear 1s infinite forwards
 }
+	@keyframes blinky {
+		5%  {color: black;}
+		10% {color: white;}
+		15% {color: black;}
+		20% {color: white;}
+		25% {color: black;}
+	}
 
 /* Tooltip text */
 .tooltipicon .tooltiptext {
@@ -137,12 +143,16 @@ circle.selected {
   width: 400px;
   background-color: lightsteelblue;
   font: 14px sans-serif;
+  color: blue;
   text-align: left;
   padding: 10px;
   border-radius: 6px;
   top: 100%;
   left: 50%;
   margin-left: -200px;
+  animation: 0s;
+  opacity: 0;
+  transition: 350ms;
 
   /* Position the tooltip text */
   position: absolute;
@@ -152,15 +162,17 @@ circle.selected {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltipicon:hover .tooltiptext {
   visibility: visible;
+  opacity: 1;
 }
+
+
+
 
 /* Format the in-graph tooltips */
 div.tooltip {
 	position: absolute;
 	text-align: left;
-	width: 210px;
-	height: 55px;
-	padding: 2px;
+	padding: 4px;
 	font: 12px sans-serif;
 	background: lightsteelblue;
 	border: 0px;
@@ -172,9 +184,7 @@ div.tooltip {
 div.tooltip2 {
 	position: absolute;
 	text-align: left;
-	width: 200px;
-	height: 55px;
-	padding: 2px;
+	padding: 4px;
 	font: 12px sans-serif;
 	background: lightsteelblue;
 	border: 0px;
