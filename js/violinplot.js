@@ -2,9 +2,9 @@
 
 violinwidth = 800
 
-function violinplotchart() {
+function violinPlotChart() {
 	//Define the margins
-	let margin = {top: 30,right: 50,bottom: 150,left: 20},
+	let margin = {top: 30, right: 50, bottom: 150, left: 25},
 	width = violinwidth - margin.left - margin.right,
 	height = 690 - margin.top - margin.bottom,
 	xFields = [],
@@ -33,19 +33,15 @@ function violinplotchart() {
 		let maxY = 0;
 
 		// Find the maximum value to determine the scale of the y-axis
-		data.forEach(
-			(record) => {
-				xFields.forEach((field) => {
-					const fieldMax = parseFloat(record[field]);
-					//I parsed it because it was treating the number as text
-					if (maxY < fieldMax) {maxY = fieldMax;}
-				});
-			}
-		);
+		data.forEach((record) => {xFields.forEach((field) => {
+			const fieldMax = parseFloat(record[field]);
+			// I parsed it because it was treating the number as text
+			if (maxY < fieldMax) {maxY = fieldMax;}
+		});});
 
 		// build the y-axis
 		yScale
-		.domain([0, maxY + maxY*.05]) // 5% cushion added to the top of the violin plot chart
+		.domain([0, maxY + maxY * .05]) // 5% cushion added to the top of the violin plot chart
 		.rangeRound([height, 0]);
 
 		//add y-axis to the bottom of svg
@@ -82,15 +78,13 @@ function violinplotchart() {
 
 		//Getting Histogram Values by SchoolName
 		xFields.forEach((field) => {
-			let sumstat = d3.rollup(
-				data,
-				(v) => {
+			let sumstat = d3.rollup(data,(v) =>{
 					const input = v.map((se) => se[field]);
 					const bins = histogram(input);
-					return bins;
-				},
-				(d) => d.SchoolName
+					return bins;},
+				(d) => {return d.SchoolName;}
 			);
+
 
 			//get array from Map type --> we are turning it into key, value
 			sumstat = Array.from(sumstat.entries()).map(([key, value]) => ({
@@ -103,7 +97,9 @@ function violinplotchart() {
 
 			for (i in sumstat) {
 				let allBins = sumstat[i].value;
-				lengths = allBins.map(function (a) {return a.length;});
+				lengths = allBins.map(function (a) {
+					return a.length;
+				});
 				longuest = d3.max(lengths);
 				if (longuest > maxNum) {
 					maxNum = longuest;
@@ -114,25 +110,19 @@ function violinplotchart() {
 			xSubScale
 			.range([0, xScale.bandwidth()])
 			.domain([-maxNum, maxNum]);
+
 			svg
 			.selectAll('myViolin')
 			.data(sumstat)
-			.enter() // So now we are working group per group
+			.enter() // Now we are working group per group
 			.append('g')
-			.attr(
-				'transform', function () {
-					return 'translate(' + xScale(field) + ' ,0)';
-				}
-			) // Translation on the right to be at the group position
+			.attr('transform', function () {return 'translate(' + xScale(field) + ' ,0)';})
+			// Translation on the right to be at the group position
 			.append('path')
-			.datum(
-				function (d) {
-					return d.value;
-				}
-			) // So now we are working bin per bin
+			.datum(function (d) {return d.value;}) // Now we are working bin per bin
 			.style('fill', 'grey')
 			.style('stroke', 'grey')
-			.attr('d',d3
+			.attr('d', d3
 				.area()
 				.x0(xSubScale(0))
 				.x1(function (d) {return xSubScale(d.length);})
@@ -158,39 +148,33 @@ function violinplotchart() {
 				value: e[1],
 				name: d.SchoolName,
 				year: d.Year,
-			})))
+			}))
+		)
 
 		.enter()
 		.append('circle')
 		.attr('cx', (d) => {
-				d.cx =
-				xScale(d.field) +
-				xScale.bandwidth() / 2 -
-				Math.random() * jitterWidth;
-				return d.cx;
-			})
-
-		.attr('cy', function (d) {
-				d.cy = yScale(parseFloat(d.value));
-				return d.cy;
-			})
-
-		// 'r' is the size of the plots
-		.attr('r', 3)
+			d.cx = xScale(d.field) + xScale.bandwidth()/2 - Math.random() * jitterWidth;
+			return d.cx;
+		})
+		.attr('cy', function (d) {d.cy = yScale(parseFloat(d.value));return d.cy;})
+		.attr('r', 3) // 'r' is the size of the plots
 		.style('fill', function (d) {
 			const matched = legends.find((l) => l.name === d.name);
 			return matched.color;
 		})
+		.attr('stroke', 'black')
 
 		// What happens to the plots when hovering
-		.attr('stroke', 'black')
 		.on('mouseover',
 			function (e, d) {
 				d3
 				.select(this)
-				.style('stroke','blue')
+				.style('stroke', 'blue')
 				.style('stroke-width', 2);
-			})
+			}
+		)
+
 		// What happens to the plots when no longer hovering
 		.on('mouseout',
 			function (e, d) {
@@ -198,7 +182,8 @@ function violinplotchart() {
 				.select(this)
 				.style('stroke', 'white')
 				.style('stroke-width', 1);
-			});
+			}
+		);
 
 		// Format X axis label
 		xAxis
@@ -213,7 +198,7 @@ function violinplotchart() {
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'start')
-		.attr('transform','translate(' + (yLabelOffsetPx - margin.left / 2) + ', -10)')
+		.attr('transform', 'translate(' + (yLabelOffsetPx - margin.left / 2) + ', -10)')
 		.text(yLabelText);
 
 		svg.call(brush);
@@ -230,7 +215,7 @@ function violinplotchart() {
 			.on('start brush', highlight)
 			.on('end', brushEnd)
 			.extent([
-				[-margin.left, -margin.bottom],
+				[-margin.left, - margin.bottom],
 				[width + margin.right, height + margin.top],
 			]);
 			g.call(brush); // Adds the brush to this element
@@ -238,7 +223,7 @@ function violinplotchart() {
 			// Highlight the selected circles
 			function highlight(event, d) {
 				if (event.selection === null) return;
-				const [[x0, y0], [x1, y1]] = event.selection;
+				const [[x0, y0],[x1, y1]] = event.selection;
 				points.classed(
 					'selected',
 					(d) => x0 <= d.cx && d.cx <= x1 && y0 <= d.cy && d.cy <= y1
@@ -259,16 +244,12 @@ function violinplotchart() {
 					let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
 
 					// Let other charts know
-					dispatcher.call(
-						dispatchString,
-						this,
-						svg.selectAll('.selected').data()
-					);
+					dispatcher.call(dispatchString,this,svg.selectAll('.selected').data());
 				}
 			}
 		}
 
-	return chart;
+		return chart;
 	}
 
 	chart.xFields = function (_) {
@@ -302,14 +283,10 @@ function violinplotchart() {
 		if (!arguments.length) return;
 
 		// Select an element if its datum was selected
-
 		selectableElements.classed(
 			'selected',
-			(d) => selectedData.includes(d.name)
-		);
+			(d) => selectedData.includes(d.name));
 	};
 
 	return chart;
 }
-
-
