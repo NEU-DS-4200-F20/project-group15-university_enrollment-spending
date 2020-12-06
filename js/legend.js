@@ -1,12 +1,7 @@
 function legend() {
-	const margin = {
-		top: 10,
-		right: 10,
-		bottom: 10,
-		left: 60,
-		},
-		width = 730,
-		height = 90;
+	const margin = {top: 10, right: 10, bottom: 10, left: 60},
+	width = 730,
+	height = 90;
 
 	let selectedSchools = [];
 
@@ -18,65 +13,62 @@ function legend() {
 		.attr('height', height + margin.top + margin.bottom);
 
 		svg = svg
-			.append('g')
-			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+		.append('g')
+		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		// add legends into chart if applicable
-		let
-			yPos = 0,
-			xPos = 0;
+		let yPos = 0,
+		xPos = 0;
+
 		const legendG = svg
-			.selectAll('.legend-for-schoolname')
-			.data(data)
-			.enter()
-			.append('g')
-			.attr('class', 'legend-for-schoolname')
-			.attr(
-				'transform',
-				(_, i) => {
-					if (i % 3 === 0) {
-						yPos += 25;
-						xPos = 0;
-					}
-					else {
-						xPos = (i % 3) * 250;
-					}
-					return `translate(${xPos}, ${yPos})`;
-				}
-			);
+		.selectAll('.legend-for-schoolname')
+		.data(data)
+		.enter()
+		.append('g')
+		.attr('class', 'legend-for-schoolname')
+		.attr('transform', (_, i) => {
+			if (i % 3 === 0) {
+				yPos += 25;
+				xPos = 0;
+			} else {
+				xPos = (i % 3) * 250;
+			}
+			return `translate(${xPos}, ${yPos})`;
+		});
 
 		legendG
 		.append('circle')
 		.style('fill', (d) => d.color)
 		.attr('stroke', 'black')
 		.attr('r', 7)
-		.on(
-			'click',
-			function (event, d) {
-				if (selectedSchools.includes(d.name)) {
-					selectedSchools = selectedSchools.filter((s) => s !== d.name);
-					d3.select(this).style('stroke', 'black').style('stroke-width', 1);
-				}
-				else{
-					selectedSchools = [...selectedSchools, d.name];
-					d3.select(this).style('stroke', 'pink').style('stroke-width', 3);
-				}
 
-				// Get the name of our dispatcher's event
-				let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
-
-				// // Let other charts know
-				dispatcher.call(dispatchString, this, selectedSchools);
+		.on('click', function (event, d) {
+			// If the selections is already in the filter list, remove it
+			if (selectedSchools.includes(d.name)) {
+				selectedSchools = selectedSchools.filter((s) => s !== d.name);
+				d3.select(this).style('stroke', 'black').style('stroke-width', 1);
 			}
-		);
+
+			// otherwise, add the selection to the filter list
+			else {
+				selectedSchools = [...selectedSchools, d.name];
+				d3.select(this).style('stroke', 'pink').style('stroke-width', 3);
+			}
+
+			// Get the name of our dispatcher's event
+			let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
+
+			// // Let other charts know
+			dispatcher.call(dispatchString, this, selectedSchools);
+		});
 
 		legendG
-			.append('text')
-			.attr('class', 'legend-text')
-			.attr('dx', '1em')
-			.attr('dy', '.4em')
-			.style('fill', 'black')
-			.text((d) => d.name);
+		.append('text')
+		.attr('class', 'legend-text')
+		.attr('dx', '1em')
+		.attr('dy', '.4em')
+		.style('fill', 'black')
+		.text((d) => d.name);
 
 		return chart;
 	}
@@ -88,5 +80,5 @@ function legend() {
 		return chart;
 	};
 
-return chart;
+	return chart;
 }
