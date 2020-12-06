@@ -8,7 +8,8 @@
 d3.csv('data/Data.csv').then((data) => {
 	const dispatchUpdateSelectionString = 'selectionUpdated',
 
-	dispatchFilterString = 'filterCircles';
+	dispatchFilterString = 'filterCircles',
+	dispatchHoverString = "hoverUpdated";
 
 	// Define the columns (fields) used in the violinplot and linecharts
 	const fields = [
@@ -197,12 +198,20 @@ d3.csv('data/Data.csv').then((data) => {
 					.y((d) => d[dlabel])
 					.yLabel(dlabel)
 					.yLabelOffset(40)
-					.tooltipFields(tooltips)(
-						`.line-chart-${one.field}`, //*** one.field
-						reDrawData, // *** reDrawData
-						legends
-						); // end .tooltipFields(
-			} // end if
+					.tooltipFields(tooltips)
+            .hoverDispatcher(d3.dispatch(dispatchHoverString))(
+            `.line-chart-${one.field}`, //*** one.field
+            reDrawData, // *** reDrawData
+            legends
+					);
+					//add handler for hovering action
+          currentChart
+            .hoverDispatcher()
+            .on(dispatchHoverString, function (hoveredData) {
+              dispatchCallback(hoveredData, one.field);
+            });
+          // end .tooltipFields(
+        } // end if
 
 			// If the user brushes nothing, show everything
 			else {
@@ -218,22 +227,33 @@ d3.csv('data/Data.csv').then((data) => {
 	function updateLineCharts(visualData) {
 		fields.forEach(
 			(field) => {
-				linechart()
-				.x((d) => d['Year'])
-				.xLabel('Year')
-				.y((d) => d[field.dlabel])
-				.yLabel(field.dlabel)
-				.tooltipFields(field.tooltipFields)
-				.yLabelOffset(40)(
-					`.line-chart-${field.slabel}`,
-					visualData,
-					legends
-				);
+				let curLineChart = linechart()
+					.x((d) => d['Year'])
+					.xLabel('Year')
+					.y((d) => d[field.dlabel])
+					.yLabel(field.dlabel)
+					.tooltipFields(field.tooltipFields)
+					.yLabelOffset(40)
+					//added dispatcher for interaction
+					.hoverDispatcher(d3.dispatch(dispatchHoverString))(
+						`.line-chart-${field.slabel}`,
+						visualData,
+						legends
+					);
+				//added handler for hovering action
+				curLineChart
+					.hoverDispatcher()
+					.on(dispatchHoverString, function (hoveredData) {
+						//call hovering manage function							
+						dispatchCallback(hoveredData, field.slabel);
+					});
 			} // end '(field) =>'
 		); // end 'fields.forEach'
 	} // end 'function updateLineCharts(visualData)'
-
-
-}); // end 'd3.csv('data/Data.csv').then((data) =>'
-
+ //event for hovering of line charts
+	function dispatchCallback(hoveredData, field) {
+		// console.log(hoveredData, "hoveredD!");
+		violin.updateHighlight(hoveredData, field);
+	}
+}); // end "d3.csv("data/Data.csv").then((data) =>"
 })(); // end IFFY
