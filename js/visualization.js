@@ -9,7 +9,7 @@ d3.csv('data/Data.csv').then((data) => {
 	const dispatchUpdateSelectionString = 'selectionUpdated',
 
 	dispatchFilterString = 'filterCircles',
-	dispatchHoverString = "hoverUpdated";
+	dispatchHoverString = 'hoverUpdated';
 
 	// Define the columns (fields) used in the violinplot and linecharts
 	const fields = [
@@ -252,8 +252,8 @@ d3.csv('data/Data.csv').then((data) => {
 	} // end 'function updateLineCharts(visualData)'
  //event for hovering of line charts
 	function dispatchCallback(hoveredData, field) {
-		// console.log(hoveredData, "hoveredD!");
+		// console.log(hoveredData, 'hoveredD!');
 		violin.updateHighlight(hoveredData, field);
 	}
-}); // end "d3.csv("data/Data.csv").then((data) =>"
+}); // end 'd3.csv('data/Data.csv').then((data) =>'
 })(); // end IFFY
