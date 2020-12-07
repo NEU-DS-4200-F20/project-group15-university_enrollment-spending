@@ -138,9 +138,9 @@ function linechart() {
 				// tooltipFields[0] is Pct, [1] is FTE, [2] is percent name, [3] is fte name
 				.style('left', event.pageX + 'px')
 				.style('top', event.pageY -75 + 'px')
-				.transition()
-				.duration(200)
-				.style('opacity', 0.9)
+				// .transition()
+				// .duration(200)
+				// .style('opacity', 0.9)
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away

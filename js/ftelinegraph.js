@@ -123,7 +123,7 @@ function ftelinechart() {
 
 				//use raise() to bring the element forward when hovering the mouse
 				//hide when mouse moves away
-				const selection = d3.select(this).raise();
+				const selection = d3.select(this);
 				selection.transition()
 					.delay('20')
 					.duration('200')
