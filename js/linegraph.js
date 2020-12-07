@@ -127,10 +127,11 @@ function linechart() {
 
 		//mouse events
 		.on("mouseover", function (event, d) {
-			d3.selectAll(".tooltip").style("opacity", 0);
-			div.transition()
+			div
+			.transition()
 			.duration(200)
 			.style('opacity', 0.9);
+
 			div.html(
 				`<b>${d.SchoolName}<br />Year: </b>${d.Year}<br />
 				<b>${tooltipFields[2]}</b>: ${parseFloat(d[tooltipFields[0]])}%<br />
@@ -138,37 +139,40 @@ function linechart() {
 				// tooltipFields[0] is Pct, [1] is FTE, [2] is percent name, [3] is fte name
 				.style('left', event.pageX + 'px')
 				.style('top', event.pageY -75 + 'px')
-				// .transition()
-				// .duration(200)
-				// .style('opacity', 0.9)
+
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
-			const selection = d3.select(this).raise();
+			const selection = d3.select(this);
 			selection
 			.transition()
-			.duration(200)
+			.delay('20')
+			.duration('200')
 			.attr("r", 10)
 			.style("opacity", 1)
 			.style("fill", d.color);
 
-			// Get the name of our dispatcher's event
+			// Get the name of our dispatcher's event (dispatchString = 'hoverUpdated')
 			let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
-			//dispatchString = 'hoverUpdated'
-
 			// Let other charts know
 			dispatcher.call(dispatchString, this, d);
 		})
 
-		.on("mouseout", function (event, d) {
-			div.style("opacity", 0);
+		.on("mouseout", function (d) {
+			div
+			.transition()
+			.duration(500)
+			.style("opacity", 0);
+
 			const selection = d3.select(this);
 			selection
 			.transition()
+			.delay(20)
 			.duration(200)
 			.attr("r", 3)
-			.style("fill", d.color)
+
 			.style("opacity", 1);
+
 			// Get the name of our dispatcher's event
 			let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
 
