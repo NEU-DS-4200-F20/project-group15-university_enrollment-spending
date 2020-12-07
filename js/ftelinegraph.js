@@ -100,51 +100,58 @@ function ftelinechart() {
 		.enter()
 		.append('circle')
 		.attr('class', 'point line-point')
-		.style('stroke-width', 2)
+		.style('stroke-width', 1)
 		.attr('cx', X)
 		.attr('cy', Y)
 		.attr('r', 3)
+		.style("fill", (d) => {
+			d.color = legends.find((e) => e.name === d.SchoolName).color;
+			return d.color;
+		})
 
 
 
-			//mouse events
-			.on('mouseover', function (event, d) {
-				div.transition()
-					.duration(200)
-					.style('opacity', 0.9);
-				div.html(
-					`<b>${d.SchoolName}<br/>
-					Year: </b>${d.Year}<br/>
-					<b>Total FTE Students</b>: ${d[tooltipFields[0]]}<br/>
-					<b>Annual Enrollment Growth</b>: ${d[tooltipFields[1]]}%`
-					)
-					.style('left', event.pageX - 100 + 'px')
-					.style('top', event.pageY - 70 + 'px');
+		//mouse events
+		.on('mouseover', function (event, d) {
+			div
+			.transition()
+			.duration(200)
+			.style('opacity', 0.9);
 
-				//use raise() to bring the element forward when hovering the mouse
-				//hide when mouse moves away
-				const selection = d3.select(this);
-				selection.transition()
-					.delay('20')
-					.duration('200')
-					.attr('r', 6)
-					.style('opacity', 1)
-					.style('fill', 'purple');
-			})
+			div
+			.html(
+				`<b>${d.SchoolName}<br/>Year: </b>${d.Year}<br/>
+				<b>Total FTE Students</b>: ${d[tooltipFields[0]]}<br/>
+				<b>Annual Enrollment Growth</b>: ${d[tooltipFields[1]]}%`)
+			.style('left', event.pageX - 100 + 'px')
+			.style('top', event.pageY - 70 + 'px');
 
-			.on('mouseout', function (d) {
-				div.transition()
-					.duration(500)
-					.style('opacity', 0);
+			//use raise() to bring the element forward when hovering the mouse
+			//hide when mouse moves away
+			const selection = d3.select(this);
+			selection
+			.transition()
+			.delay('20')
+			.duration('200')
+			.attr('r', 6)
+			.style('opacity', 1)
+			.style('fill', d.color);
+		})
 
-				const selection = d3.select(this);
-				selection.transition()
-					.delay(20)
-					.duration(200)
-					.attr('r', 3)
-					.style('opacity', 1)
-					.style('fill', 'white');
-			});
+		.on('mouseout', function (d) {
+			div
+			.transition()
+			.duration(500)
+			.style('opacity', 0);
+
+			const selection = d3.select(this);
+			selection
+			.transition()
+			.delay(20)
+			.duration(200)
+			.attr('r', 3)
+			// .style('opacity', 1)
+		});
 
 		return chart;
 	}
