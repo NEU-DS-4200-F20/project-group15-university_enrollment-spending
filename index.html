@@ -81,7 +81,7 @@ End tasks to be completed -->
 			post-secondary institutions to search for patterns and explore their impacts on enrollment. This work
 			provides the visualizations necessary to compare spending patterns between similar schools to find spending
 			patterns that may lead to higher enrollments. If patterns are found in these visualizations, the task force
-			can focus their efforts on a deeper statistical analysis of the underlying data to determine if these
+			can focus their efforts on a deeper analysis of the underlying data to determine if these
 			patterns are statistically significant. Proper guidance can then be given to advise the school board on
 			possible policy changes to the school's financial expenditures.
 		</p>
@@ -106,6 +106,10 @@ End tasks to be completed -->
 			The data for the three University of Massachusetts schools have been averaged and is represented as one
 			entity (gray). The average of the MA State Schools, excluding SSU, is also displayed (pink).
 		</p>
+		<!-- insert data file switcher here -->
+		<!--
+
+		 -->
 		<p>
 			The task force expressed they would like to be able to see the rate of growth of enrollments expressed
 			as the number of Full-Time Equivalent Students, distribution of spending as a percentage of total
@@ -130,7 +134,7 @@ End tasks to be completed -->
 				<!-- a tooltip activated by hovering over an icon -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
-						In this line graph, hovering over any datapoint will reveal more data about that
+						In this line graph, hovering over any data point will reveal more data about that
 						specific point.<br /><br />Click any colored dot in the legend below to filter by school.
 						Continue clicking the colored dots to add or remove schools from all of the line graphs.
 						<br /><br />Click anywhere in the violin plot area to reset the graph to show all schools.
@@ -158,8 +162,7 @@ End tasks to be completed -->
 						positive growth over time, but Salem State University (purple) has shown steady negative
 						growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools,
 						and the UMass schools (gray) have the highest average enrollment among all MA public schools.
-						Both schools have reported steady growth over the timeframe.<br /><br />Since these schools seem
-						to be
+						Both schools have reported steady growth over the timeframe.<br /><br />Since these schools seem to be
 						getting it right, we would look for similar spending patterns between these schools to find
 						a correlation between certain expenses and enrollment changes.
 					</span>
@@ -205,7 +208,7 @@ End tasks to be completed -->
 							Brushing (click and drag) on any group of points within a violin will filter the
 							corresponding line graph on the right to only show the lines related to those data
 							points. Simply clicking anywhere in the chart will reset the line graphs to show all
-							data.<br /><br />For example, if the brushed points happen to represent Salem State
+							data again.<br /><br />For example, if the brushed points happen to represent Salem State
 							in 2006 and Fitchburg State in 2010, the corresponding line graph on the right will
 							show the lines for both Salem and Fitchburg in both 2006 and 2010. You can only brush
 							one violin at a time, but consecutively brushing numerous violins will allow each
@@ -219,14 +222,13 @@ End tasks to be completed -->
 		</div><!-- End sticky-zone -->
 
 
-
 		<div class='linecharts-holder'>
 			<h3>
 				Dollars spent per FTE Student
 				<!-- a tooltip activated by hovering over an icon -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
-						Hovering over any datapoint will reveal more data about that specific point.<br /><br />
+						Hovering over any data point will reveal more data about that specific point.<br /><br />
 						The number of schools represented in these line graphs can also be filtered by clicking
 						on the colored circles in the legend. Brushing (click and drag) on any group of
 						points within a violin will filter the corresponding line graph below to only show the
@@ -265,7 +267,7 @@ End tasks to be completed -->
 		<p>
 			These capabilities will allow the end user to explore the dataset and hopefully discover useful insights.
 			While an in-depth analysis will be required to determine if the findings are statistically significant, and
-			beyond the scope of this project, we hope this tool will help users direct the focus of their research.
+			is beyond the scope of this project, we hope this tool will help users direct the focus of their research.
 			Depending on those findings it can possible to identify which expenses help boost enrollment, which
 			expenses should be reduced, and ultimately convince decision-makers in affecting financial policy changes.
 		</p>
@@ -279,36 +281,38 @@ End tasks to be completed -->
 			</li>
 			<li>
 				<a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>Pure CSS
-					responsive 'Fork me on GitHub'ribbon</a> by Chris Heilmann is used to create
+				responsive 'Fork me on GitHub'ribbon</a> by Chris Heilmann is used to create
 				the banner that links back to the source code repository.
 			</li>
 			<li>
 				<a href='https://www.w3schools.com/'>W3 Schools</a> was referenced for numerous
 				definitions, especially for <a href='https://www.w3schools.com/css/css3_animations.asp'>
-					animations</a> and <a href='https://www.w3schools.com/css/css_tooltip.asp'>
-					tooltips</a>.
+				animations</a> and <a href='https://www.w3schools.com/css/css_tooltip.asp'>
+				tooltips</a>.
 			</li>
 			<li>
 				A method to
-				<a
-					href='https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicate'>
+				<a href='https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicate'>
 					get all the unique values
 				</a> in a javascript array, found at StackOverflow.
 			</li>
-			<li><a href='https://www.d3-graph-gallery.com/graph/violin_jitter.html'>Making a violin plot in D3</a> by
-				the D3 Graph
-				Library. This was the inspiration behind the violin plot.</li>
-			<li><a href='http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends'>Interactive
-					legends</a>
-				by johnkiernander. This was used to build our interactive legend.</li>
-			<li><a href='https://github.com/NEU-DS-4200-F20/assignment--brushing-and-linking-binsaeedraed.git'>Brushing
-					and Linking
-					Assignment 8</a> by Cody Dunne. This was used to make the brushing and linking. It also provided us
-				with the
-				necessary background for the linegraph.</li>
-			<li><a href='https://www.d3-graph-gallery.com/graph/line_several_group.html'>Line Graph with several
-					groups</a> by Holtz
-				Yan. This provided us with the building block of the multi-line graph.</li>
+			<li>
+				<a href='https://www.d3-graph-gallery.com/graph/violin_jitter.html'>Making a violin plot in D3</a> by
+				the D3 Graph Library. This was the inspiration behind the violin plot.
+			</li>
+			<li>
+				<a href='http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends'>Interactive
+				legends</a> by johnkiernander. This was used to build our interactive legend.
+			</li>
+			<li>
+				<a href='https://github.com/NEU-DS-4200-F20/assignment--brushing-and-linking-binsaeedraed.git'>Brushing
+				and Linking Assignment 8</a> by Cody Dunne. This was used to make the brushing and linking. It also
+				provided us with the necessary background for the linegraph.
+			</li>
+			<li>
+				<a href='https://www.d3-graph-gallery.com/graph/line_several_group.html'>Line Graph with several
+				groups</a> by Holtz Yan. This provided us with the building block of the multi-line graph.
+			</li>
 		</ul>
 		<!-- End Conclusion -->
 
