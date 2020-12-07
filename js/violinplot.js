@@ -288,29 +288,34 @@ function violinPlotChart() {
 			(d) => selectedData.includes(d.name));
 	};
 
-	//Adding Interactivity on hovering from linechart to violin plot 
+	//Adding Interactivity on hovering from linechart to violin plot
 	chart.updateHighlight = function (hoveredData, field) {
 		if (!arguments.length) return;
 		if (hoveredData) {
-		  selectableElements.each(function (d) {
-			//set opacity as 1 for hovered Data
-			if (
-			  hoveredData.SchoolName === d.name &&
-			  hoveredData.Year === d.year &&
-			  field === d.field &&
-			  hoveredData[field] === d.value
-			) {
-			  d3.select(this).style('opacity', 1);
-			} else {
-			  //others will be oapcity 0.1
-			  d3.select(this).style('opacity', 0.05);
-			}
-		  });
+		selectableElements.each(function (d) {
+		//set opacity as 1 for hovered Data
+		if (
+			hoveredData.SchoolName === d.name &&
+			hoveredData.Year === d.year &&
+			field === d.field &&
+			hoveredData[field] === d.value
+		) {
+			d3.select(this)
+			.style('opacity', 1)
+			.style('r', 8);
 		} else {
-		  //when hover out, restores all opacity of circles.
-		  selectableElements.style('opacity', 1);
+			//others will be oapcity 0.1
+			d3.select(this)
+			.style('opacity', 0.05);
+			}
+		});
+		} else {
+		//when hover out, restores all opacity of circles.
+		selectableElements
+		.style('opacity', 1)
+		.style('r', 3);
 		}
-	  };
+	};
 
 	return chart;
 }
