@@ -73,7 +73,7 @@ function violinPlotChart() {
 		const histogram = d3
 		.bin() // d3.histogram is v4
 		.domain(yScale.domain())
-		.thresholds(yScale.ticks(20))
+		.thresholds(yScale.ticks(35))
 		.value((d) => parseFloat(d));
 
 		//Getting Histogram Values by SchoolName
