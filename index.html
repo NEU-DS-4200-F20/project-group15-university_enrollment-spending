@@ -78,24 +78,22 @@ End tasks to be completed -->
 			been charged with making recommendations for increasing revenue and reducing expenses. Their goal is to
 			reallocate spending in areas that drive enrollments (increasing revenue) and decrease spending in areas that
 			do not drive enrollments (reducing expenses). The following visualizations explore the spending patterns of
-			post-secondary institutions to search for patterns and explore their impacts on enrollment. This work
-			provides the visualizations necessary to compare spending patterns between similar schools to find spending
-			patterns that may lead to higher enrollments. If patterns are found in these visualizations, the task force
-			can focus their efforts on a deeper analysis of the underlying data to determine if these
-			patterns are statistically significant. Proper guidance can then be given to advise the school board on
-			possible policy changes to the school's financial expenditures.
+			post-secondary institutions to search for patterns that may reveal their impacts on enrollment. If patterns
+			are found in these visualizations, a deeper analysis of the underlying data can determine if they  are
+			statistically significant. Proper guidance can then be given to make fiscal policy changes that will boost
+			enrollments.
 		</p>
 
 		<h1>Visualizations</h1>
 		<p>
-			Our partner has identified eight schools which are similar to Salem State University and would be
-			appropriate for comparison based on region (Massachusetts), sector (four-year public institutions),
-			and size (more than 1,000 but less than 15,000 students).
+			We have included data from following basket of nine schools, as they are appropriate for comparison based
+			on region (Massachusetts), sector (four-year public institutions), and size (1,000 to 15,000 students).
 		</p>
 		<ul>
 			<li>Bridgewater State University</li>
 			<li>Fitchburg State University</li>
 			<li>Framingham State University</li>
+			<li>Salem State University</li>
 			<li>Westfield State University</li>
 			<li>Worcester State University</li>
 			<li>University of Massachusetts: Boston</li>
@@ -104,7 +102,8 @@ End tasks to be completed -->
 		</ul>
 		<p>
 			The data for the three University of Massachusetts schools have been averaged and is represented as one
-			entity (gray). The average of the MA State Schools, excluding SSU, is also displayed (pink).
+			entity (gray). The University of Massachusetts: Amherst, Medical School, and Law School have been
+			intentionally omitted from this basket. The average of the MA State Schools is also displayed (pink).
 		</p>
 		<!-- insert data file switcher here -->
 		<!--
@@ -117,8 +116,11 @@ End tasks to be completed -->
 			per Full-Time Equivalent Student. This has been accomplished with the use of a line graph to show
 			time-series enrollment data, a violin plot to show the distribution of spending in eight major
 			categories, and individual line graphs to show the time-series detail of sending in each of those
-			eight categories. In each of the line graphs, additional details are displayed when hovering over
-			any point with the pointer. Hover over any &#9432; icon for additional suggestions.
+			eight categories.
+		</p>
+		<p>
+			In each of the line graphs, additional details are displayed when hovering over
+			any data point. Hover over any &#9432; icon for additional suggestions.
 		</p>
 	</div><!-- End narrow-column -->
 	<!-- End Introduction -->
@@ -134,10 +136,9 @@ End tasks to be completed -->
 				<!-- a tooltip activated by hovering over an icon -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
-						In this line graph, hovering over any data point will reveal more data about that
-						specific point.<br /><br />Click any colored dot in the legend below to filter by school.
-						Continue clicking the colored dots to add or remove schools from all of the line graphs.
-						<br /><br />Click anywhere in the violin plot area to reset the graph to show all schools.
+						Hovering over any data point reveals more information about that specific point.
+						<br/><br/>Clicking colored dots in the legend will add or remove schools from the graph.
+						<br/><br/>Click anywhere in the violin plot area to restore the graph to show all schools.
 					</span>
 				</span>
 			</h3>
@@ -162,9 +163,9 @@ End tasks to be completed -->
 						positive growth over time, but Salem State University (purple) has shown steady negative
 						growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools,
 						and the UMass schools (gray) have the highest average enrollment among all MA public schools.
-						Both schools have reported steady growth over the timeframe.<br /><br />Since these schools seem to be
-						getting it right, we would look for similar spending patterns between these schools to find
-						a correlation between certain expenses and enrollment changes.
+						Both schools have reported steady growth over the timeframe.<br /><br />Since these schools
+						seem to be getting it right, we would look for similar spending patterns between these
+						schools to find a correlation between certain expenses and enrollment changes.
 					</span>
 				</span>
 			</p>
@@ -172,22 +173,20 @@ End tasks to be completed -->
 			<h3>Spending Trends:</h3>
 			<h4>Distribution of data</h4>
 			<p>
-				Below the legend, the violin plots show the distribution of the data from all the schools in each of
-				the eight major expense categories. Each colored dot represents one school's spending in that category
-				for a particular year, as a percent of their total budget. The gray violin body gives an alternate
-				representation of the distribution, read similar to a sideways histogram. The height of each violin
-				body represents the range of the values. The width of each violin body represents the frequency of the
-				values, with many values in a narrow range resulting in a wide violin body. Any group of data points
-				outside of the main body of data should be investigated for correlation with changes in enrollment.
+				Below the legend, violin plots show the distribution of all the data in each expense category. Each
+				colored dot represents a school's spending for a particular year, as a percent of their total budget.
+				A gray violin body gives an alternate representation of the distribution, read similar to a sideways
+				histogram. The height of each violin represents the range of the values. The width of each violin
+				represents the frequency of the values. This provides an overview to identify the variance of
+				spending in each category.
 			</p>
 			<h4>Time-series data</h4>
 			<p>
-				Below, the line graphs show each school's spending trends per category over time. Each graph
-				corresponds with one violin from the violin plots, with the top line graph representing the same
-				data as the far left violin, and the bottom line graph representing the same data as the far right
-				violin. The data displayed are the dollar amounts spent annually per Full-Time Equivalent Student.
-				This is a powerful metric allowing for direct comparisons regardless of the number of students or
-				total budget size.
+				Below, the line graphs show each school's spending trends, with each category isolated to a single
+				chart. Each line graph corresponds with one violin. The top line graph represents the same data as
+				the far left violin. The data displayed are the dollar amounts spent annually per FTE student. This
+				provides a direct comparison between schools regardless of the total budget, and is not affected by
+				spending changes in other categories.
 			</p>
 
 		</div><!-- End side-text-column -->
@@ -205,10 +204,12 @@ End tasks to be completed -->
 					<!-- a tooltip activated by hovering over an icon -->
 					<span class="tooltipicon"> &#9432;
 						<span class="tooltiptext">
-							Brushing (click and drag) on any group of points within a violin will filter the
-							corresponding line graph on the right to only show the lines related to those data
-							points. Simply clicking anywhere in the chart will reset the line graphs to show all
-							data again.<br /><br />For example, if the brushed points happen to represent Salem State
+							This visualization focuses on the entire comparison basket, so schools cannot be
+							filtered out of this graph. By clicking a colored dot in the legend, we can highlight
+							all the data for that school. Clicking any blank area in the graph will restore the
+							original view. To see how these values changed over time, we can click and drag over
+							an area of interest in a violin, then look to the corresponding line graph on the right.
+							<br /><br />For example, if the brushed points happen to represent Salem State
 							in 2006 and Fitchburg State in 2010, the corresponding line graph on the right will
 							show the lines for both Salem and Fitchburg in both 2006 and 2010. You can only brush
 							one violin at a time, but consecutively brushing numerous violins will allow each
@@ -228,12 +229,9 @@ End tasks to be completed -->
 				<!-- a tooltip activated by hovering over an icon -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
-						Hovering over any data point will reveal more data about that specific point.<br /><br />
-						The number of schools represented in these line graphs can also be filtered by clicking
-						on the colored circles in the legend. Brushing (click and drag) on any group of
-						points within a violin will filter the corresponding line graph below to only show the
-						lines related to those data points.<br /><br />Click anywhere in the violin plot area to
-						reset the line graphs to show all schools.
+						Details are again available by hovering over any plot, and that value is also isolated in
+						the corresponding violin.<br/><br/>Interacting with the legend will apply a school filter to
+						all the line graphs.<br/><br/>Clicking anywhere in the violin plot restores the original view.
 					</span>
 				</span>
 			</h3>
