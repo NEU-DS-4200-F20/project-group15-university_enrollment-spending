@@ -4,15 +4,19 @@
 // Based on Mike Bostock's margin convention
 // https://bl.ocks.org/mbostock/3019563
 
+fteWidth = 775
+fteHeight = 475
+
 function ftelinechart() {
+	//Define the margins
 	let margin = {top: 25, left: 40, right: 20, bottom: 30},
-		width = 775 - margin.left - margin.right,
-		height = 475 - margin.top - margin.bottom,
-		xValue = (d) => d[0],
-		yValue = (d) => d[1],
+		width = fteWidth - margin.left - margin.right,
+		height = fteHeight - margin.top - margin.bottom,
+		xValue = (d) => d[0], // 'Year' column
+		yValue = (d) => d[1], // 'Total_FTE_Students' column
 		xLabelText = '',
 		yLabelText = '',
-		yLabelOffsetPx = 0,
+		// yLabelOffsetPx = 0,
 		xScale = d3.scalePoint(),
 		yScale = d3.scaleLinear(),
 		tooltipFields = [];
@@ -20,6 +24,7 @@ function ftelinechart() {
 	// Create the chart by adding an svg to the div with the id
 	// specified by the selector using the given data
 	function chart(selector, data, legends) {
+		// when filtering schools, replace this chart with a new one
 		d3.select(selector).selectAll('*').remove();
 		let svg = d3
 		.select(selector)
@@ -32,7 +37,8 @@ function ftelinechart() {
 		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		//Define scales
-		xScale.domain(d3.group(data, xValue).keys()).rangeRound([0, width]);
+		xScale
+		.domain(d3.group(data, xValue).keys()).rangeRound([0, width]);
 
 		yScale
 		.domain([
@@ -62,7 +68,8 @@ function ftelinechart() {
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'start')
-		.attr('transform', 'translate(' + (yLabelOffsetPx - margin.left) + ', -10)')
+		// .attr('transform', 'translate(' + (yLabelOffsetPx - margin.left) + ', -10)')
+		.attr('transform', `translate(${-margin.left}, -10)`)
 		.text(yLabelText);
 
 		// group path data per each school
@@ -119,10 +126,12 @@ function ftelinechart() {
 			.style('opacity', 0.9);
 
 			div
-			.html(
-				`<b>${d.SchoolName}<br/>Year: </b>${d.Year}<br/>
-				<b>Total FTE Students</b>: ${d[tooltipFields[0]]}<br/>
-				<b>Annual Enrollment Growth</b>: ${d[tooltipFields[1]]}%`)
+			.html(`
+				<b>${d.SchoolName}<br/>Year: </b>${d.Year}<br/>
+				<b>Total FTE Students: </b>${d[tooltipFields[0]]}<br/>
+				<b>Annual Enrollment Growth: </b>${d[tooltipFields[1]]}%<br/>
+				<b>Undergraduate Enrollment: </b>${d[tooltipFields[2]]}%
+				`)
 			.style('left', event.pageX - 100 + 'px')
 			.style('top', event.pageY - 70 + 'px');
 
@@ -208,11 +217,11 @@ function ftelinechart() {
 		return chart;
 	};
 
-	chart.yLabelOffset = function (_) {
-		if (!arguments.length) return yLabelOffsetPx;
-		yLabelOffsetPx = _;
-		return chart;
-	};
+	// chart.yLabelOffset = function (_) {
+	// 	if (!arguments.length) return yLabelOffsetPx;
+	// 	yLabelOffsetPx = _;
+	// 	return chart;
+	// };
 
 	chart.tooltipFields = function (_) {
 		if (!arguments.length) return tooltipFields;
