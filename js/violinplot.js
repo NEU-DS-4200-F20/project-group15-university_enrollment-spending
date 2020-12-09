@@ -1,12 +1,13 @@
 //source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
 violinwidth = 800
+violinheight = 690
 
 function violinPlotChart() {
 	//Define the margins
 	let margin = {top: 30, right: 50, bottom: 150, left: 25},
 	width = violinwidth - margin.left - margin.right,
-	height = 690 - margin.top - margin.bottom,
+	height = violinheight - margin.top - margin.bottom,
 	xFields = [],
 	xLabelText = '',
 	yLabelText = '',
@@ -190,7 +191,7 @@ function violinPlotChart() {
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'end')
-		.attr('transform', `translate(${width + margin.right - 40}, 100)`)
+		.attr('transform', `translate(${width + margin.right - 50}, ${margin.bottom - 15})`)
 		.text(xLabelText);
 
 		// Format Y axis label
@@ -215,8 +216,8 @@ function violinPlotChart() {
 			.on('start brush', highlight)
 			.on('end', brushEnd)
 			.extent([
-				[-margin.left, - margin.bottom],
-				[width + margin.right, height + margin.top],
+				[-margin.right,-margin.top],
+				[violinwidth-margin.right,violinheight-margin.top],
 			]);
 			g.call(brush); // Adds the brush to this element
 
