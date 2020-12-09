@@ -101,14 +101,14 @@ function linechart() {
 		.attr('stroke-width', 3)
 		.attr('d', (d) => d3.line().x(X).y(Y)(d[1]));
 
-		//define the div for the tooltip
-		var div = d3
+		//define the tooltip
+		var ttip = d3
 		.select("body")
 		.append("div")
 		.attr("class", "tooltip tooltip-" + selector.substr(1, selector.length))
 		.style("opacity", 0);
 
-		// Add the points
+		// Add the points to the linegraph
 		pathG
 		.selectAll(".line-point")
 		.data((d) => d[1])
@@ -128,23 +128,24 @@ function linechart() {
 
 		//mouse events
 		.on("mouseover", function (event, d) {
-			div
+			ttip
 			.transition()
 			.duration(200)
 			.style('opacity', 0.9);
 
-			div.html(
+			ttip.html(
 				`<b>${d.SchoolName}<br />Year: </b>${d.Year}<br />
 				<b>${tooltipFields[2]}</b>: ${parseFloat(d[tooltipFields[0]])}%<br />
 				<b>${tooltipFields[3]}</b>: $${parseFloat(d[tooltipFields[1]])}`)
 				// tooltipFields[0] is Pct, [1] is FTE, [2] is percent name, [3] is fte name
 				.style('left', event.pageX + 'px')
-				.style('top', event.pageY -75 + 'px')
+				.style('top', event.pageY -75 + 'px');
 
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
 			const selection = d3.select(this);
+
 			selection
 			.transition()
 			.delay('20')
@@ -155,17 +156,19 @@ function linechart() {
 
 			// Get the name of our dispatcher's event (dispatchString = 'hoverUpdated')
 			let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
+
 			// Let other charts know
 			dispatcher.call(dispatchString, this, d);
 		})
 
 		.on("mouseout", function (d) {
-			div
+			ttip
 			.transition()
 			.duration(500)
 			.style("opacity", 0);
 
 			const selection = d3.select(this);
+
 			selection
 			.transition()
 			.delay(20)
