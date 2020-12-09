@@ -89,7 +89,7 @@ h4 {
 	float: right;
 	width: 500px;
 	/* when adjusting this number also look at:
-					linegraph.js linewidth = ?px */
+					linegraph.js lineWidth = ?px */
 }
 
 /* A temporary class for debugging */
@@ -143,7 +143,7 @@ circle.selected {
 	25% {color: black;}
 }
 
-/* Tooltip Icons text */
+/* Tooltip Icons in the body text */
 .tooltipicon .tooltiptext {
 	visibility: hidden;
 	width: 400px;
@@ -165,7 +165,7 @@ circle.selected {
 	z-index: 1;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
+/* Show the tooltip when you hover over the tooltip icon */
 .tooltipicon:hover .tooltiptext {
 	visibility: visible;
 	opacity: 1;
@@ -173,13 +173,11 @@ circle.selected {
 
 
 
-
-/* Format the in-graph tooltips */
+/* Format the expense linegraph tooltips */
 div.tooltip {
 	position: absolute;
-	top: 100%;
-	left: 50%;
-	margin-left: -200px;
+	margin-left: -220px;
+	margin-top: -5px;
 	text-align: left;
 	padding: 4px;
 	font: 12px sans-serif;
@@ -189,9 +187,10 @@ div.tooltip {
 	pointer-events: none;
 }
 
-/* Format the tooltip */
+/* Format the enrollment linegraph tooltips */
 div.tooltip2 {
 	position: absolute;
+	margin-top: -25px;
 	text-align: left;
 	padding: 4px;
 	font: 12px sans-serif;
