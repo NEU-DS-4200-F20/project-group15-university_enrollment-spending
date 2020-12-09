@@ -139,6 +139,8 @@ d3.csv(fileName).then((data) => {
 	.yLabel('Percent of Total Expenses')
 	.selectionDispatcher(d3.dispatch(dispatchUpdateSelectionString))('.violinplot-holder',data,legends,);
 
+
+// Brushing the legend
 	// Allow school filtering directly in the legend. When user clicks
 	// any circle, tell the linechart to update it's circles
 	legendChart.selectionDispatcher().on(dispatchFilterString,function (selectedSchools) {
@@ -166,7 +168,7 @@ d3.csv(fileName).then((data) => {
 		); // End ftelinechart
 	}); // End legendChart.selectionDispatcher
 
-
+// Brushing the violins
 	// When the violin plots are brushed, tell the linechart to update it's selection
 	violin.selectionDispatcher().on(dispatchUpdateSelectionString, function (selectedData) {
 
