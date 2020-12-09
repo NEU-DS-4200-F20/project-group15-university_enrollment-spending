@@ -4,13 +4,13 @@
 // Based on Mike Bostock's margin convention
 // https://bl.ocks.org/mbostock/3019563
 
-let linewidth = 500
+let lineWidth = 500
 // when adjusting this number also look at:
 //		style.css .linecharts-holder {width}
 
 function linechart() {
 	let margin = {top: 30, left: 45, right: 10, bottom: 40},
-	width = linewidth - margin.left - margin.right,
+	width = lineWidth - margin.left - margin.right,
 	height = 280 - margin.top - margin.bottom,
 	xValue = (d) => d[0],
 	yValue = (d) => d[1],
