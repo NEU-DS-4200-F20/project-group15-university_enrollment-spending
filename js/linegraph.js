@@ -16,7 +16,7 @@ function linechart() {
 	yValue = (d) => d[1],
 	xLabelText = '',
 	yLabelText = '',
-	yLabelOffsetPx = 0,
+	// yLabelOffsetPx = 0,
 	xScale = d3.scalePoint(),
 	yScale = d3.scaleLinear(),
 	tooltipFields = [],
@@ -75,7 +75,8 @@ function linechart() {
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'start')
-		.attr('transform', 'translate(' + (yLabelOffsetPx - margin.left) + ', -10)')
+		// .attr('transform', 'translate(' + (yLabelOffsetPx - margin.left) + ', -10)')
+		.attr('transform', `translate(${-margin.left}, -10)`)
 		.text(yLabelText);
 
 		// group path data per each school
@@ -237,11 +238,11 @@ function linechart() {
 		return chart;
 	};
 
-	chart.yLabelOffset = function (_) {
-		if (!arguments.length) return yLabelOffsetPx;
-		yLabelOffsetPx = _;
-		return chart;
-	};
+	// chart.yLabelOffset = function (_) {
+	// 	if (!arguments.length) return yLabelOffsetPx;
+	// 	yLabelOffsetPx = _;
+	// 	return chart;
+	// };
 
 	chart.tooltipFields = function (_) {
 		if (!arguments.length) return tooltipFields;
