@@ -1,23 +1,24 @@
 //source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
-violinwidth = 800
-violinheight = 690
+violinWidth = 800
+violinHeight = 690
 
 function violinPlotChart() {
 	//Define the margins
 	let margin = {top: 30, right: 50, bottom: 150, left: 25},
-	width = violinwidth - margin.left - margin.right,
-	height = violinheight - margin.top - margin.bottom,
+	width = violinWidth - margin.left - margin.right,
+	height = violinHeight - margin.top - margin.bottom,
 	xFields = [],
 	xLabelText = '',
 	yLabelText = '',
-	yLabelOffsetPx = -10,
 	xScale = d3.scaleBand(),
 	xSubScale = d3.scaleLinear(),
 	yScale = d3.scaleLinear(),
 	selectableElements = d3.select(null),
 	dispatcher;
 
+	// Create the chart by adding an svg to the div with the id
+	// specified by the selector using the given data
 	function chart(selector, data, legends) {
 		let svg = d3
 		.select(selector)
@@ -30,10 +31,9 @@ function violinPlotChart() {
 		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		//get Max Y value from all xFields value.
-		//This will help in setting the Y-axis Max Value
-		let maxY = 0;
 
 		// Find the maximum value to determine the scale of the y-axis
+		let maxY = 0;
 		data.forEach((record) => {xFields.forEach((field) => {
 			const fieldMax = parseFloat(record[field]);
 			// I parsed it because it was treating the number as text
@@ -42,7 +42,7 @@ function violinPlotChart() {
 
 		// build the y-axis
 		yScale
-		.domain([0, maxY + maxY * .05]) // 5% cushion added to the top of the violin plot chart
+		.domain([0, maxY * 1.05]) // 5% cushion added to the top of the violin plot chart
 		.rangeRound([height, 0]);
 
 		//add y-axis to the bottom of svg
@@ -166,32 +166,36 @@ function violinPlotChart() {
 		})
 		.attr('stroke', 'black')
 
-		// What happens to the plots when hovering
-		.on('mouseover',
-			function (e, d) {
-				d3
-				.select(this)
-				.style('stroke', 'blue')
-				.style('stroke-width', 2);
-			}
-		)
+		// // What happens to the plots when hovering
+		// .on('mouseover',
+		// 	function (e, d) {
+		// 		d3
+		// 		.select(this)
+		// 		.style('stroke', 'blue')
+		// 		.style('stroke-width', 2);
+		// 	}
+		// )
 
-		// What happens to the plots when no longer hovering
-		.on('mouseout',
-			function (e, d) {
-				d3
-				.select(this)
-				.style('stroke', 'white')
-				.style('stroke-width', 1);
-			}
-		);
+		// // What happens to the plots when no longer hovering
+		// .on('mouseout',
+		// 	function (e, d) {
+		// 		d3
+		// 		.select(this)
+		// 		.style('stroke', 'white')
+		// 		.style('stroke-width', 1);
+		// 	}
+		// );
 
 		// Format X axis label
 		xAxis
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'end')
-		.attr('transform', `translate(${width + margin.right - 50}, ${margin.bottom - 15})`)
+		.attr('transform', `translate(
+			${width}, ${margin.bottom -16})`
+			// (x,-y) position bottom right corner of text
+			// from bottom left corner of graph
+			)
 		.text(xLabelText);
 
 		// Format Y axis label
@@ -199,7 +203,10 @@ function violinPlotChart() {
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'start')
-		.attr('transform', 'translate(' + (yLabelOffsetPx - margin.left / 2) + ', -10)')
+		.attr('transform',`translate(
+			${-margin.left}, -10)`)
+			// (x,-y) position bottom left corner of text
+			// from top left corner of graph
 		.text(yLabelText);
 
 		svg.call(brush);
@@ -215,9 +222,14 @@ function violinPlotChart() {
 			.brush()
 			.on('start brush', highlight)
 			.on('end', brushEnd)
+			// define the brushable area next
 			.extent([
 				[-margin.right,-margin.top],
-				[violinwidth-margin.right,violinheight-margin.top],
+				// (x,-y) position top left corner of brushing area
+				// from top left corner of graph
+				[width+margin.left,height+margin.bottom],
+				// (x,-y) position bottom right corner of brushing area
+				// from top left corner of graph
 			]);
 			g.call(brush); // Adds the brush to this element
 
