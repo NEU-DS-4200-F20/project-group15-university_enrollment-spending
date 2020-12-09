@@ -142,7 +142,7 @@ function ftelinechart() {
 			.transition()
 			.delay('20')
 			.duration('200')
-			.attr('r', 6)
+			.attr('r', 10)
 			.style('opacity', 1)
 			.style('fill', d.color);
 		})
