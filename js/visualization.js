@@ -115,8 +115,13 @@ d3.csv(fileName).then((data) => {
 	.xLabel('Year')
 	.y((d) => d['Total_FTE_Students'])
 	.yLabel('Total FTE Students')
-	.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
-	.yLabelOffset(5)('.total-fte-holder', data, legends);
+	.tooltipFields([
+		'Total_FTE_Students',
+		'FTE_Student_Growth',
+		'Undergrad_FTE_Pct',
+	])
+	// .yLabelOffset(5)
+	('.total-fte-holder', data, legends);
 
 	// Get linecharts holder element for adding each linechart dynamically
 	const linechartsHolder = d3.select('.linecharts-holder');
@@ -145,6 +150,9 @@ d3.csv(fileName).then((data) => {
 	// any circle, tell the linechart to update it's circles
 	legendChart.selectionDispatcher().on(dispatchFilterString,function (selectedSchools) {
 
+		const legendSelection = selectedSchools[0];
+
+		if (legendSelection) {
 		// Add the selection to the list of schools to filter by
 		const reDrawData = data.filter((record) => selectedSchools.includes(record.SchoolName));
 
@@ -161,11 +169,22 @@ d3.csv(fileName).then((data) => {
 		.y((d) => d['Total_FTE_Students'])
 		.yLabel('Total FTE Students')
 		.tooltipFields(['Total_FTE_Students','FTE_Student_Growth'])
-		.yLabelOffset(5)(
-			'.total-fte-holder',
-			reDrawData,
-			legends,
-		); // End ftelinechart
+		// .yLabelOffset(5)
+		('.total-fte-holder',reDrawData,legends,);
+		} else {
+			ftelinechart()
+			.x((d) => d['Year'])
+			.xLabel('Year')
+			.y((d) => d['Total_FTE_Students'])
+			.yLabel('Total FTE Students')
+			.tooltipFields([
+				'Total_FTE_Students',
+				'FTE_Student_Growth',
+				'Undergrad_FTE_Pct',
+			])
+			// .yLabelOffset(5)
+			('.total-fte-holder', data, legends);
+		}
 	}); // End legendChart.selectionDispatcher
 
 // Brushing the violins
@@ -200,7 +219,7 @@ d3.csv(fileName).then((data) => {
 			.xLabel('Year')
 			.y((d) => d[dlabel])
 			.yLabel(dlabel)
-			.yLabelOffset(5)
+			// .yLabelOffset(5)
 			.tooltipFields(tooltips)
 			.hoverDispatcher(d3.dispatch(dispatchHoverString))(
 				`.line-chart-${one.field}`,
@@ -226,7 +245,8 @@ d3.csv(fileName).then((data) => {
 			.y((d) => d['Total_FTE_Students'])
 			.yLabel('Total FTE Students')
 			.tooltipFields(['Total_FTE_Students', 'FTE_Student_Growth'])
-			.yLabelOffset(5)('.total-fte-holder', data, legends);
+			// .yLabelOffset(5)
+			('.total-fte-holder', data, legends);
 		}
 	}); // End violin.selectionDispatcher
 
@@ -239,7 +259,7 @@ d3.csv(fileName).then((data) => {
 		.y((d) => d[field.dlabel])
 		.yLabel(field.dlabel)
 		.tooltipFields(field.tooltipFields)
-		.yLabelOffset(5)
+		// .yLabelOffset(5)
 		//added dispatcher for interaction
 		.hoverDispatcher(d3.dispatch(dispatchHoverString))(
 			`.line-chart-${field.slabel}`,visualData,legends);
