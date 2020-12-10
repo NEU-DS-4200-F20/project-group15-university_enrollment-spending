@@ -16,7 +16,6 @@ function linechart() {
 	yValue = (d) => d[1],
 	xLabelText = '',
 	yLabelText = '',
-	// yLabelOffsetPx = 0,
 	xScale = d3.scalePoint(),
 	yScale = d3.scaleLinear(),
 	tooltipFields = [],
@@ -75,7 +74,6 @@ function linechart() {
 		.append('text')
 		.attr('class', 'axisLabel')
 		.attr('text-anchor', 'start')
-		// .attr('transform', 'translate(' + (yLabelOffsetPx - margin.left) + ', -10)')
 		.attr('transform', `translate(${-margin.left}, -10)`)
 		.text(yLabelText);
 
@@ -138,8 +136,9 @@ function linechart() {
 				<b>${tooltipFields[2]}</b>: ${parseFloat(d[tooltipFields[0]])}%<br />
 				<b>${tooltipFields[3]}</b>: $${parseFloat(d[tooltipFields[1]])}`)
 				// tooltipFields[0] is Pct, [1] is FTE, [2] is percent name, [3] is fte name
-				.style('left', event.pageX + 'px')
-				.style('top', event.pageY -75 + 'px');
+				.style('width', 275+'px')
+				.style('left', event.pageX-275 + 'px')
+				.style('top', event.pageY-75 + 'px');
 
 
 			//use raise() to bring the element forward when hovering the mouse
