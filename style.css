@@ -11,16 +11,29 @@ h1 {
 	line-height: 1.2;
 }
 
-h2,
+h2 {
+	line-height: 1;
+	margin: 5px;
+}
+
 h3 {
 	line-height: 1;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 h4 {
-	line-height: .8;
-	margin-bottom: -10px;
+	line-height: 1;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	margin-right: 0px;
 }
-
+p {
+	margin: 5px;
+}
 /* A narrow column of text */
 .narrow-column {
 	max-width: 650px;
@@ -32,7 +45,7 @@ h4 {
 /* A container holding all visualization containers*/
 .vis-holder {
 	width: 1300px;
-	height: 3230px;
+	height: 3100px;
 		/* Extra height needed to allow for split scrolling. Increasing this
 		number increases the distance between the end of the column of
 		linecharts and the beginning of the Demo Video header. */
@@ -42,12 +55,14 @@ h4 {
 /* A column on the left for a graph */
 .side-graph-column {
 	width: 800px;
+	margin-bottom: 0px;
 	float: left;
 }
 
 /* A container for the FTE line graph */
 .total-fte-holder {
 	width: 800px;
+	margin-bottom: 0px;
 	float: left;
 }
 
@@ -65,6 +80,7 @@ h4 {
 		violin and legend containers reside inside this container*/
 .sticky-zone {
 	float: left;
+	margin-top: 0px;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
@@ -73,12 +89,12 @@ h4 {
 /* A container for the legend */
 .legend-zone {
 	width: 800px;
-	margin: auto;
+	margin: 0;
 }
 
 /* A container for the violinplot */
 .violinplot-holder {
-	margin-top: -20px;
+	margin-top: 0px;
 	width: 800px;
 	float: left;
 }
@@ -176,8 +192,8 @@ circle.selected {
 /* Format the expense linegraph tooltips */
 div.tooltip {
 	position: absolute;
-	margin-left: -220px;
-	margin-top: -5px;
+	/* margin-left: -220px; */
+	/* margin-top: -5px; */
 	text-align: left;
 	padding: 4px;
 	font: 12px sans-serif;
@@ -190,7 +206,7 @@ div.tooltip {
 /* Format the enrollment linegraph tooltips */
 div.tooltip2 {
 	position: absolute;
-	margin-top: -25px;
+	/* margin-top: -25px; */
 	text-align: left;
 	padding: 4px;
 	font: 12px sans-serif;
