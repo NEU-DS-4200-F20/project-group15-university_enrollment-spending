@@ -1,7 +1,7 @@
 function legend() {
-	const margin = {top: 20, left: 20},
+	const margin = {top: 0, left: 40},
 	width = violinWidth,
-	height = 130;
+	height = 90;
 
 	let selectedSchools = [];
 
@@ -9,7 +9,7 @@ function legend() {
 		let svg = d3
 		.select(selector)
 		.append('svg')
-		.attr('width', width - margin.left)
+		.attr('width', violinWidth - margin.left)
 		.attr('height', height);
 
 		svg = svg
@@ -28,7 +28,7 @@ function legend() {
 		.attr('class', 'legend-for-schoolname')
 		.attr('transform', (_, i) => {
 			if (i % 3 === 0) { // 3 is the number of columns
-				yPos += 25; // legend row height
+				yPos += 22; // legend row height
 				xPos = 0; // no horizontal cushion needed
 			} else {
 				xPos = (i % 3) * (violinWidth - margin.left)/3;
@@ -51,6 +51,7 @@ function legend() {
 				.attr('r', 7)
 				.style('stroke', 'black')
 				.style('stroke-width', 1)
+				.style('fill', (d) => d.color)
 				;
 			}
 
@@ -58,9 +59,10 @@ function legend() {
 			else {
 				selectedSchools = [...selectedSchools, d.name];
 				d3.select(this)
-				.attr('r', 10)
-				.style('stroke', 'pink')
-				.style('stroke-width', 5)
+				.attr('r', 7)
+				.style('stroke', (d) => d.color)
+				.style('stroke-width', 6)
+				.style('fill', 'black')
 				;
 			}
 
