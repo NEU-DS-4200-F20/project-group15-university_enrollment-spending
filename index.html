@@ -26,11 +26,6 @@
 
 /********************** TASKS TO BE COMPLETED *************************/
 
-!! CITE REFERENCES WHERE WE BORROWED CODE (or saw code that inspired us)!!
-Do this at the bottom of the index (this file) in 'Acknowledgements'
-
-	Graphs
-Make graph text not-selectable (axis labels)
 Add $ or % to y-axis labels
 
 End tasks to be completed -->
@@ -105,10 +100,7 @@ End tasks to be completed -->
 			entity (gray). The University of Massachusetts: Amherst, Medical School, and Law School have been
 			intentionally omitted from this basket. The average of the MA State Schools is also displayed (pink).
 		</p>
-		<!-- insert data file switcher here -->
-		<!--
 
-		 -->
 		<p>
 			The task force expressed they would like to be able to see the rate of growth of enrollments expressed
 			as the number of Full-Time Equivalent Students, distribution of spending as a percentage of total
@@ -137,8 +129,8 @@ End tasks to be completed -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
 						Hovering over any data point reveals more information about that specific point.
-						<br/><br/>Clicking colored dots in the legend will add or remove schools from the graph.
-						<br/><br/>Click anywhere in the violin plot area to restore the graph to show all schools.
+						<br/><br/>Clicking colored dots in the legend will filter the line graph to only show
+						 selected schools.<br/><br/>Remove all filters to restore the graph to show all schools.
 					</span>
 				</span>
 			</h3>
@@ -154,8 +146,8 @@ End tasks to be completed -->
 				each school, which is a measurement equivalent to one student enrolled full time for one academic
 				year. This is the best way to measure enrollments when making comparisons between universities, as
 				it captures full-time, part-time, and partial-year enrollments by calculating, based on the
-				aggregate total number of credit hours, how many students would have attended if they were all
-				enrolled full-time for an entire academic year.
+				aggregate total number of credit hours, and allows for direct comparisons regardless of school
+				size or total budget.
 				<!-- a tooltip activated by hovering over an icon -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
@@ -177,16 +169,16 @@ End tasks to be completed -->
 				colored dot represents a school's spending for a particular year, as a percent of their total budget.
 				A gray violin body gives an alternate representation of the distribution, read similar to a sideways
 				histogram. The height of each violin represents the range of the values. The width of each violin
-				represents the frequency of the values. This provides an overview to identify the variance of
+				represents the frequency of the values. This provides an overview to capture the variance of
 				spending in each category.
 			</p>
 			<h4>Time-series data</h4>
 			<p>
-				Below, the line graphs show each school's spending trends, with each category isolated to a single
-				chart. Each line graph corresponds with one violin. The top line graph represents the same data as
-				the far left violin. The data displayed are the dollar amounts spent annually per FTE student. This
-				provides a direct comparison between schools regardless of the total budget, and is not affected by
-				spending changes in other categories.
+				Below, the line graphs show each school's spending trends, with each expense category isolated to a
+				single chart. Each line graph corresponds with one violin. The top line graph represents the same data
+				as the far left violin. The bottom line graph represents the same data as the far right violin. The data
+				displayed are the dollar amounts spent annually per FTE student. This provides a direct comparison
+				between schools, and unlike percentages, is not affected by changes in other categories.
 			</p>
 
 		</div><!-- End side-text-column -->
@@ -206,14 +198,12 @@ End tasks to be completed -->
 						<span class="tooltiptext">
 							This visualization focuses on the entire comparison basket, so schools cannot be
 							filtered out of this graph. By clicking a colored dot in the legend, we can highlight
-							all the data for that school. Clicking any blank area in the graph will restore the
-							original view. To see how these values changed over time, we can click and drag over
-							an area of interest in a violin, then look to the corresponding line graph on the right.
-							<br /><br />For example, if the brushed points happen to represent Salem State
-							in 2006 and Fitchburg State in 2010, the corresponding line graph on the right will
-							show the lines for both Salem and Fitchburg in both 2006 and 2010. You can only brush
-							one violin at a time, but consecutively brushing numerous violins will allow each
-							line graph to highlight a different subset of the data.
+							all the data for that school.<br/><br/>To see how these values changed over time, we can
+							click and drag over an area of interest in a violin, then look to the corresponding line
+							graph on the right. The far left violin represents the same data as the top line graph.
+							The bottom line graph represents the same data as the far right violin.<br /><br /> You
+							can only brush one violin at a time, but consecutively brushing numerous violins will allow
+							each line graph to highlight different subsets of the data.
 						</span>
 					</span>
 				</h3>
@@ -229,9 +219,10 @@ End tasks to be completed -->
 				<!-- a tooltip activated by hovering over an icon -->
 				<span class="tooltipicon"> &#9432;
 					<span class="tooltiptext">
-						Details are again available by hovering over any plot, and that value is also isolated in
-						the corresponding violin.<br/><br/>Interacting with the legend will apply a school filter to
-						all the line graphs.<br/><br/>Clicking anywhere in the violin plot restores the original view.
+						Details are available by hovering over any plot, and that value will also isolated in the
+						corresponding violin.<br/><br/>Clicking colored dots in the legend will filter all the line
+						graphs to show only selected schools.<br/><br/>Clicking anywhere in the violin plot restores
+						the original view to show all schools.
 					</span>
 				</span>
 			</h3>
