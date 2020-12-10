@@ -1,7 +1,7 @@
 //source: https://www.d3-graph-gallery.com/graph/violin_jitter.html
 
 violinWidth = 800
-violinHeight = 690
+violinHeight = 670
 
 function violinPlotChart() {
 	//Define the margins
