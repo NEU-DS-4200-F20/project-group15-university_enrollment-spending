@@ -133,7 +133,7 @@ function ftelinechart() {
 				<b>Undergraduate Enrollment: </b>${d[tooltipFields[2]]}%
 				`)
 			.style('left', event.pageX - 100 + 'px')
-			.style('top', event.pageY - 70 + 'px');
+			.style('top', event.pageY - 90 + 'px');
 
 			//use raise() to bring the element forward when hovering the mouse
 			//hide when mouse moves away
