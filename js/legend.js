@@ -69,11 +69,8 @@ function legend() {
 
 			// // Let other charts know
 			dispatcher.call(dispatchString, this, selectedSchools);
-		})
-		.on('mouseout', function(event,d) {
-			selectedSchools = [...selectedSchools, d.name];	
-
 		});
+		
 
 		legendG
 		.append('text')
