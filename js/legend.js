@@ -51,8 +51,7 @@ function legend() {
 				.attr('r', 7)
 				.style('stroke', 'black')
 				.style('stroke-width', 1)
-				.style('fill', (d) => d.color)
-				;
+				.style('fill', (d) => d.color);
 			}
 
 			// otherwise, add the selection to the filter list
@@ -62,8 +61,7 @@ function legend() {
 				.attr('r', 7)
 				.style('stroke', (d) => d.color)
 				.style('stroke-width', 6)
-				.style('fill', 'black')
-				;
+				.style('fill', 'black');
 			}
 
 			// Get the name of our dispatcher's event
@@ -71,6 +69,10 @@ function legend() {
 
 			// // Let other charts know
 			dispatcher.call(dispatchString, this, selectedSchools);
+		})
+		.on('mouseout', function(event,d) {
+			selectedSchools = [...selectedSchools, d.name];	
+
 		});
 
 		legendG
