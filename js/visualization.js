@@ -142,7 +142,7 @@ d3.csv(fileName).then((data) => {
 	.xFields(fields.map((d) => d.slabel))
 	.xLabel('Expense Categories')
 	.yLabel('Percent of Total Expenses')
-	.selectionDispatcher(d3.dispatch(dispatchUpdateSelectionString))('.violinplot-holder',data,legends,);
+	.selectionDispatcher(d3.dispatch(dispatchUpdateSelectionString))('.violinplot-holder',data,legends);
 
 
 // Brushing the legend
@@ -170,8 +170,12 @@ d3.csv(fileName).then((data) => {
 		.yLabel('Total FTE Students')
 		.tooltipFields(['Total_FTE_Students','FTE_Student_Growth'])
 		// .yLabelOffset(5)
-		('.total-fte-holder',reDrawData,legends,);
+		('.total-fte-holder',reDrawData,legends);
 		} else {
+			//restores violin plot
+			violin.updateSelection([]);
+			//restores all line charts
+			updateLineCharts(data);
 			ftelinechart()
 			.x((d) => d['Year'])
 			.xLabel('Year')
@@ -237,7 +241,11 @@ d3.csv(fileName).then((data) => {
 
 		// If the user brushed nothing (or just clicked in the area) show everything
 		else {
-			updateLineCharts(data)
+			//restore state of legends
+
+			legendChart.updateSelection();
+
+			updateLineCharts(data);
 
 			ftelinechart()
 			.x((d) => d['Year'])

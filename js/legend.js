@@ -3,6 +3,8 @@ function legend() {
 	width = violinWidth,
 	height = 90;
 
+	let selectableElements = [];
+
 	let selectedSchools = [];
 
 	function chart(selector, data) {
@@ -80,6 +82,9 @@ function legend() {
 		.style('fill', 'black')
 		.text((d) => d.name);
 
+		//get all legend circles for school
+		selectableElements = svg.selectAll("circle");
+
 		return chart;
 	}
 
@@ -89,6 +94,16 @@ function legend() {
 		dispatcher = _;
 		return chart;
 	};
+
+	chart.updateSelection = function (_) {
+		// if (!arguments.length) return;
+		selectedSchools = [];
+    selectableElements
+      .attr("r", 7)
+      .style("stroke", "black")
+      .style("stroke-width", 1)
+      .style("fill", (d) => d.color);
+  };
 
 	return chart;
 }
