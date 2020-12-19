@@ -1,113 +1,335 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<!-- Metadata -->
+<!-- Begin Metadata -->
+
 <head>
-  <meta charset='utf-8'>
-
-  <!-- Title -->
-  <title>Project Team ##: Topic, DS 4200 F20</title>
-  
-  <!-- CSS Styling -->
-  <link rel='stylesheet' href='style.css'>
-
-  <!-- Favicons -->
-  <link rel='apple-touch-icon' sizes='180x180' href='favicons/apple-touch-icon.png'>
-  <link rel='icon' type='image/png' sizes='32x32' href='favicons/favicon-32x32.png'>
-  <link rel='icon' type='image/png' sizes='16x16' href='favicons/favicon-16x16.png'>
-  <link rel='manifest' href='favicons/site.webmanifest'>
-  <link rel='shortcut icon' href='favicons/favicon.ico'>
-  <meta name='msapplication-TileColor' content='#da532c'>
-  <meta name='msapplication-config' content='favicons/browserconfig.xml'>
-  <meta name='theme-color' content='#ffffff'>
+	<meta charset='utf-8'>
+	<!-- Title -->
+	<title>University Spending and Enrollment</title>
+	<!-- CSS Styling -->
+	<link rel='stylesheet' href='style.css'>
+	<!-- Favicons -->
+	<link rel='apple-touch-icon' sizes='180x180' href='favicons/apple-touch-icon.png'>
+	<link rel='icon' type='image/png' sizes='32x32' href='favicons/favicon-32x32.png'>
+	<link rel='icon' type='image/png' sizes='16x16' href='favicons/favicon-16x16.png'>
+	<link rel='manifest' href='favicons/site.webmanifest'>
+	<link rel='shortcut icon' href='favicons/favicon.ico'>
+	<meta name='msapplication-TileColor' content='#da532c'>
+	<meta name='msapplication-config' content='favicons/browserconfig.xml'>
+	<meta name='theme-color' content='#ffffff'>
 </head>
+<!-- End Metadata -->
 
-<!-- Main page content -->
+
+<!-- Begin tasks to be completed
+
+/********************** TASKS TO BE COMPLETED *************************/
+
+Add $ or % to y-axis labels
+
+End tasks to be completed -->
+
+
 <body>
 
-  <!-- Update this with your GitHub repo URL -->
-  <span id='forkongithub'><a href='https://github.com/NEU-DS-4200-F20-Staff/Project'>Fork me on GitHub</a></span>
 
-  <!-- Writeup -->
-  <div class='content-column'>
-   <h1>Project Team ##: Topic, DS4200 F20</h1>
-    
-    <p><strong>Student One</strong>, <strong>Student Two</strong>, <strong>Student Three</strong></p>
-    
-    <p>Service-Learning Course Project as part of
-	<a href='https://canvas.instructure.com/courses/1781732'>DS 4200 F20: Information Visualization</a>, 
-	taught by <a href='https://cody.khoury.northeastern.edu/'>Prof. Cody Dunne</a>, 
-	<a href='https://visualization.khoury.northeastern.edu/'>Data Visualization @ Khoury</a>, 
-	<a href='https://www.khoury.northeastern.edu/'>Northeastern University</a>.</p>
-    
-    
-    <h1>Abstract</h1>
-    
-    <p>Replace with your paper abstract.</p>
+	<!-- Begin ForkOnGitHub -->
+	<span id='forkongithub'>
+		<a href='https://github.com/NEU-DS-4200-F20/project-group15-university_enrollment-spending'>
+			Fork me on GitHub
+		</a>
+	</span>
+	<!-- End ForkOnGitHub -->
 
-    
-    <h1>Visualization</h1>
-    
-    <p>Include the interactive visualization as part of this page. Static example follows.</p>
 
-    
-  </div>
-  
-  <!-- Visualization goes here -->
-  <div class='vis-holder'>
-    <!-- Change viewbox to whatever you want, e.g., '0 0 1000 6000' This determines your aspect ratio and coordinate system -->    
-    <!-- Delete all the sample SVG code below after the viewbox to before the closing tag. Populate this part of the SVG with D3. -->
-    <svg id='vis-svg-1'
-      preserveAspectRatio='xMidYMid meet' class='vis-svg' viewBox='0 0 1000 1000' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-      
-      
-      <text x='30%' y='35%' text-anchor='middle'>A</text>
-      <text x='70%' y='35%' text-anchor='middle'>B</text>
-      <rect x='20%' y='40%' width='20%' height='20%' fill='yellow'></rect>
-      <circle cx='70%' cy='50%' r='10%' fill='blue'></circle>
-      
-      
-    <!-- Don't delete the closing tag! -->
-    </svg>
-  </div>
-  
-  <!-- Further writeup -->
-  <div class = 'content-column'>
+	<!-- Begin Introduction -->
+	<div class='narrow-column'>
+		<h1>Project Team 15: Comparative Analysis of University Spending and Enrollment</h1>
+		<p><strong>Marc Leonti</strong>, <strong>Raed Binsaeed</strong>, <strong>Nick Hu</strong></p>
+		<p>
+			Service-Learning Course Project as part of
+			<a href='https://canvas.instructure.com/courses/1781732'>
+				DS 4200 F20: Information Visualization
+			</a>
+			, taught by
+			<a href='https://cody.khoury.northeastern.edu/'>
+				Prof. Cody Dunne
+			</a>
+			,
+			<a href='https://visualization.khoury.northeastern.edu/'>
+				Data Visualization @ Khoury
+			</a>
+			,
+			<a href='https://www.khoury.northeastern.edu/'>
+				Northeastern University
+			</a>
+			.
+		</p>
 
-    <h1>Demo Video</h1>
-    
-    <p>Embed an MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</p>
-    
-    <video controls width='100%'>
-      <source src='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4' type='video/mp4'>
-      <p>Your browser doesn't support HTML5 video. Here is
-       a <a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>link to the video</a> instead.</p>
-    </video>
+		<h1>Abstract</h1>
+		<p>
+			Our service partner is the Sustainable Path Forward Task Force from Salem State University (SSU), which has
+			been charged with making recommendations for increasing revenue and reducing expenses. Their goal is to
+			reallocate spending in areas that drive enrollments (increasing revenue) and decrease spending in areas that
+			do not drive enrollments (reducing expenses). The following visualizations explore the spending patterns of
+			post-secondary institutions to search for patterns that may reveal their impacts on enrollment. If patterns
+			are found in these visualizations, a deeper analysis of the underlying data can determine if they  are
+			statistically significant. Proper guidance can then be given to make fiscal policy changes that will boost
+			enrollments.
+		</p>
 
-    <h1>Visualization explanation</h1>
-    
-    <p>Replace with a brief explanation (can be copied from the paper) and linked presentation slides.</p>
-    
-    <h1>Acknowledgments</h1>
+		<h1>Visualizations</h1>
+		<p>
+			We have included data from following basket of nine schools, as they are appropriate for comparison based
+			on region (Massachusetts), sector (four-year public institutions), and size (1,000 to 15,000 students).
+		</p>
+		<ul>
+			<li>Bridgewater State University</li>
+			<li>Fitchburg State University</li>
+			<li>Framingham State University</li>
+			<li>Salem State University</li>
+			<li>Westfield State University</li>
+			<li>Worcester State University</li>
+			<li>University of Massachusetts: Boston</li>
+			<li>University of Massachusetts: Dartmouth</li>
+			<li>University of Massachusetts: Lowell</li>
+		</ul>
+		<p>
+			The data for the three University of Massachusetts schools have been averaged and is represented as one
+			entity (gray). The University of Massachusetts: Amherst, Medical School, and Law School have been
+			intentionally omitted from this basket. The average of the MA State Schools is also displayed (pink).
+		</p>
 
-    <p>
-      List here where any code, packages/libraries, text, images, designs, etc. that you leverage come from.
-    </p>
+		<p>
+			The task force expressed they would like to be able to see the rate of growth of enrollments expressed
+			as the number of Full-Time Equivalent Students, distribution of spending as a percentage of total
+			spending, and time-series information showing the year over year differences in spending calculated
+			per Full-Time Equivalent Student. This has been accomplished with the use of a line graph to show
+			time-series enrollment data, a violin plot to show the distribution of spending in eight major
+			categories, and individual line graphs to show the time-series detail of sending in each of those
+			eight categories.
+		</p>
+		<p>
+			In each of the line graphs, additional details are displayed when hovering over
+			any data point. Hover over any &#9432; icon for additional suggestions.
+		</p>
+	</div><!-- End narrow-column -->
+	<!-- End Introduction -->
 
-    <ul>
-      <li><a href='https://d3js.org/'>
-        D3: Data-Driven Documents</a>
-        by Mike Bostock is used for manipulating the DOM to create visualizations.
-      </li>
-      <li><a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>
-        Pure CSS responsive 'Fork me on GitHub' ribbon</a>
-        by Chris Heilmann is used to create the banner that links back to the source code repository.
-      </li>
-    </ul>
-  </div>
-  
-  <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
-  <script src='lib/d3.v6.1.1/d3.min.js'></script>
-  <script src='js/visualization.js'></script>
+
+	<!-- Begin Visualizations -->
+	<div class='vis-holder'>
+		<!-- This container holds all visualizations -->
+
+		<div class='side-graph-column'>
+			<h3>
+				Full Time Equivalent (FTE) Students per school
+				<!-- a tooltip activated by hovering over an icon -->
+				<span class="tooltipicon"> &#9432;
+					<span class="tooltiptext">
+						Hovering over any data point reveals more information about that specific point.
+						<br/><br/>Clicking colored dots in the legend will filter the line graph to only show
+						 selected schools.<br/><br/>Remove all filters to restore the graph to show all schools.
+					</span>
+				</span>
+			</h3>
+			<div class='total-fte-holder'>
+				<!-- Total FTE line graph is inserted here by js -->
+			</div>
+		</div><!-- End side-graph-column -->
+
+		<div class='side-text-column'>
+			<h3>Enrollment Trends:</h3>
+			<p>
+				The adjacent line graph shows the number of Full Time Equivalent (FTE) Students reported by
+				each school, which is a measurement equivalent to one student enrolled full time for one academic
+				year. This is the best way to measure enrollments when making comparisons between universities, as
+				it captures full-time, part-time, and partial-year enrollments by calculating, based on the
+				aggregate total number of credit hours, and allows for direct comparisons regardless of school
+				size or total budget.
+				<!-- a tooltip activated by hovering over an icon -->
+				<span class="tooltipicon"> &#9432;
+					<span class="tooltiptext">
+						We can see with this visualization that most of the schools in this analysis have reported
+						positive growth over time, but Salem State University (purple) has shown steady negative
+						growth since 2010. Bridgewater State (red) has the most FTE Students of the MA State schools,
+						and the UMass schools (gray) have the highest average enrollment among all MA public schools.
+						Both schools have reported steady growth over the timeframe.<br /><br />Since these schools
+						seem to be getting it right, we would look for similar spending patterns between these
+						schools to find a correlation between certain expenses and enrollment changes.
+					</span>
+				</span>
+			</p>
+
+			<h3>Spending Trends:</h3>
+			<h4>Distribution of data</h4>
+			<p>
+				Below the legend, violin plots show the distribution of all the data in each expense category. Each
+				colored dot represents a school's spending for a particular year, as a percent of their total budget.
+				A gray violin body gives an alternate representation of the distribution, read similar to a sideways
+				histogram. The height of each violin represents the range of the values. The width of each violin
+				represents the frequency of the values. This provides an overview to capture the variance of
+				spending in each category.
+			</p>
+			<h4>Time-series data</h4>
+			<p>
+				Below, the line graphs show each school's spending trends, with each expense category isolated to a
+				single chart. Each line graph corresponds with one violin. The top line graph represents the same data
+				as the far left violin. The bottom line graph represents the same data as the far right violin. The data
+				displayed are the dollar amounts spent annually per FTE student. This provides a direct comparison
+				between schools, and unlike percentages, is not affected by changes in other categories.
+			</p>
+
+		</div><!-- End side-text-column -->
+
+		<div class='sticky-zone'>
+			<!-- This container holds the violins and legend -->
+
+			<div class='legend-zone'>
+				<!-- legend is inserted here by js -->
+			</div>
+
+			<div class='violinplot-holder'>
+				<h3>
+					Distribution of spending as a percent of total expenses
+					<!-- a tooltip activated by hovering over an icon -->
+					<span class="tooltipicon"> &#9432;
+						<span class="tooltiptext">
+							This visualization focuses on the entire comparison basket, so schools cannot be
+							filtered out of this graph. By clicking a colored dot in the legend, we can highlight
+							all the data for that school.<br/><br/>To see how these values changed over time, we can
+							click and drag over an area of interest in a violin, then look to the corresponding line
+							graph on the right. The far left violin represents the same data as the top line graph.
+							The bottom line graph represents the same data as the far right violin.<br /><br /> You
+							can only brush one violin at a time, but consecutively brushing numerous violins will allow
+							each line graph to highlight different subsets of the data.
+						</span>
+					</span>
+				</h3>
+				<!-- violinplot is inserted here by js -->
+			</div><!-- End violinplot-holder -->
+
+		</div><!-- End sticky-zone -->
+
+
+		<div class='linecharts-holder'>
+			<h3>
+				Dollars spent per FTE Student
+				<!-- a tooltip activated by hovering over an icon -->
+				<span class="tooltipicon"> &#9432;
+					<span class="tooltiptext">
+						Details are available by hovering over any plot, and that value will also isolated in the
+						corresponding violin.<br/><br/>Clicking colored dots in the legend will filter all the line
+						graphs to show only selected schools.<br/><br/>Clicking anywhere in the violin plot restores
+						the original view to show all schools.
+					</span>
+				</span>
+			</h3>
+		</div><!-- End linecharts-holder -->
+
+	</div><!-- End vis-holder -->
+	<!-- End Visualizations -->
+
+
+	<!-- Begin Video -->
+	<div class='narrow-column'>
+		<h1>Demo Video</h1>
+
+
+		<video controls width='100%'>
+			<source src='files/Projectvideo.mp4' type='video/mp4'>
+			<p>
+				Your browser doesn't support HTML5 video. Here is a
+				<a href='http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4'>
+					link to the video
+				</a> instead.
+			</p>
+		</video>
+
+
+
+
+		<!-- Begin Conclusion -->
+		<h1>Visualization explanation</h1>
+		<p>
+			These capabilities will allow the end user to explore the dataset and hopefully discover useful insights.
+			While an in-depth analysis will be required to determine if the findings are statistically significant, and
+			is beyond the scope of this project, we hope this tool will help users direct the focus of their research.
+			Depending on those findings it can possible to identify which expenses help boost enrollment, which
+			expenses should be reduced, and ultimately convince decision-makers in affecting financial policy changes.
+		</p>
+
+		<h1>Acknowledgments</h1>
+		<p>
+			I would like to thank everyone who helped make this possible: first, to Dr. Kurt von Seekamm from Salem State
+			University, for your unwavering guidance and comical support; to Kyle Langford, for your technical advice
+			and honest critiques; to Professor Cody Dunne, for putting things into perspective; and especially to Leanne,
+			for making me fix my grammar errors, waiting patiently to eat dinner, and warming up my cold feet when
+			I climbed into bed at 3am.
+		</p>
+		<p>- Marc</p>
+		<ul>
+			<li>
+				<a href='https://d3js.org/'>D3: Data-Driven Documents</a> by Mike Bostock
+				is used for manipulating the DOM to create visualizations.
+			</li>
+			<li>
+				<a href='https://codepo8.github.io/css-fork-on-github-ribbon/#'>Pure CSS
+				responsive 'Fork me on GitHub' ribbon</a> by Chris Heilmann is used to create
+				the banner that links back to the source code repository.
+			</li>
+			<li>
+				<a href='https://www.w3schools.com/'>W3 Schools</a> was referenced for numerous
+				definitions, especially for <a href='https://www.w3schools.com/css/css3_animations.asp'>
+				animations</a> and <a href='https://www.w3schools.com/css/css_tooltip.asp'>
+				tooltips</a>.
+			</li>
+			<li>
+				A method to
+				<a href='https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicate'>
+					get all the unique values
+				</a> in a javascript array, found at StackOverflow.
+			</li>
+			<li>
+				<a href='https://www.d3-graph-gallery.com/graph/violin_jitter.html'>Making a violin plot in D3</a> by
+				the D3 Graph Library. This was the inspiration behind the violin plot.
+			</li>
+			<li>
+				<a href='http://dimplejs.org/advanced_examples_viewer.html?id=advanced_interactive_legends'>Interactive
+				legends</a> by johnkiernander. This was used to build our interactive legend.
+			</li>
+			<li>
+				<a href='https://github.com/NEU-DS-4200-F20/assignment--brushing-and-linking-binsaeedraed.git'>Brushing
+				and Linking Assignment 8</a> by Cody Dunne. This was used to make the brushing and linking. It also
+				provided us with the necessary background for the linegraph.
+			</li>
+			<li>
+				<a href='https://www.d3-graph-gallery.com/graph/line_several_group.html'>Line Graph with several
+				groups</a> by Holtz Yan. This provided us with the building block of the multi-line graph.
+			</li>
+		</ul>
+		<!-- End Conclusion -->
+
+	</div><!-- End narrow-column -->
+
+
+	<div class='blank-area'></div><!-- End blank-area -->
+
+
+	<!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
+	<script src='lib/d3.v6.1.1/d3.min.js'></script>
+	<script src='js/visualization.js'></script>
+
+	<!-- Must list the global file first to define the colors -->
+	<script src='js/global.js'></script> <!-- color chart -->
+
+	<!-- Now we can build the violin and line graphs -->
+	<script src='js/ftelinegraph.js'></script>
+	<script src='js/legend.js'></script>
+	<script src='js/violinplot.js'></script>
+	<script src='js/linegraph.js'></script>
+
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 This repository is your starting point for your project. Please look through all these materials so you know how to organize your project.
 
-Link to your GitHub pages website: `[insert your *clickable* hyperlink here]`
+Link to your GitHub pages website: https://neu-ds-4200-f20.github.io/project-group15-university_enrollment-spending/
 
 # Aim of the assignment
 
@@ -74,14 +74,14 @@ Each folder has an explanatory `README.md` file.
 
 ## Software license
 
-1. Review the license for your project in `LICENSE`. The default license we include in the template `LICENCE` file is the open source [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause). You are not required to make your project open source but it is preferred and enables easier adoption of your contributions by others. 
-   
+1. Review the license for your project in `LICENSE`. The default license we include in the template `LICENCE` file is the open source [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause). You are not required to make your project open source but it is preferred and enables easier adoption of your contributions by others.
+
 1. Add your names to `LICENCE`.
 If you make any changes to your license other than including your names that are not approved by the teaching staff, you will need to sign a [Non-exclusive Right to Use and Modify Agreement](https://www.ccs.neu.edu/home/cody/courses/shared/S-L_project_partner_usage_agreement.pdf) so your project partner can actually use what you’ve made.
 
 ## Implement your visualizations
 
-The first assignment using this template — and subsequent ones — will ask you to implement your visualizations. Please refer to the assignment instructions on Canvas for more details. However, for all your development follow these guidelines:
+The first assignment using this template — and subsequent ones — will ask you to implement your visualizations. Please refer to the assignment instructions on Canvas for more details. However, for all your development follow these guidelines:
 
 1. <a name='validated'></a> Ensure your code passes the 'Validate HTML, CSS, and Links' checks we run when you push to GitHub. I.e., you want to see a green check next to your commit
   (<svg width='16' height='16' role='img'><path stroke='#22863a' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>)
